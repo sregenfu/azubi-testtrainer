@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vorbereitung-bew-v1';
+const CACHE_NAME = 'vorbereitung-bew-v2';
 const APP_SHELL = [
   './',
   'index.html',
@@ -28,6 +28,22 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') {
+    return;
+  }
+
+  const acceptsHtml = event.request.headers.get('accept')?.includes('text/html');
+  const isNavigationRequest = event.request.mode === 'navigate' || acceptsHtml;
+
+  if (isNavigationRequest) {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const cloned = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, cloned));
+          return response;
+        })
+        .catch(() => caches.match(event.request).then((cached) => cached || caches.match('index.html')))
+    );
     return;
   }
 
