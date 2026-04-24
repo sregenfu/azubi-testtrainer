@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allgemeine Infos | Ausbildung Dialogmarketing (Telekom Fokus)</title>
+  <meta name="description" content="Allgemeine Übersicht und Online-Testsimulation für die Ausbildung zur Kauffrau für Dialogmarketing.">
+  <meta name="theme-color" content="#5a4a3d">
+  <link rel="manifest" href="app.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <style>
+    :root {
+      --bg: #f6efe3;
+      --bg-strong: #efe2d1;
+      --surface: rgba(255, 250, 242, 0.94);
+      --surface-strong: #fff9ef;
+      --ink: #191919;
+      --muted: #4f4a43;
+      --line: rgba(40, 36, 31, 0.18);
+      --brand: #5a4a3d;
+      --brand-strong: #46392f;
+      --accent: #8f7864;
+      --ok: #46392f;
+      --bad: #b42318;
+      --warn: #a16207;
+      --shadow: 0 24px 60px rgba(34, 43, 56, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --bg-radial-left: rgba(181, 150, 120, 0.12);
+      --bg-radial-right: rgba(214, 192, 166, 0.14);
+      --bg-gradient-top: #fcf7ef;
+      --bg-gradient-bottom: #efe1cf;
+      --grid-line: rgba(35, 30, 24, 0.05);
+    }
+
+    :root[data-theme='dark'] {
+      --bg: #1a1714;
+      --bg-strong: #15120f;
+      --surface: rgba(30, 26, 22, 0.94);
+      --surface-strong: #25201b;
+      --ink: #efe6dc;
+      --muted: #c2b3a3;
+      --line: rgba(215, 194, 171, 0.22);
+      --brand: #b79d85;
+      --brand-strong: #cfb9a5;
+      --accent: #d8bca3;
+      --ok: #cfb9a5;
+      --bad: #ff8f85;
+      --warn: #ffd28e;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+      --bg-radial-left: rgba(180, 143, 111, 0.14);
+      --bg-radial-right: rgba(120, 96, 77, 0.14);
+      --bg-gradient-top: #221d18;
+      --bg-gradient-bottom: #17130f;
+      --grid-line: rgba(239, 230, 220, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+      background:
+        radial-gradient(circle at top left, var(--bg-radial-left), transparent 28%),
+        radial-gradient(circle at top right, var(--bg-radial-right), transparent 24%),
+        linear-gradient(180deg, var(--bg-gradient-top) 0%, var(--bg) 48%, var(--bg-gradient-bottom) 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 88%);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      font-family: "Georgia", "Cambria", serif;
+    }
+
+    .theme-toggle-button {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 30;
+      border: 1px solid rgba(90, 74, 61, 0.34);
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      font: inherit;
+      font-weight: 700;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+
+    :root[data-theme='dark'] .theme-toggle-button {
+      background: rgba(16, 25, 36, 0.9);
+      border-color: rgba(207, 185, 165, 0.45);
+    }
+
+    .theme-toggle-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .page {
+      width: min(1240px, 94vw);
+      margin: 24px auto 64px;
+      display: grid;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hub-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: -2px;
+    }
+
+    .hub-nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      background: var(--surface);
+      color: var(--brand-strong);
+      font-weight: 700;
+      transition: transform 120ms ease, background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+    }
+
+    .hub-nav a:hover {
+      transform: translateY(-1px);
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .hub-nav a.active,
+    .hub-nav a[aria-current='page'] {
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    :root[data-theme='dark'] .hub-nav a.active,
+    :root[data-theme='dark'] .hub-nav a[aria-current='page'] {
+      color: #1a1714;
+    }
+
+    .hero {
+      border-radius: var(--radius-xl);
+      background: var(--surface);
+      color: var(--ink);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    :root[data-theme='dark'] .hero {
+      background: var(--surface);
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      max-width: 76ch;
+      color: var(--muted);
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    .section-title {
+      margin-bottom: 8px;
+      color: var(--brand-strong);
+      font-size: 1.2rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      margin: 6px 0 0;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .topic {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: var(--surface-strong);
+    }
+
+    .topic h3 { font-size: 1rem; }
+
+    .topic p { margin: 8px 0 0; color: var(--muted); font-size: 0.95rem; }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    li { margin: 4px 0; }
+
+    .login-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    input[type="text"], button, select {
+      font: inherit;
+    }
+
+    input[type="text"], select {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 11px;
+      background: var(--surface-strong);
+      color: var(--ink);
+      min-width: 210px;
+    }
+
+    button {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.58rem 0.95rem;
+      cursor: pointer;
+      transition: transform 120ms ease, background-color 140ms ease;
+    }
+
+    button:hover { transform: translateY(-1px); background: var(--brand-strong); }
+
+    button.secondary {
+      background: var(--surface-strong);
+      color: var(--brand-strong);
+      border-color: rgba(90, 74, 61, 0.34);
+    }
+
+    button.ghost {
+      background: var(--surface-strong);
+      color: var(--accent);
+      border-color: rgba(201, 111, 59, 0.34);
+    }
+
+    .status { min-height: 1.2em; margin-top: 8px; font-weight: 700; color: var(--ok); }
+
+    .test-controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      border: 1px solid rgba(90, 74, 61, 0.3);
+      border-radius: 999px;
+      background: rgba(90, 74, 61, 0.1);
+      color: var(--brand-strong);
+      padding: 0.25rem 0.58rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .quiz-shell {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .timer {
+      font-weight: 800;
+      color: var(--warn);
+      border: 1px solid rgba(161, 98, 7, 0.35);
+      border-radius: 999px;
+      padding: 0.2rem 0.58rem;
+      background: rgba(161, 98, 7, 0.1);
+    }
+
+    .question {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: var(--surface-strong);
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .opt {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px;
+      display: flex;
+      gap: 8px;
+      align-items: start;
+      background: var(--surface);
+    }
+
+    .quiz-actions {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .result-summary {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: var(--surface-strong);
+    }
+
+    .badge {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 0.24rem 0.55rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      border: 1px solid transparent;
+    }
+
+    .ok { color: var(--ok); background: rgba(29, 78, 216, 0.12); border-color: rgba(29, 78, 216, 0.28); }
+    .bad { color: var(--bad); background: rgba(180, 35, 24, 0.1); border-color: rgba(180, 35, 24, 0.24); }
+    .warn-badge { color: var(--warn); background: rgba(161, 98, 7, 0.12); border-color: rgba(161, 98, 7, 0.3); }
+
+    .detail-list {
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .detail-item {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px;
+      background: var(--surface-strong);
+    }
+
+    .history {
+      margin-top: 10px;
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    .focus-toggle-row {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .focus-toggle-row .hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .install-mini-row {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .install-app-button {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .install-mini-hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .focus-toggle-button {
+      background: var(--surface-strong);
+      color: var(--brand-strong);
+      border-color: rgba(90, 74, 61, 0.34);
+    }
+
+    .floating-expand {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      z-index: 28;
+      display: none;
+      box-shadow: var(--shadow);
+    }
+
+    body.test-focus .hero,
+    body.test-focus .grid-two,
+    body.test-focus .profile-card {
+      display: none;
+    }
+
+    body.test-focus .page {
+      width: min(1400px, 98vw);
+      margin-top: 14px;
+      gap: 10px;
+    }
+
+    body.test-focus .test-card {
+      min-height: calc(100vh - 120px);
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+    }
+
+    body.test-focus #quizShell {
+      height: 100%;
+      overflow: auto;
+    }
+
+    body.test-focus .floating-expand {
+      display: inline-flex;
+    }
+
+    @media (max-width: 980px) {
+      .grid-two, .topic-grid, .test-controls { grid-template-columns: 1fr; }
+      .theme-toggle-button {
+        top: 10px;
+        right: 10px;
+      }
+    }
+
+    @media (min-width: 900px) and (max-width: 1366px) {
+      .page {
+        width: min(1320px, 98vw);
+      }
+
+      .test-card {
+        min-height: min(88vh, 900px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggleButton" class="theme-toggle-button" type="button" aria-label="Theme wechseln">Dark</button>
+  <main class="page">
+    <nav class="hub-nav" aria-label="Projekt-Navigation">
+      <a href="index.html">Start (Hub)</a>
+      <a class="active" aria-current="page" href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
+      <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a href="sprachfokus-alternativen.html">Sprachfokus-Alternativen</a>
+    </nav>
+
+    <section class="hero">
+      <h1>Ausbildungs-Training: Dialogmarketing + Marketingkommunikation (Digital)</h1>
+      <p>
+        Vorbereitung für drei Profile: Telekom Dialogmarketing, Dentsu Marketingkommunikation (Digital)
+        und Deutsche Bank Büromanagement (Corporate Center).
+        Realistische Online-Testsimulationen mit Auswertung und Begründung.
+      </p>
+      <div class="chip-row">
+        <span class="chip">Teil 1 Deutsch: einfach + mittel</span>
+        <span class="chip">Teil 2 Mathe: Basis (Prozent, Dreisatz, Text, Kopfrechnen)</span>
+        <span class="chip">Teil 3 Mathe: Gymnasium (MwSt., Zinseszins, Terme, antiproportionaler Dreisatz)</span>
+        <span class="chip">Teil 4 Englisch: Business + Kundenservice</span>
+        <span class="chip">Teil 5 Englisch: Leistungskurs (B2/C1)</span>
+        <span class="chip">Teil 6 Englisch: Mini-Case-Studies (praxisnah)</span>
+        <span class="chip">Teil 7 Dentsu: Marketingkommunikation Digital</span>
+        <span class="chip">Teil 8 Dentsu: Kampagnen-Case (Entscheidungen)</span>
+        <span class="chip">Teil 9 Dentsu: Krisenkommunikation (Social)</span>
+        <span class="chip">Teil 10 Deutsche Bank: Büromanagement Corporate Center</span>
+        <span class="chip">Teil 11 Deutsche Bank: Corporate-Center Cases</span>
+        <span class="chip">Teil 12 FAZ: Kaufmann für Büromanagement</span>
+        <span class="chip">Teil 13 FAZ: Medienkaufmann Digital und Print</span>
+        <span class="chip">Fragenpool, Punktewertung, Fortschritt</span>
+      </div>
+    </section>
+
+    <section class="grid-two">
+      <article class="card">
+        <h2 class="section-title">Allgemeine Themen</h2>
+        <div class="topic-grid">
+          <section class="topic">
+            <h3>Was beinhaltet die Ausbildung?</h3>
+            <p>Kundenberatung, Kommunikation auf verschiedenen Kanälen, Auftragsbearbeitung, CRM-Systeme, rechtliche Grundlagen, Datenschutz und Qualitätsstandards im Service.</p>
+          </section>
+          <section class="topic">
+            <h3>Wie könnte ein Einstufungstest aussehen?</h3>
+            <p>Mix aus Sprachgefuehl, Verständnis, Mathe-Basics, Logik und Zeitdruck-Aufgaben. Niveau: mittlere Basis ohne Spezialmathe (keine Stochastik).</p>
+          </section>
+          <section class="topic">
+            <h3>Was kann sie nach der Ausbildung machen?</h3>
+            <p>Direkte Übernahme im Service, Spezialisierung (Beschwerdemanagement, Vertrieb) oder Aufstieg in Teamkoordination, Training oder Qualitätsmanagement.</p>
+          </section>
+          <section class="topic">
+            <h3>In welchen Bereichen kann sie arbeiten?</h3>
+            <p>Call/Service Center, Kundenservice, Dialogvertrieb, Backoffice, Beschwerde- und Bestandskundenmanagement, Vertragsservice, technischer Kundenkontakt.</p>
+          </section>
+          <section class="topic">
+            <h3>Wie kritisch ist Mathe wirklich?</h3>
+            <p>Wichtig sind sichere Grundlagen, kein Hochleistungs-Mathe: Prozentrechnen, Dreisatz, Überschlag, schnelles Kopfrechnen und sauberes Lesen von Aufgaben.</p>
+          </section>
+          <section class="topic">
+            <h3>Was jetzt unbedingt vorbereiten?</h3>
+            <p>Lebenslauf, kurze Selbstvorstellung, Motivation für den Beruf und das Unternehmen, 2-3 Praxisbeispiele, Mathe-Basics, ruhige Antwortstruktur für Interviews.</p>
+          </section>
+          <section class="topic">
+            <h3>Englisch in der Ausbildung?</h3>
+            <p>Ja. Im Service werden Begriffe, Mails und kurze Dialoge auf Englisch genutzt. Bei Englisch-Leistungskurs lohnt sich ein höheres Niveau: B2/C1-Grammatik, präzise Formulierungen, Reklamationssprache und Business-Vokabular.</p>
+          </section>
+          <section class="topic">
+            <h3>Dentsu 2026: Schwerpunkte (Digital)</h3>
+            <p>Planung und Umsetzung digitaler Kampagnen, Content/Creatives, Social Media, SEA/SEO-Basics, KPI-Auswertung (CTR, CPC, Conversion, ROAS), Kundenbriefings und Projektorganisation im Team.</p>
+          </section>
+          <section class="topic">
+            <h3>Was aus Telekom-Fragen ist übertragbar?</h3>
+            <p>Übertragbar bleiben: präzise Kommunikation, Prozentrechnen, Englisch in Business-Kontexten, Case-Denken unter Zeitdruck. Ergänzt werden müssen Marketing-KPIs, Zielgruppenlogik, Kanalstrategie und Kampagnenanalyse.</p>
+          </section>
+          <section class="topic">
+            <h3>Deutsche Bank 2026: Büromanagement Corporate Center</h3>
+            <p>Schwerpunkte sind Organisation von Geschäftsprozessen, Termin- und Dokumentenmanagement, professionelle interne/externe Kommunikation, Excel/Reporting, Compliance-Verständnis sowie sorgfältiges Arbeiten in regulierten Prozessen.</p>
+          </section>
+          <section class="topic">
+            <h3>FAZ GmbH: zwei Ausbildungswege</h3>
+            <p>Büromanagement fokussiert Organisation, Korrespondenz und kaufmännische Abläufe. Medienkaufmann Digital und Print fokussiert Vermarktung, Media-Planung, Anzeigenprodukte, Zielgruppen und digitale wie klassische Kanäle.</p>
+          </section>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2 class="section-title">Login + Fortschritt speichern</h2>
+        <p class="muted">App-ähnlicher Ablauf: Name eingeben, Test starten, Ergebnisse und Fortschritt lokal speichern. Ideal für tägliches Üben bis zum Auswahltest.</p>
+        <div class="login-row">
+          <input id="userNameInput" type="text" placeholder="Name für Lernstand">
+          <button id="loginButton" type="button">Anmelden</button>
+          <button id="logoutButton" class="secondary" type="button">Abmelden</button>
+        </div>
+        <p id="loginStatus" class="status"></p>
+        <div id="historyBox" class="history"></div>
+      </article>
+    </section>
+
+    <section id="testSection" class="card test-card">
+      <h2 class="section-title">Online-Testsimulation</h2>
+      <p class="muted">Alle Tests mit Auflösung am Ende, Zusammenfassung und Erklärung warum richtig oder falsch. Punktelogik mit Readiness-Einstufung für Telekom, Dentsu, Deutsche Bank und FAZ.</p>
+      <div class="chip-row">
+        <span class="chip">A: sehr stark (90-100%)</span>
+        <span class="chip">B: gut (75-89%)</span>
+        <span class="chip">C: solide (60-74%)</span>
+        <span class="chip">D/E: gezielt aufbauen (&lt;60%)</span>
+      </div>
+
+      <div class="test-controls">
+        <div>
+          <label for="moduleSelect">Testmodul</label>
+          <select id="moduleSelect">
+            <option value="deutsch_easy">Teil 1 Deutsch - einfach</option>
+            <option value="deutsch_mittel">Teil 1 Deutsch - mittel</option>
+            <option value="mathe_komplett">Teil 2 Mathe - komplett</option>
+            <option value="mathe_gym">Teil 3 Mathe - Gymnasium (schwer)</option>
+            <option value="englisch_business">Teil 4 Englisch - Business/Kundenservice</option>
+            <option value="englisch_lk">Teil 5 Englisch - Leistungskurs (anspruchsvoll)</option>
+            <option value="englisch_cases">Teil 6 Englisch - Mini-Case-Studies</option>
+            <option value="marketing_digital">Teil 7 Dentsu - Marketingkommunikation Digital</option>
+            <option value="marketing_cases">Teil 8 Dentsu - Kampagnen-Case</option>
+            <option value="marketing_crisis">Teil 9 Dentsu - Krisenkommunikation (Social)</option>
+            <option value="bank_corporate">Teil 10 Deutsche Bank - Büromanagement Corporate Center</option>
+            <option value="bank_cases">Teil 11 Deutsche Bank - Corporate-Center Cases</option>
+            <option value="faz_office">Teil 12 FAZ - Kaufmann für Büromanagement</option>
+            <option value="faz_media">Teil 13 FAZ - Medienkaufmann Digital und Print</option>
+            <option value="gesamt">Kompletttest (Deutsch + Mathe + Englisch + Marketing + Bank + FAZ)</option>
+          </select>
+        </div>
+        <div>
+          <label for="testModeSelect">Testmodus</label>
+          <select id="testModeSelect">
+            <option value="training" selected>Training (normaler Zeitdruck)</option>
+            <option value="original">Originaltest-Modus (strenger Zeitdruck)</option>
+            <option value="pruefungsblock">Prüfungsblock 45 Minuten (Gesamtzeit)</option>
+          </select>
+        </div>
+        <div class="login-row" style="align-items: end;">
+          <button id="startTestButton" type="button">Test starten</button>
+          <button id="restartTestButton" class="secondary" type="button">Neu mischen</button>
+          <button id="clearProgressButton" class="ghost" type="button">Fortschritt löschen</button>
+        </div>
+      </div>
+
+      <div class="focus-toggle-row">
+        <p class="hint">Tablet-Fokus: Kopfbereich einklappen, damit der Test den gesamten sichtbaren Bereich nutzt.</p>
+        <button id="focusModeButton" class="focus-toggle-button" type="button" aria-pressed="false">Tablet-Fokus aktivieren</button>
+      </div>
+
+      <div class="install-mini-row">
+        <button id="installAppButton" class="install-app-button" type="button" hidden>App installieren</button>
+        <p id="installAppHint" class="install-mini-hint">Optional: Als App auf dem Tablet installieren für schnelleren Start.</p>
+      </div>
+
+      <p class="muted">Originaltest-Modus: kürzere Zeiten pro Frage. Prüfungsblock: 45 Minuten Gesamtzeit mit automatischer Abgabe bei Ablauf. Schwerpunkt: Sprache, Mathe, Kundenservice-Englisch und Marketing-Cases inklusive Krisenkommunikation.</p>
+
+      <div id="quizShell" class="quiz-shell">
+        <p class="muted">Noch kein Test gestartet.</p>
+      </div>
+    </section>
+
+    <section class="card profile-card">
+      <h2 class="section-title">Telekom Interview-Fokus</h2>
+      <ul>
+        <li>Erzähle in 60 Sekunden, warum dir Kundenkontakt wirklich liegt.</li>
+        <li>Nenne ein Beispiel, wie du in Stresssituationen ruhig geblieben bist.</li>
+        <li>Übe klare Sprache: Problem zusammenfassen, Lösung anbieten, nächsten Schritt nennen.</li>
+        <li>Bereite 4-5 englische Standardsätze vor (Begrüßung, Rückfrage, Zusammenfassung, Verabschiedung).</li>
+        <li>Bereite 2 Fragen ans Unternehmen vor (Einarbeitung, Entwicklung, Teamstruktur).</li>
+      </ul>
+    </section>
+
+    <section class="card profile-card">
+      <h2 class="section-title">Telekom-Profil kompakt (aus der Ausschreibung)</h2>
+      <div class="detail-list">
+        <div class="detail-item"><strong>Kerninhalte:</strong> Kundengewinnung, Kundenberatung/-service, Vermarktung von Produkten/Dienstleistungen am Telefon, Beschwerdemanagement.</div>
+        <div class="detail-item"><strong>Einsatzfelder:</strong> Telekom Service Center, ggf. technischer Service, persönlicher Kundenkontakt im Shop.</div>
+        <div class="detail-item"><strong>Wichtige Voraussetzungen:</strong> Teamfähigkeit, gutes Ausdrucksvermögen mündlich/schriftlich, Englischkenntnisse, Freude am Verkaufen und am Umgang mit Kundinnen/Kunden.</div>
+        <div class="detail-item"><strong>Perspektive:</strong> Gute Übernahmechancen, Weiterbildung inkl. Bologna@Telekom, mögliche berufsbegleitende Studiengänge.</div>
+      </div>
+    </section>
+
+    <section class="card profile-card">
+      <h2 class="section-title">Dentsu-Profil kompakt (Marketingkommunikation Digital)</h2>
+      <div class="detail-list">
+        <div class="detail-item"><strong>Kerninhalte:</strong> Kampagnenplanung digital, Zielgruppenanalyse, Content-Produktion, kanalübergreifende Kommunikation und Performance-Auswertung.</div>
+        <div class="detail-item"><strong>Wichtige Skills:</strong> Kreativität + Struktur, Zahlenverständnis (KPIs), gutes Schreiben, Präsentation von Ideen, Teamarbeit und Kundenorientierung.</div>
+        <div class="detail-item"><strong>Tools/Denke:</strong> KPI-Logik (CTR/CPC/Conversion/ROAS), A/B-Tests, Redaktionspläne, Briefing-Qualität, Datenschutz in Marketingprozessen.</div>
+        <div class="detail-item"><strong>Praxisfokus:</strong> Cases zu Kampagnenentscheidungen, Budgeteinsatz, Erfolgsmessung und Optimierung unter Zeitdruck.</div>
+      </div>
+    </section>
+
+    <section class="card profile-card">
+      <h2 class="section-title">Deutsche Bank-Profil kompakt (Büromanagement Corporate Center)</h2>
+      <div class="detail-list">
+        <div class="detail-item"><strong>Kerninhalte:</strong> Büro- und Prozessorganisation, Terminsteuerung, Protokolle, professionelle Korrespondenz, Dokumentation und Qualitätskontrolle.</div>
+        <div class="detail-item"><strong>Wichtige Skills:</strong> Sorgfalt, Verlässlichkeit, Diskretion, Priorisierung, Teamkommunikation und serviceorientiertes Auftreten.</div>
+        <div class="detail-item"><strong>Tools/Denke:</strong> MS Office (vor allem Excel/Outlook), strukturierte Ablagen, Fristenmanagement, Reporting und Compliance-Bewusstsein.</div>
+        <div class="detail-item"><strong>Praxisfokus:</strong> Aufgaben zu E-Mail-Qualität, Termin- und Aufgabenpriorisierung, Tabellenlogik und professioneller Corporate-Kommunikation.</div>
+      </div>
+    </section>
+
+    <section class="card profile-card">
+      <h2 class="section-title">FAZ-Profil kompakt (Kaufmann für Büromanagement)</h2>
+      <div class="detail-list">
+        <div class="detail-item"><strong>Kerninhalte:</strong> Organisation, Schriftverkehr, Termin- und Reisekoordination, Rechnungs-/Auftragsprozesse und kaufmännische Unterstützung.</div>
+        <div class="detail-item"><strong>Wichtige Skills:</strong> Struktur, Genauigkeit, Verlässlichkeit, professionelles Auftreten und gute schriftliche Kommunikation.</div>
+        <div class="detail-item"><strong>Praxisfokus:</strong> Priorisierung, saubere Dokumentation, Fristenkontrolle und serviceorientierte interne Zusammenarbeit.</div>
+      </div>
+    </section>
+
+    <section class="card profile-card">
+      <h2 class="section-title">FAZ-Profil kompakt (Medienkaufmann Digital und Print)</h2>
+      <div class="detail-list">
+        <div class="detail-item"><strong>Kerninhalte:</strong> Vermarktung von Medienprodukten, Anzeigen-/Abo-Logik, Zielgruppenanalyse, Kanalplanung (digital und print).</div>
+        <div class="detail-item"><strong>Wichtige Skills:</strong> Zahlenverständnis, Kommunikationsstärke, Vermarktungsdenken, Sorgfalt in Angeboten und Kampagnenabwicklung.</div>
+        <div class="detail-item"><strong>Praxisfokus:</strong> KPI-Basics, Angebotslogik, crossmediale Planung und professionelle Kundenkommunikation.</div>
+      </div>
+    </section>
+  </main>
+  <button id="expandLayoutButton" class="floating-expand secondary" type="button">Alles einblenden</button>
+
+  <script>
+    (function () {
+      const THEME_KEY = 'vorbereitung-bew-theme-v1';
+      const USER_KEY = 'dialogmarketing-test-user-v1';
+      const PROGRESS_KEY = 'dialogmarketing-test-progress-v1';
+      const FOCUS_MODE_KEY = 'dialogmarketing-focus-mode-v1';
+      const themeToggleButton = document.getElementById('themeToggleButton');
+
+      function applyTheme(theme) {
+        const normalized = theme === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', normalized);
+        if (themeToggleButton) {
+          themeToggleButton.textContent = normalized === 'dark' ? 'Light' : 'Dark';
+        }
+      }
+
+      function initTheme() {
+        const storedTheme = localStorage.getItem(THEME_KEY);
+        if (storedTheme === 'dark' || storedTheme === 'light') {
+          applyTheme(storedTheme);
+          return;
+        }
+        applyTheme('light');
+      }
+
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+          const next = current === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+          localStorage.setItem(THEME_KEY, next);
+        });
+      }
+
+      initTheme();
+
+      const userNameInput = document.getElementById('userNameInput');
+      const loginButton = document.getElementById('loginButton');
+      const logoutButton = document.getElementById('logoutButton');
+      const loginStatus = document.getElementById('loginStatus');
+      const historyBox = document.getElementById('historyBox');
+      const moduleSelect = document.getElementById('moduleSelect');
+      const testModeSelect = document.getElementById('testModeSelect');
+      const startTestButton = document.getElementById('startTestButton');
+      const restartTestButton = document.getElementById('restartTestButton');
+      const clearProgressButton = document.getElementById('clearProgressButton');
+      const quizShell = document.getElementById('quizShell');
+      const focusModeButton = document.getElementById('focusModeButton');
+      const expandLayoutButton = document.getElementById('expandLayoutButton');
+      const testSection = document.getElementById('testSection');
+      const installAppButton = document.getElementById('installAppButton');
+      const installAppHint = document.getElementById('installAppHint');
+      let deferredInstallPrompt = null;
+
+      let activeUser = localStorage.getItem(USER_KEY) || '';
+      let questionSet = [];
+      let currentIndex = 0;
+      let answers = [];
+      let timerId = null;
+      let secondsLeft = 0;
+      let examTimerId = null;
+      let examRemainingSeconds = 0;
+      let activeTestMode = 'training';
+      let tabSwitchWarnings = 0;
+      let testInProgress = false;
+
+      function applyFocusMode(enabled, persist = true) {
+        document.body.classList.toggle('test-focus', Boolean(enabled));
+        if (focusModeButton) {
+          focusModeButton.textContent = enabled ? 'Tablet-Fokus beenden' : 'Tablet-Fokus aktivieren';
+          focusModeButton.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+        }
+        if (persist) {
+          localStorage.setItem(FOCUS_MODE_KEY, enabled ? '1' : '0');
+        }
+      }
+
+      function initFocusMode() {
+        const stored = localStorage.getItem(FOCUS_MODE_KEY);
+        if (stored === '1') {
+          applyFocusMode(true, false);
+          return;
+        }
+        if (stored === '0') {
+          applyFocusMode(false, false);
+          return;
+        }
+        const isTabletLayout = window.matchMedia('(min-width: 900px) and (max-width: 1366px)').matches;
+        applyFocusMode(isTabletLayout, false);
+      }
+
+      const POOL = [
+        { id: 'd1', part: 'deutsch_easy', q: 'Welche Form ist korrekt?', options: ['Seid heute pünktlich', 'Seit heute pünktlich', 'Seidt heute pünktlich'], a: 0, why: '„Seid" ist der Imperativ von „sein" (Aufforderung). „Seit" steht nur bei Zeitangaben, z.B. „Seit gestern bin ich krank."' },
+        { id: 'd2', part: 'deutsch_easy', q: 'Welches Wort passt am besten? "Vielen Dank für Ihre ..."', options: ['Rückmeldung', 'Rückmeltdung', 'Ruckmeldung'], a: 0, why: 'Rückmeldung ist korrekt geschrieben.' },
+        { id: 'd3', part: 'deutsch_easy', q: 'Was ist die freundlichste Formulierung im Kundenservice?', options: ['Das ist falsch.', 'Ich prüfe das gerne für Sie.', 'Keine Ahnung.'], a: 1, why: 'Serviceorientierte, lösungsorientierte Sprache.' },
+        { id: 'd4', part: 'deutsch_easy', q: 'Welche Aussage ist grammatikalisch richtig?', options: ['Wir haben ihnen geschrieben.', 'Wir haben Ihnen geschrieben.', 'Wir haben Ihnen geschreiben.'], a: 1, why: 'Höflichkeitsform Ihnen wird groß geschrieben.' },
+        { id: 'd5', part: 'deutsch_easy', q: 'Welcher Satz ist klar und knapp?', options: ['Ich werde eventuell vielleicht mal schauen.', 'Ich schaue das jetzt für Sie nach.', 'Können wir später vielleicht darüber reden.'], a: 1, why: 'Klar, aktiv, kundenorientiert.' },
+
+        { id: 'dm1', part: 'deutsch_mittel', q: 'Welche Formulierung ist professionell im Beschwerdefall (Telekom-Kontext)?', options: ['Da kann ich nichts machen.', 'Ich verstehe Ihren Ärger und suche sofort eine Lösung.', 'Das haben Sie falsch verstanden.'], a: 1, why: 'Empathie + Lösung = professionell.' },
+        { id: 'dm2', part: 'deutsch_mittel', q: 'Welcher Satz ist stilistisch am besten?', options: ['Wir informieren Sie, sobald uns neue Informationen vorliegen.', 'Sobald Informationen da sind, informieren wir eventuell.', 'Wir haben Infos, vielleicht später.'], a: 0, why: 'Präzise und verlässlich.' },
+        { id: 'dm3', part: 'deutsch_mittel', q: 'Welche Schreibweise ist korrekt?', options: ['im Vorraus', 'im Voraus', 'im Vorhaus'], a: 1, why: 'Korrekt ist im Voraus.' },
+        { id: 'dm4', part: 'deutsch_mittel', q: 'Welche Antwort ist am kundenorientiertesten?', options: ['Lesen Sie die Bedingungen.', 'Ich erkläre Ihnen die Bedingungen Schritt für Schritt.', 'Das steht doch alles da.'], a: 1, why: 'Aktive Unterstützung statt Abwehr.' },
+        { id: 'dm5', part: 'deutsch_mittel', q: 'Welche Version ist sprachlich korrekt?', options: ['bezugnehmend auf unser Gespräch', 'Bezug nehmend auf unser Gespräch', 'Bezugnehmend auf unser Gespräch'], a: 2, why: 'Satzanfang groß: Bezugnehmend.' },
+
+        { id: 'm1', part: 'mathe_prozent', q: '20% von 250 sind ...', options: ['25', '50', '75'], a: 1, why: '10% sind 25, also 20% = 50.' },
+        { id: 'm2', part: 'mathe_prozent', q: 'Ein Preis steigt von 80 auf 100 Euro. Wie viel Prozent mehr?', options: ['20%', '25%', '30%'], a: 1, why: 'Steigerung 20 bezogen auf 80 -> 20/80 = 25%.' },
+
+        { id: 'm3', part: 'mathe_formeln', q: 'Dreisatz: 3 Hefte kosten 6 Euro. 5 Hefte kosten ...', options: ['8 Euro', '10 Euro', '12 Euro'], a: 1, why: '1 Heft = 2 Euro, 5 Hefte = 10 Euro.' },
+        { id: 'm4', part: 'mathe_formeln', q: 'Welche Rechnung ist richtig für Durchschnitt von 8, 10, 12?', options: ['(8+10+12)/2', '(8+10+12)/3', '(8*10*12)/3'], a: 1, why: 'Durchschnitt = Summe / Anzahl.' },
+
+        { id: 'm5', part: 'mathe_logik', q: 'Reihe: 2, 4, 8, 16, ...', options: ['18', '24', '32'], a: 2, why: 'Jeweils mal 2.' },
+        { id: 'm6', part: 'mathe_logik', q: 'Ein Kunde braucht 4 GB pro Woche. Wie viel sind das ungefähr in 4 Wochen?', options: ['8 GB', '12 GB', '16 GB'], a: 2, why: '4 GB pro Woche mal 4 Wochen = 16 GB.' },
+
+        { id: 'm7', part: 'mathe_text', q: 'Ein Kunde hat 3 Tarife mit je 12 Euro und 1 Option mit 6 Euro. Summe?', options: ['36 Euro', '42 Euro', '48 Euro'], a: 1, why: '3*12 + 6 = 42.' },
+        { id: 'm8', part: 'mathe_text', q: 'Ein Tarif kostet 15 Euro. Mit 10% Rabatt zahlt man ...', options: ['13,50 Euro', '14,00 Euro', '12,50 Euro'], a: 0, why: '10% von 15 sind 1,50. Also 13,50.' },
+
+        { id: 'mk1', part: 'mathe_kopf', q: 'Kopfrechnen: 47 + 18 = ?', options: ['55', '65', '75'], a: 1, why: '47 + 18 = 65.', timer: 12 },
+        { id: 'mk2', part: 'mathe_kopf', q: 'Kopfrechnen: 84 - 29 = ?', options: ['55', '65', '45'], a: 0, why: '84 - 29 = 55.', timer: 12 },
+        { id: 'mk3', part: 'mathe_kopf', q: 'Kopfrechnen: 12 * 9 = ?', options: ['96', '108', '118'], a: 1, why: '12 mal 9 = 108.', timer: 12 },
+        { id: 'mk4', part: 'mathe_kopf', q: 'Kopfrechnen: 144 / 12 = ?', options: ['11', '12', '13'], a: 1, why: '144 geteilt durch 12 = 12.', timer: 12 },
+
+        // --- Teil 3: Gymnasiales Niveau ---
+        { id: 'g1', part: 'mathe_gym', q: 'Ein Artikel kostet netto 340 €. Mit 19 % MwSt. ergibt das ...', options: ['394,60 €', '404,60 €', '408,00 €'], a: 1, why: '340 × 1,19 = 404,60 €.' },
+        { id: 'g2', part: 'mathe_gym', q: 'Ein Preis wird um 15 % gesenkt, danach um 20 % erhöht. Netto-Veränderung?', options: ['+2 %', '−2 %', '+5 %'], a: 0, why: '0,85 × 1,20 = 1,02. Insgesamt also +2 %.' },
+        { id: 'g3', part: 'mathe_gym', q: 'Dreisatz: 8 Arbeiter bauen in 6 Tagen eine Mauer. Wie viele Tage brauchen 12 Arbeiter?', options: ['3 Tage', '4 Tage', '9 Tage'], a: 1, why: 'Antiproportional: 8 × 6 = 12 × x → x = 4.' },
+        { id: 'g4', part: 'mathe_gym', q: 'Ein Kapital von 2.000 € wird 3 Jahre zu 5 % p. a. angelegt (Zinseszins). Endkapital?', options: ['2.300 €', '2.315,25 €', '2.310,00 €'], a: 1, why: '2000 × 1,05³ = 2000 × 1,157625 = 2315,25 €.' },
+        { id: 'g5', part: 'mathe_gym', q: 'Welcher Anteil entspricht 0,375?', options: ['3/8', '3/7', '4/9'], a: 0, why: '3 ÷ 8 = 0,375.' },
+        { id: 'g6', part: 'mathe_gym', q: 'Ein Taxifahrer fährt 3 Fahrten à 12,40 € und 2 Fahrten à 17,80 €. Tageseinnahme?', options: ['71,00 €', '72,80 €', '73,00 €'], a: 1, why: '3 × 12,40 + 2 × 17,80 = 37,20 + 35,60 = 72,80 €.' },
+        { id: 'g7', part: 'mathe_gym', q: 'Reihe: 1, 4, 9, 16, 25, ... Was folgt?', options: ['30', '36', '49'], a: 1, why: 'Quadratzahlen: 6² = 36.' },
+        { id: 'g8', part: 'mathe_gym', q: 'Eine Ware wird mit 40 % Aufschlag auf den EK-Preis von 85 € verkauft. VK-Preis?', options: ['115 €', '119 €', '125 €'], a: 1, why: '85 × 1,40 = 119 €.' },
+        { id: 'g9', part: 'mathe_gym', q: 'Kopfrechnen (15 Sek.): 17 × 15 = ?', options: ['245', '255', '265'], a: 1, why: '17 × 15 = 17 × 10 + 17 × 5 = 170 + 85 = 255.', timer: 15 },
+        { id: 'g10', part: 'mathe_gym', q: 'Vereinfache: (3x² × 4x) / (6x²)', options: ['2x', '12x', '2x²'], a: 0, why: '12x³ / 6x² = 2x.' },
+
+        { id: 'e1', part: 'englisch_business', q: 'Choose the most professional customer-service opening:', options: ['What do you want?', 'How can I support you today?', 'Say it quickly.'], a: 1, why: 'Polite, professional and customer-focused.' },
+        { id: 'e2', part: 'englisch_business', q: 'Which sentence is grammatically correct?', options: ['I am responsible for customer requests.', 'I am responsible of customer requests.', 'I responsible for customer requests.'], a: 0, why: 'Correct collocation: responsible for.' },
+        { id: 'e3', part: 'englisch_business', q: 'Best phrase for a complaint situation:', options: ['That is your problem.', 'I understand your concern and will check this now.', 'You are wrong.'], a: 1, why: 'Shows empathy and ownership.' },
+        { id: 'e4', part: 'englisch_business', q: 'Fill in: "Could you please ___ your customer number?"', options: ['confirm', 'confirmed', 'confirming'], a: 0, why: 'After "could you please" we use base form.' },
+        { id: 'e5', part: 'englisch_business', q: 'Choose the correct email closing:', options: ['Bye.', 'Kind regards,', 'I stop now.'], a: 1, why: 'Standard professional closing.' },
+        { id: 'e6', part: 'englisch_business', q: 'Which question is best for clarifying needs?', options: ['Why are you confused?', 'Can you tell me what outcome you prefer?', 'Do you even understand this?'], a: 1, why: 'Neutral and solution-focused wording.' },
+        { id: 'e7', part: 'englisch_business', q: 'Vocabulary: "Beschwerdemanagement" means ...', options: ['complaint management', 'claiming office', 'angry handling'], a: 0, why: 'Correct business translation is complaint management.' },
+        { id: 'e8', part: 'englisch_business', q: 'Choose the correct sentence:', options: ['We will get back to you within 24 hours.', 'We get back to you since 24 hours.', 'We are back to you in 24 hour.'], a: 0, why: 'Correct future support commitment in customer service.' },
+
+        { id: 'el1', part: 'englisch_lk', q: 'Choose the most precise complaint-handling sentence:', options: ['We regret the inconvenience and will resolve this by 3 p.m. today.', 'Sorry for this thing, we do it soon.', 'This issue is not our fault.'], a: 0, why: 'Specific, accountable and professional.' },
+        { id: 'el2', part: 'englisch_lk', q: 'Which sentence uses the correct conditional?', options: ['If you would send us the invoice, we will process the refund immediately.', 'If you send us the invoice, we will process the refund immediately.', 'If you sent us the invoice, we will process the refund immediately.'], a: 1, why: 'First conditional: if + present, will + base verb.' },
+        { id: 'el3', part: 'englisch_lk', q: 'Fill in: "Your request has been ___ to our technical team."', options: ['escalated', 'escalating', 'escalate'], a: 0, why: 'Passive voice requires past participle: has been escalated.' },
+        { id: 'el4', part: 'englisch_lk', q: 'Choose the best rewrite (formal email): "We can not find your order."', options: ['We cannot locate your order in our system at the moment.', 'We do not find your order.', 'Order not there.'], a: 0, why: 'Formal, precise and customer-friendly phrasing.' },
+        { id: 'el5', part: 'englisch_lk', q: 'Which option is grammatically correct?', options: ['Neither the agent nor the customers was informed.', 'Neither the agent nor the customers were informed.', 'Neither the agent or the customers were informed.'], a: 1, why: 'Verb agrees with the nearer subject: customers were.' },
+        { id: 'el6', part: 'englisch_lk', q: 'Best connector for contrast in formal writing:', options: ['besides', 'however', 'therefore'], a: 1, why: 'However introduces contrast; therefore indicates result.' },
+        { id: 'el7', part: 'englisch_lk', q: 'Choose the correct collocation:', options: ['make a complaint', 'do a complaint', 'put a complaint'], a: 0, why: 'Standard collocation is make a complaint.' },
+        { id: 'el8', part: 'englisch_lk', q: 'Which sentence is most concise and professional?', options: ['At this point in time, we are currently reviewing your case.', 'We are reviewing your case.', 'For now, we are in the process of checking your issue right now.'], a: 1, why: 'Clear and concise wording is preferred in customer communication.' },
+        { id: 'el9', part: 'englisch_lk', q: 'Reported speech: He said, "I will call the customer tomorrow."', options: ['He said he will call the customer tomorrow.', 'He said he would call the customer the next day.', 'He said he calls the customer tomorrow.'], a: 1, why: 'Backshift in reported speech: will -> would; tomorrow -> the next day.' },
+        { id: 'el10', part: 'englisch_lk', q: 'Choose the best phrase for setting expectations:', options: ['I might maybe update you soon.', 'I will update you by 4 p.m. at the latest.', 'You have to wait.'], a: 1, why: 'Specific deadline and professional tone build trust.' },
+
+        { id: 'ec1', part: 'englisch_cases', q: 'Case 1: A customer is angry about a delayed activation. What is the best first reply?', options: ['Calm down, it is not my fault.', 'I understand this is frustrating. Let me check the activation status right away.', 'You must wait and stop complaining.'], a: 1, why: 'Acknowledges emotion and takes immediate ownership.' , timer: 22},
+        { id: 'ec2', part: 'englisch_cases', q: 'Case 1 follow-up: You need 10 more minutes to investigate. Best expectation-setting sentence?', options: ['Please wait.', 'I will update you in 10 minutes with the exact next step.', 'No idea how long this takes.'], a: 1, why: 'Clear timeline and commitment build trust.', timer: 20 },
+        { id: 'ec3', part: 'englisch_cases', q: 'Case 2: A customer says the invoice amount seems too high. What is the most professional clarifying question?', options: ['Why did you not read the contract?', 'Could you tell me which charge on the invoice looks incorrect to you?', 'This invoice is correct, no discussion.'], a: 1, why: 'Specific and neutral clarification question.', timer: 24 },
+        { id: 'ec4', part: 'englisch_cases', q: 'Case 2 follow-up: You found an internal billing error. Best message?', options: ['Yes, there is an error. Bye.', 'You are right. I have corrected the charge and sent a confirmation email.', 'Maybe it is fixed now.'], a: 1, why: 'Confirms issue, action, and proof of resolution.', timer: 22 },
+        { id: 'ec5', part: 'englisch_cases', q: 'Case 3: A customer asks for cancellation but may accept a better offer. Best strategy sentence?', options: ['Cancellation is impossible.', 'Before we proceed, may I check whether a better plan would solve the issue for you?', 'Take this offer now.'], a: 1, why: 'Respectful retention approach without pressure.', timer: 24 },
+        { id: 'ec6', part: 'englisch_cases', q: 'Case 3 language accuracy: Choose the best business phrase.', options: ['I can offer you a tariff that better fits your usage.', 'I can offer you a tariff what is better for your usage.', 'I offer you tariff better fit your usage.'], a: 0, why: 'Correct and natural business phrasing.', timer: 20 },
+        { id: 'ec7', part: 'englisch_cases', q: 'Case 4: Technical issue cannot be solved in first-level support. Best escalation phrase?', options: ['I pass this maybe to someone.', 'I am escalating this to our technical team and will personally track the case.', 'Not my area, call again later.'], a: 1, why: 'Clear escalation plus ownership.', timer: 22 },
+        { id: 'ec8', part: 'englisch_cases', q: 'Case 4 closing: Which ending is most professional?', options: ['Let us see what happens.', 'Thank you for your patience. I will contact you as soon as I receive the technical update.', 'Wait for our call sometime.'], a: 1, why: 'Polite and concrete close with next action.', timer: 20 },
+
+        { id: 'md1', part: 'marketing_digital', q: 'Welche KPI zeigt am direktesten, wie viele Klicks aus Impressionen entstehen?', options: ['CTR', 'ROAS', 'CPM'], a: 0, why: 'CTR = Click-Through-Rate (Klicks / Impressionen).' },
+        { id: 'md2', part: 'marketing_digital', q: 'Eine Anzeige hat 50.000 Impressionen und 1.250 Klicks. Wie hoch ist die CTR?', options: ['2,5 %', '4,0 %', '0,25 %'], a: 0, why: '1250 / 50000 = 0,025 = 2,5 %.' },
+        { id: 'md3', part: 'marketing_digital', q: 'Welches Ziel passt am besten zu einer Awareness-Kampagne?', options: ['Möglichst viele qualifizierte Reichweitenkontakte', 'Nur direkte Abschlüsse im Shop', 'Ausschließlich Beschwerden reduzieren'], a: 0, why: 'Awareness fokussiert Reichweite und Sichtbarkeit in der Zielgruppe.' },
+        { id: 'md4', part: 'marketing_digital', q: 'Was ist der Hauptzweck eines A/B-Tests?', options: ['Zwei Varianten unter gleichen Bedingungen vergleichen', 'Budget zu verdoppeln', 'Mehr Teammeetings zu planen'], a: 0, why: 'A/B-Tests vergleichen die Wirkung von Variante A vs. B.' },
+        { id: 'md5', part: 'marketing_digital', q: 'Welche Information gehört zwingend in ein gutes Kreativ-Briefing?', options: ['Zielgruppe, Kernbotschaft, Ziel der Maßnahme', 'Nur Firmenlogo', 'Nur Wunschfarbe'], a: 0, why: 'Ohne Zielgruppe/Botschaft/Ziel wird das Creative unscharf.' },
+        { id: 'md6', part: 'marketing_digital', q: 'Eine Kampagne kostet 2.000 € und erzielt 8.000 € Umsatz. ROAS?', options: ['2,0', '4,0', '0,25'], a: 1, why: 'ROAS = Umsatz / Werbekosten = 8000 / 2000 = 4,0.' },
+        { id: 'md7', part: 'marketing_digital', q: 'Welche Aussage zu Customer Journey ist richtig?', options: ['Sie beschreibt Schritte von erstem Kontakt bis Conversion/Bindung.', 'Sie ist nur für Offline-Kampagnen relevant.', 'Sie ersetzt Zielgruppenanalyse vollständig.'], a: 0, why: 'Customer Journey verbindet Touchpoints und Entscheidungsphasen.' },
+        { id: 'md8', part: 'marketing_digital', q: 'Wofür nutzt man UTM-Parameter primär?', options: ['Kampagnenquellen in Analytics sauber messen', 'Bildauflösung erhöhen', 'Passwörter verschlüsseln'], a: 0, why: 'UTM-Parameter helfen bei Source/Medium/Campaign-Tracking.' },
+        { id: 'md9', part: 'marketing_digital', q: 'Bei wenig Budget: Was ist zuerst sinnvoll?', options: ['Eine Kernzielgruppe und 1-2 Kanäle klar priorisieren', 'Auf allen Kanälen gleichzeitig starten', 'Nur auf Bauchgefühl entscheiden'], a: 0, why: 'Fokus erhöht Lernkurve und Effizienz bei knappen Mitteln.' },
+        { id: 'md10', part: 'marketing_digital', q: 'Welche Formulierung ist für ein Reporting professionell?', options: ['Die Conversion Rate stieg um 18 %, Treiber war Zielgruppensegment B.', 'Es lief irgendwie besser.', 'Keine Ahnung, aber war gut.'], a: 0, why: 'Reporting braucht klare Kennzahl + plausible Ursache.' },
+
+        { id: 'mc1', part: 'marketing_cases', q: 'Case Launch: Ziel ist Reichweite für ein neues Jugendprodukt. Welche KPI priorisierst du zuerst?', options: ['Reach/Impressions + CTR', 'Nur Retourenquote', 'Nur durchschnittliche Gesprächsdauer'], a: 0, why: 'Beim Awareness-Launch zuerst Sichtbarkeit + Erstinteresse messen.', timer: 24 },
+        { id: 'mc2', part: 'marketing_cases', q: 'Case Launch follow-up: CTR ist hoch, Conversions sind niedrig. Was ist der beste nächste Schritt?', options: ['Landingpage und Angebot-Fit prüfen (A/B-Test)', 'Budget komplett stoppen', 'Kreativformat sofort unverändert skalieren'], a: 0, why: 'Hohe CTR bei niedriger Conversion deutet oft auf Post-Click-Problem hin.', timer: 24 },
+        { id: 'mc3', part: 'marketing_cases', q: 'Case Budget: Du hast nur 4.000 € für 4 Wochen. Welche Verteilung ist am sinnvollsten zum Lernen?', options: ['80 % Kernkanal, 20 % Testkanal', 'Gleich auf 8 Kanäle verteilen', 'Alles am ersten Tag ausgeben'], a: 0, why: 'Fokus + kontrollierter Test liefert bessere Lernsignale.', timer: 22 },
+        { id: 'mc4', part: 'marketing_cases', q: 'Case Creative: Welche Briefing-Zeile ist am stärksten?', options: ['Zielgruppe 18-24, Botschaft X, CTA Y, KPI CTR > 1,5 %', 'Macht was Cooles', 'Wir brauchen einfach mehr Likes'], a: 0, why: 'Gutes Briefing ist konkret und messbar.', timer: 22 },
+        { id: 'mc5', part: 'marketing_cases', q: 'Case Reporting: Welche Aussage ist datenbasiert und handlungsorientiert?', options: ['Segment B hatte 30 % niedrigeren CPC; wir erhöhen dort das Budget um 15 %.', 'Die Kampagne fühlt sich besser an.', 'Wir warten erstmal ohne Anpassung.'], a: 0, why: 'Kennzahl + Ursache + konkrete Maßnahme.', timer: 24 },
+        { id: 'mc6', part: 'marketing_cases', q: 'Case Funnel: Viele Add-to-Carts, aber wenige Käufe. Was testest du zuerst?', options: ['Checkout-Friktion (Formular, Zahlungsart, Ladezeit)', 'Nur Logo-Farbe', 'Nur Posting-Zeitpunkt'], a: 0, why: 'Bottleneck liegt wahrscheinlich im Checkout-Schritt.', timer: 22 },
+        { id: 'mc7', part: 'marketing_cases', q: 'Case Retargeting: Wer sollte primär retargetet werden?', options: ['Nutzer mit Produktseitenbesuch ohne Abschluss', 'Alle Nutzer ohne Segmentierung', 'Nur bestehende Stammkunden mit Kauf gestern'], a: 0, why: 'Retargeting ist am effizientesten bei warmen, aber nicht konvertierten Audiences.', timer: 22 },
+        { id: 'mc8', part: 'marketing_cases', q: 'Case Abschluss: Welche Empfehlung passt am besten nach 2 Testwochen?', options: ['Top-2 Creatives skalieren, schwache Ads pausieren, Landingpage-Test fortsetzen', 'Alles unverändert lassen', 'Nur neue Kanäle hinzufügen ohne Auswertung'], a: 0, why: 'Iterative Optimierung auf Basis der Ergebnisse ist Best Practice.', timer: 24 },
+
+        { id: 'mcr1', part: 'marketing_crisis', q: 'Shitstorm startet wegen missverständlichem Post. Was ist der erste professionelle Schritt?', options: ['Sofort alles löschen und schweigen', 'Lage prüfen, Fakten sichern, internes Krisenteam aktivieren', 'In den Kommentaren zurückbeleidigen'], a: 1, why: 'Erst Lagebild + Abstimmung, dann konsistente Kommunikation.', timer: 24 },
+        { id: 'mcr2', part: 'marketing_crisis', q: 'Welche öffentliche Erstreaktion ist am besten?', options: ['Wir prüfen den Vorfall aktuell und melden uns zeitnah mit Fakten.', 'Das stimmt alles nicht.', 'Kein Kommentar.'], a: 0, why: 'Transparenz ohne vorschnelle Schuldzuweisung.', timer: 22 },
+        { id: 'mcr3', part: 'marketing_crisis', q: 'Welche KPI ist in den ersten 24h besonders wichtig?', options: ['Sentiment-Entwicklung + Kommentarvolumen', 'Nur Followerzahl', 'Nur Klickpreis'], a: 0, why: 'Krisendynamik wird über Stimmung und Volumen sichtbar.', timer: 22 },
+        { id: 'mcr4', part: 'marketing_crisis', q: 'Ein Influencer kritisiert die Marke öffentlich. Was ist sinnvoll?', options: ['Ignorieren und hoffen', 'Sachlich reagieren, Gespräch anbieten, Fakten bereitstellen', 'Direkt rechtlich drohen'], a: 1, why: 'Deeskalierend und faktenbasiert statt eskalierend.', timer: 22 },
+        { id: 'mcr5', part: 'marketing_crisis', q: 'Welche interne Maßnahme darf nicht fehlen?', options: ['Q&A-Dokument und einheitliche Sprachregelung für Support/PR', 'Jeder antwortet frei', 'Nur Marketing informiert werden'], a: 0, why: 'Einheitliche Botschaften verhindern Widersprüche.', timer: 24 },
+        { id: 'mcr6', part: 'marketing_crisis', q: 'Wann sollte ein geplanter Werbe-Post pausiert werden?', options: ['Nie, Kampagnen laufen immer durch', 'Wenn Tonalität im Krisenumfeld unpassend wirkt', 'Nur wenn Budget null ist'], a: 1, why: 'Kontextsensibles Pausieren schützt Markenwirkung.', timer: 20 },
+        { id: 'mcr7', part: 'marketing_crisis', q: 'Welche Antwort ist in heiklen Kommentaren professionell?', options: ['Danke für Ihr Feedback. Wir nehmen den Punkt ernst und prüfen ihn konkret.', 'Das ist Unsinn.', 'Bitte nerven Sie nicht.'], a: 0, why: 'Respektvolle, lösungsorientierte Sprache deeskaliert.', timer: 20 },
+        { id: 'mcr8', part: 'marketing_crisis', q: 'Nach der Krise: Was gehört in die Nachbereitung?', options: ['Lessons Learned, Prozessanpassungen, Monitoring-Plan', 'Thema ignorieren', 'Nur die positiven Kommentare sammeln'], a: 0, why: 'Strukturiertes Review erhöht Krisenfestigkeit künftig.', timer: 24 },
+
+        { id: 'db1', part: 'bank_corporate', q: 'Welche Aufgabe ist typisch für Büromanagement im Corporate Center?', options: ['Termin- und Dokumentenkoordination für interne Stakeholder', 'Programmieren von Mobile Apps', 'Direktvertrieb am Telefon'], a: 0, why: 'Corporate-Center-Rollen sind stark organisatorisch und koordinativ.' },
+        { id: 'db2', part: 'bank_corporate', q: 'Was ist bei vertraulichen Dokumenten am wichtigsten?', options: ['Diskretion und Zugriff nach Berechtigung', 'Schnelles Weiterleiten an alle', 'Ablage ohne Benennung'], a: 0, why: 'Bankumfeld erfordert strikte Vertraulichkeit und klare Berechtigungen.' },
+        { id: 'db3', part: 'bank_corporate', q: 'Welche E-Mail ist professionell?', options: ['Betreff klar, Anliegen präzise, Frist genannt', 'Hi, brauche das irgendwie heute', 'Ohne Betreff und ohne Gruß'], a: 0, why: 'Klare Struktur erhöht Verbindlichkeit und Nachvollziehbarkeit.' },
+        { id: 'db4', part: 'bank_corporate', q: 'Wenn zwei Aufgaben gleichzeitig dringend sind, was ist der beste erste Schritt?', options: ['Priorisierung nach Auswirkung/Frist und Abstimmung', 'Zufällig starten', 'Eine Aufgabe ignorieren'], a: 0, why: 'Priorisierung und transparente Abstimmung sind zentral.' },
+        { id: 'db5', part: 'bank_corporate', q: 'In Excel sollen Soll- und Ist-Werte verglichen werden. Welche Kennzahl hilft zuerst?', options: ['Abweichung in %', 'Dateigröße', 'Anzahl Schriftarten'], a: 0, why: 'Abweichung in Prozent ist für Reporting schnell interpretierbar.' },
+        { id: 'db6', part: 'bank_corporate', q: 'Was bedeutet Compliance im Büroalltag am ehesten?', options: ['Vorgaben und Prozesse regelkonform einhalten', 'Nur schnell arbeiten', 'Regeln situativ ignorieren'], a: 0, why: 'Compliance ist verbindlich, besonders im Finanzsektor.' },
+        { id: 'db7', part: 'bank_corporate', q: 'Welcher Betreff ist am besten?', options: ['Projekt X - Freigabe bis 15:00 Uhr erforderlich', 'Wichtig!!!', 'Hallo'], a: 0, why: 'Konkreter Betreff spart Zeit und reduziert Rückfragen.' },
+        { id: 'db8', part: 'bank_corporate', q: 'Terminmanagement: Was ist sinnvoll?', options: ['Pufferzeiten und klare Agenda einplanen', 'Meetings ohne Ziel ansetzen', 'Teilnehmer ohne Info einladen'], a: 0, why: 'Gute Vorbereitung erhöht Effizienz und Ergebnisqualität.' },
+        { id: 'db9', part: 'bank_corporate', q: 'Ein Bereichsleiter benötigt kurzfristig Zahlen. Wie reagierst du professionell?', options: ['Lieferzeit bestätigen, Daten prüfen, strukturiert liefern', 'Irgendwas schicken', 'Auf später verschieben ohne Info'], a: 0, why: 'Verlässliche Kommunikation + Datenqualität sind entscheidend.' },
+        { id: 'db10', part: 'bank_corporate', q: 'Was zeigt hohe Serviceorientierung im internen Corporate Center?', options: ['Anliegen klar übernehmen und nächsten Schritt benennen', 'Unklare Rückmeldung ohne Termin', 'Nur auf Nachfrage reagieren'], a: 0, why: 'Ownership und klare nächste Schritte schaffen Vertrauen.' },
+
+        { id: 'dbc1', part: 'bank_cases', q: 'Case Vorstandstermin: Zwei wichtige Meetings überschneiden sich. Was ist der beste erste Schritt?', options: ['Prioritäten mit Stakeholdern klären und Alternativen vorschlagen', 'Ein Meeting einfach löschen', 'Gar nicht reagieren'], a: 0, why: 'Aktive Abstimmung und Alternativvorschläge sind professionell.', timer: 24 },
+        { id: 'dbc2', part: 'bank_cases', q: 'Case Fristendruck: Ein Report muss bis 16:00 Uhr raus, Daten sind teilweise unklar. Was tust du?', options: ['Unsichere Zahlen trotzdem versenden', 'Daten verifizieren, Risiko transparent machen, ETA kommunizieren', 'Frist ignorieren'], a: 1, why: 'Datenqualität + proaktive Kommunikation sind zentral.', timer: 24 },
+        { id: 'dbc3', part: 'bank_cases', q: 'Case Vertraulichkeit: Eine nicht berechtigte Person fragt nach internen Zahlen. Richtige Reaktion?', options: ['Zugriff verweigern und an zuständige Stelle verweisen', 'Kurz mündlich Auskunft geben', 'Datei per Mail schicken'], a: 0, why: 'Need-to-know und Berechtigungen haben Vorrang.', timer: 22 },
+        { id: 'dbc4', part: 'bank_cases', q: 'Case E-Mail an Bereichsleitung: Welche Variante ist am professionellsten?', options: ['Betreff, Kernaussage, To-do, Frist und Anhang klar nennen', 'Sehr langer Fließtext ohne Struktur', 'Nur ein kurzer Satz ohne Kontext'], a: 0, why: 'Struktur spart Zeit und reduziert Rückfragen.', timer: 22 },
+        { id: 'dbc5', part: 'bank_cases', q: 'Case Excel-Fehler: Nach Versand bemerkst du einen Zahlendreher. Was ist korrekt?', options: ['Fehler verschweigen', 'Sofort korrigieren, transparent informieren, korrigierte Version senden', 'Erst am nächsten Tag reagieren'], a: 1, why: 'Schnelle, transparente Korrektur schützt Vertrauen.', timer: 22 },
+        { id: 'dbc6', part: 'bank_cases', q: 'Case Teamkoordination: Drei Abteilungen liefern Inputs zu spät. Beste Maßnahme?', options: ['Klarer Zeitplan mit Verantwortlichen und Checkpoints', 'Abwarten', 'Nur telefonische Zurufe ohne Dokumentation'], a: 0, why: 'Verbindliche Planung mit Ownership verbessert Termintreue.', timer: 24 },
+        { id: 'dbc7', part: 'bank_cases', q: 'Case Kunden-/Partneranfrage intern weiterleiten: Was muss enthalten sein?', options: ['Kontext, Priorität, Frist, Ansprechpartner', 'Nur Betreffzeile', 'Nur Weiterleitung ohne Kommentar'], a: 0, why: 'Vollständiger Kontext beschleunigt Bearbeitung.', timer: 20 },
+        { id: 'dbc8', part: 'bank_cases', q: 'Case Tagesabschluss: Welche Arbeitsweise ist am besten?', options: ['Offene Punkte dokumentieren, nächste Schritte planen, Prioritäten für morgen setzen', 'Alles im Kopf behalten', 'Nur Posteingang leeren'], a: 0, why: 'Saubere Übergabe und Priorisierung steigern Verlässlichkeit.', timer: 22 },
+
+        { id: 'fz1', part: 'faz_office', q: 'Welche Aufgabe gehört klar zum Büromanagement bei der FAZ?', options: ['Termin-, Dokumenten- und Korrespondenzkoordination', 'Software-Deployment im Rechenzentrum', 'Nur Telefonakquise'], a: 0, why: 'Büromanagement ist organisatorisch-kaufmännisch geprägt.' },
+        { id: 'fz2', part: 'faz_office', q: 'Was ist bei der täglichen Mailbearbeitung am wichtigsten?', options: ['Priorisieren nach Frist und Relevanz', 'Nur nach Eingang sortieren', 'Nur ungelesen lassen'], a: 0, why: 'Priorisierung sichert Fristen und Verbindlichkeit.' },
+        { id: 'fz3', part: 'faz_office', q: 'Welche Antwort wirkt professionell?', options: ['Ich kläre das bis 14:00 Uhr und melde mich mit Update.', 'Keine Ahnung, vielleicht später.', 'Bitte selbst nachsehen.'], a: 0, why: 'Klare Zusage mit Zeitpunkt ist professionell.' },
+        { id: 'fz4', part: 'faz_office', q: 'Welche Tabellenaufgabe ist typisch?', options: ['Kostenübersicht und Soll-Ist-Vergleich', '3D-Rendering', 'Audio-Mastering'], a: 0, why: 'Kaufmännische Auswertung ist klassisch für Büromanagement.' },
+        { id: 'fz5', part: 'faz_office', q: 'Wie gehst du mit mehreren parallelen Aufgaben um?', options: ['Prioritätenliste + Rücksprache bei Konflikten', 'Alles gleichzeitig anfangen', 'Spontan nach Gefühl'], a: 0, why: 'Struktur und Abstimmung verhindern Fehler.' },
+        { id: 'fz6', part: 'faz_office', q: 'Welche Eigenschaft ist im Office-Umfeld besonders wichtig?', options: ['Sorgfalt und Zuverlässigkeit', 'Risikofreude um jeden Preis', 'Improvisation ohne Struktur'], a: 0, why: 'Verlässliche Prozesse brauchen Sorgfalt.' },
+        { id: 'fz7', part: 'faz_office', q: 'Ein Termin kollidiert mit einer Frist. Was ist richtig?', options: ['Frühzeitig informieren und Alternativen vorschlagen', 'Einfach nichts sagen', 'Frist ignorieren'], a: 0, why: 'Frühe Kommunikation schafft Lösungen.' },
+        { id: 'fz8', part: 'faz_office', q: 'Was zeigt im Büromanagement Serviceorientierung?', options: ['Anliegen sauber übernehmen und Rückmeldung geben', 'Nur reagieren, wenn mehrfach erinnert wird', 'Unklare Kurzantworten'], a: 0, why: 'Ownership und Rückmeldung sind entscheidend.' },
+
+        { id: 'fm1', part: 'faz_media', q: 'Was ist Kernaufgabe eines Medienkaufmanns Digital und Print?', options: ['Vermarktung und Planung von Medienangeboten', 'Serveradministration', 'Nur Rechnungsablage'], a: 0, why: 'Der Schwerpunkt liegt auf Medienvermarktung und Steuerung.' },
+        { id: 'fm2', part: 'faz_media', q: 'Welche Kennzahl ist für digitale Vermarktung besonders relevant?', options: ['CTR', 'Raumtemperatur', 'Dateiname'], a: 0, why: 'CTR misst die Klickleistung von Werbemitteln.' },
+        { id: 'fm3', part: 'faz_media', q: 'Was bedeutet crossmediale Planung?', options: ['Kampagnen über digitale und Print-Kanäle abstimmen', 'Nur einen Kanal nutzen', 'Keine Zielgruppenanalyse machen'], a: 0, why: 'Crossmedia verbindet Kanäle zielgerichtet.' },
+        { id: 'fm4', part: 'faz_media', q: 'Welche Aussage zu Zielgruppen ist korrekt?', options: ['Angebote sollten auf klar definierte Zielgruppen zugeschnitten sein', 'Alle Inhalte sind immer für alle gleich', 'Zielgruppen sind unwichtig'], a: 0, why: 'Zielgruppenfit erhöht Relevanz und Wirkung.' },
+        { id: 'fm5', part: 'faz_media', q: 'Was gehört in ein gutes Angebotsgespräch?', options: ['Bedarf klären, Nutzen erklären, nächster Schritt definieren', 'Nur Preis nennen', 'Ohne Vorbereitung starten'], a: 0, why: 'Strukturierte Beratung erhöht Abschlusschance.' },
+        { id: 'fm6', part: 'faz_media', q: 'Bei sinkender Kampagnenleistung ist der beste erste Schritt?', options: ['KPI prüfen und Maßnahmen ableiten', 'Sofort alles stoppen ohne Analyse', 'Nur auf Bauchgefühl setzen'], a: 0, why: 'Datenbasierte Optimierung ist zentral.' },
+        { id: 'fm7', part: 'faz_media', q: 'Welche Aufgabe passt zu Print-Vermarktung?', options: ['Anzeigenformate und Platzierungen planen', 'App-Code refactoren', 'Netzwerkpatches einspielen'], a: 0, why: 'Print erfordert Format- und Platzierungslogik.' },
+        { id: 'fm8', part: 'faz_media', q: 'Was ist in Kundenkommunikation besonders wichtig?', options: ['Verbindlichkeit, klare Sprache, saubere Nachverfolgung', 'Unklare Zusagen', 'Nur spontane Antworten'], a: 0, why: 'Professionelle Kommunikation schafft Vertrauen.' }
+      ];
+
+      function shuffle(arr) {
+        const copy = [...arr];
+        for (let i = copy.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      }
+
+      function pick(arr, n) {
+        return shuffle(arr).slice(0, Math.min(n, arr.length));
+      }
+
+      function getProgressStore() {
+        const raw = localStorage.getItem(PROGRESS_KEY);
+        if (!raw) return {};
+        try {
+          const parsed = JSON.parse(raw);
+          return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch (_e) {
+          return {};
+        }
+      }
+
+      function saveProgressStore(store) {
+        localStorage.setItem(PROGRESS_KEY, JSON.stringify(store));
+      }
+
+      function ensureUser() {
+        if (activeUser) return true;
+        loginStatus.textContent = 'Bitte zuerst mit Name anmelden.';
+        return false;
+      }
+
+      function normalizeUser(name) {
+        return String(name || '').trim();
+      }
+
+      function setLoginStatus(text, isError = false) {
+        loginStatus.style.color = isError ? 'var(--bad)' : 'var(--ok)';
+        loginStatus.textContent = text;
+      }
+
+      function getSelectedTestMode() {
+        const value = testModeSelect?.value;
+        if (value === 'original') return 'original';
+        if (value === 'pruefungsblock') return 'pruefungsblock';
+        return 'training';
+      }
+
+      function telekomScoreLabel(percent, mode) {
+        if (mode === 'pruefungsblock') {
+          if (percent >= 88) return 'A - sehr stark (Prüfungsblock)';
+          if (percent >= 76) return 'B - gut (Prüfungsblock)';
+          if (percent >= 62) return 'C - solide (Prüfungsblock)';
+          if (percent >= 45) return 'D - kritisch (Prüfungsblock)';
+          return 'E - bitte Grundlagen aufbauen (Prüfungsblock)';
+        }
+
+        if (mode === 'original') {
+          if (percent >= 90) return 'A - sehr stark (Originaltest)';
+          if (percent >= 78) return 'B - gut (Originaltest)';
+          if (percent >= 62) return 'C - solide (Originaltest)';
+          if (percent >= 45) return 'D - kritisch (Originaltest)';
+          return 'E - bitte Grundlagen aufbauen (Originaltest)';
+        }
+
+        if (percent >= 90) return 'A - sehr stark (Telekom Ready)';
+        if (percent >= 75) return 'B - gut';
+        if (percent >= 60) return 'C - solide, weiter üben';
+        if (percent >= 45) return 'D - kritisch, gezielt trainieren';
+        return 'E - bitte Grundlagen aufbauen';
+      }
+
+      function isEnglishPart(part) {
+        return String(part || '').startsWith('englisch_');
+      }
+
+      function isEnglishModule(module) {
+        return module === 'englisch_business' || module === 'englisch_lk' || module === 'englisch_cases';
+      }
+
+      function isMarketingPart(part) {
+        return String(part || '').startsWith('marketing_');
+      }
+
+      function isDentsuModule(module) {
+        return module === 'marketing_digital' || module === 'marketing_cases' || module === 'marketing_crisis';
+      }
+
+      function isBankPart(part) {
+        return String(part || '').startsWith('bank_');
+      }
+
+      function isBankModule(module) {
+        return module === 'bank_corporate' || module === 'bank_cases';
+      }
+
+      function isFazPart(part) {
+        return String(part || '').startsWith('faz_');
+      }
+
+      function isFazModule(module) {
+        return module === 'faz_office' || module === 'faz_media';
+      }
+
+      function englishLevelLabel(percent) {
+        if (percent >= 92) return 'C1+ (sehr stark)';
+        if (percent >= 85) return 'C1 (sehr gut)';
+        if (percent >= 70) return 'B2 (solide)';
+        if (percent >= 55) return 'B1 (ausbaufähig)';
+        return 'A2/A1 (Grundlagen aufbauen)';
+      }
+
+      function dentsuLevelLabel(percent, module) {
+        if (module === 'marketing_crisis') {
+          if (percent >= 90) return 'Crisis Ready (sehr stark)';
+          if (percent >= 80) return 'Crisis Solide';
+          if (percent >= 65) return 'Crisis Aufbauphase';
+          return 'Crisis Grundlagen aufbauen';
+        }
+
+        if (module === 'marketing_cases') {
+          if (percent >= 88) return 'Case Ready (sehr stark)';
+          if (percent >= 75) return 'Case Solide';
+          if (percent >= 60) return 'Case Aufbauphase';
+          return 'Case Grundlagen aufbauen';
+        }
+
+        if (percent >= 85) return 'Digital Ready (sehr stark)';
+        if (percent >= 72) return 'Digital Solide';
+        if (percent >= 58) return 'Digital Aufbauphase';
+        return 'Digital Grundlagen aufbauen';
+      }
+
+      function bankLevelLabel(percent) {
+        if (percent >= 90) return 'Corporate Center Ready (sehr stark)';
+        if (percent >= 78) return 'Corporate Center Solide';
+        if (percent >= 62) return 'Corporate Center Aufbauphase';
+        return 'Corporate Center Grundlagen aufbauen';
+      }
+
+      function fazLevelLabel(percent, module) {
+        if (module === 'faz_media') {
+          if (percent >= 88) return 'FAZ Media Ready (sehr stark)';
+          if (percent >= 74) return 'FAZ Media Solide';
+          if (percent >= 60) return 'FAZ Media Aufbauphase';
+          return 'FAZ Media Grundlagen aufbauen';
+        }
+        if (percent >= 88) return 'FAZ Office Ready (sehr stark)';
+        if (percent >= 74) return 'FAZ Office Solide';
+        if (percent >= 60) return 'FAZ Office Aufbauphase';
+        return 'FAZ Office Grundlagen aufbauen';
+      }
+
+      function resolveQuestionTimer(question, mode) {
+        if (mode === 'pruefungsblock') {
+          return 0;
+        }
+
+        if (mode !== 'original') {
+          return Number(question?.timer) || 0;
+        }
+
+        const base = Number(question?.timer) || 0;
+        if (base > 0) {
+          return Math.max(8, base - 2);
+        }
+        return 22;
+      }
+
+      function formatClock(totalSeconds) {
+        const safe = Math.max(0, Number(totalSeconds) || 0);
+        const minutes = Math.floor(safe / 60);
+        const seconds = safe % 60;
+        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      }
+
+      function clearExamTimer() {
+        if (examTimerId) {
+          window.clearInterval(examTimerId);
+          examTimerId = null;
+        }
+      }
+
+      function syncExamTimerUi() {
+        const badge = document.getElementById('examTimerPill');
+        if (!badge) {
+          return;
+        }
+        badge.textContent = `Gesamtzeit: ${formatClock(examRemainingSeconds)}`;
+
+        const warningBadge = document.getElementById('warningPill');
+        if (warningBadge) {
+          warningBadge.textContent = `Tab-Wechsel Hinweise: ${tabSwitchWarnings}`;
+        }
+      }
+
+      function forceFinishTestByGlobalTimer() {
+        clearTimer();
+        clearExamTimer();
+        for (let index = currentIndex; index < questionSet.length; index += 1) {
+          answers[index] = {
+            questionId: questionSet[index].id,
+            choice: null,
+            timedOut: true
+          };
+        }
+        currentIndex = questionSet.length;
+        renderResult();
+      }
+
+      function startExamTimerIfNeeded(mode) {
+        clearExamTimer();
+        if (mode !== 'pruefungsblock') {
+          examRemainingSeconds = 0;
+          return;
+        }
+
+        examRemainingSeconds = 45 * 60;
+        syncExamTimerUi();
+        examTimerId = window.setInterval(() => {
+          examRemainingSeconds -= 1;
+          syncExamTimerUi();
+          if (examRemainingSeconds <= 0) {
+            forceFinishTestByGlobalTimer();
+          }
+        }, 1000);
+      }
+
+      function buildQuestionSet(module) {
+        if (module === 'deutsch_easy') {
+          return pick(POOL.filter((q) => q.part === 'deutsch_easy'), 5);
+        }
+        if (module === 'deutsch_mittel') {
+          return pick(POOL.filter((q) => q.part === 'deutsch_mittel'), 5);
+        }
+        if (module === 'mathe_komplett') {
+          return [
+            ...pick(POOL.filter((q) => q.part === 'mathe_prozent'), 2),
+            ...pick(POOL.filter((q) => q.part === 'mathe_formeln'), 2),
+            ...pick(POOL.filter((q) => q.part === 'mathe_logik'), 2),
+            ...pick(POOL.filter((q) => q.part === 'mathe_text'), 2),
+            ...pick(POOL.filter((q) => q.part === 'mathe_kopf'), 3)
+          ];
+        }
+        if (module === 'mathe_gym') {
+          return pick(POOL.filter((q) => q.part === 'mathe_gym'), 8);
+        }
+        if (module === 'englisch_business') {
+          return pick(POOL.filter((q) => q.part === 'englisch_business'), 8);
+        }
+        if (module === 'englisch_lk') {
+          return pick(POOL.filter((q) => q.part === 'englisch_lk'), 8);
+        }
+        if (module === 'englisch_cases') {
+          return pick(POOL.filter((q) => q.part === 'englisch_cases'), 8);
+        }
+        if (module === 'marketing_digital') {
+          return pick(POOL.filter((q) => q.part === 'marketing_digital'), 8);
+        }
+        if (module === 'marketing_cases') {
+          return pick(POOL.filter((q) => q.part === 'marketing_cases'), 8);
+        }
+        if (module === 'marketing_crisis') {
+          return pick(POOL.filter((q) => q.part === 'marketing_crisis'), 8);
+        }
+        if (module === 'bank_corporate') {
+          return pick(POOL.filter((q) => q.part === 'bank_corporate'), 8);
+        }
+        if (module === 'bank_cases') {
+          return pick(POOL.filter((q) => q.part === 'bank_cases'), 8);
+        }
+        if (module === 'faz_office') {
+          return pick(POOL.filter((q) => q.part === 'faz_office'), 8);
+        }
+        if (module === 'faz_media') {
+          return pick(POOL.filter((q) => q.part === 'faz_media'), 8);
+        }
+        return [
+          ...pick(POOL.filter((q) => q.part === 'deutsch_easy'), 4),
+          ...pick(POOL.filter((q) => q.part === 'deutsch_mittel'), 4),
+          ...pick(POOL.filter((q) => ['mathe_prozent', 'mathe_formeln', 'mathe_logik', 'mathe_text'].includes(q.part)), 4),
+          ...pick(POOL.filter((q) => q.part === 'mathe_kopf'), 2),
+          ...pick(POOL.filter((q) => q.part === 'englisch_business'), 2),
+          ...pick(POOL.filter((q) => q.part === 'englisch_lk'), 2),
+          ...pick(POOL.filter((q) => q.part === 'englisch_cases'), 2),
+          ...pick(POOL.filter((q) => q.part === 'marketing_digital'), 2),
+          ...pick(POOL.filter((q) => q.part === 'marketing_cases'), 2),
+          ...pick(POOL.filter((q) => q.part === 'marketing_crisis'), 2),
+          ...pick(POOL.filter((q) => q.part === 'bank_corporate'), 2),
+          ...pick(POOL.filter((q) => q.part === 'bank_cases'), 2),
+          ...pick(POOL.filter((q) => q.part === 'faz_office'), 2),
+          ...pick(POOL.filter((q) => q.part === 'faz_media'), 2)
+        ];
+      }
+
+      function clearTimer() {
+        if (timerId) {
+          window.clearInterval(timerId);
+          timerId = null;
+        }
+      }
+
+      function startQuestionTimer(seconds) {
+        clearTimer();
+        if (!seconds || seconds <= 0) return;
+
+        secondsLeft = seconds;
+        const timerEl = document.getElementById('timerPill');
+        if (timerEl) {
+          timerEl.textContent = `Timer: ${secondsLeft}s`;
+        }
+
+        timerId = window.setInterval(() => {
+          secondsLeft -= 1;
+          const el = document.getElementById('timerPill');
+          if (el) {
+            el.textContent = `Timer: ${Math.max(secondsLeft, 0)}s`;
+          }
+          if (secondsLeft <= 0) {
+            clearTimer();
+            saveAnswer(null, true);
+            nextQuestion();
+          }
+        }, 1000);
+      }
+
+      function renderQuestion() {
+        if (!questionSet.length || currentIndex >= questionSet.length) {
+          renderResult();
+          return;
+        }
+
+        const q = questionSet[currentIndex];
+        const mode = activeTestMode;
+        const questionTimer = resolveQuestionTimer(q, mode);
+        const selected = answers[currentIndex]?.choice;
+        const timerBadge = questionTimer > 0 ? `<span id="timerPill" class="timer">Timer: ${questionTimer}s</span>` : '';
+        const examTimerBadge = mode === 'pruefungsblock'
+          ? `<span id="examTimerPill" class="timer">Gesamtzeit: ${formatClock(examRemainingSeconds)}</span>`
+          : '';
+        const warningBadge = mode === 'pruefungsblock'
+          ? `<span id="warningPill" class="badge warn-badge">Tab-Wechsel Hinweise: ${tabSwitchWarnings}</span>`
+          : '';
+
+        quizShell.innerHTML = `
+          <div class="quiz-top">
+            <strong>Frage ${currentIndex + 1} von ${questionSet.length}</strong>
+            ${timerBadge}
+            ${examTimerBadge}
+            ${warningBadge}
+          </div>
+          <div class="question">
+            <h3>${q.q}</h3>
+            <div class="options">
+              ${q.options.map((opt, idx) => `
+                <label class="opt">
+                  <input type="radio" name="choice" value="${idx}" ${selected === idx ? 'checked' : ''}>
+                  <span>${opt}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+          <div class="quiz-actions">
+            <button id="nextButton" type="button">${currentIndex + 1 === questionSet.length ? 'Test abgeben' : 'Weiter'}</button>
+          </div>
+        `;
+
+        document.getElementById('nextButton').addEventListener('click', () => {
+          const checked = quizShell.querySelector('input[name="choice"]:checked');
+          if (!checked) {
+            alert('Bitte eine Antwort auswaehlen.');
+            return;
+          }
+          saveAnswer(Number.parseInt(checked.value, 10), false);
+          nextQuestion();
+        });
+
+        startQuestionTimer(questionTimer);
+      }
+
+      function saveAnswer(choice, timedOut) {
+        const q = questionSet[currentIndex];
+        answers[currentIndex] = {
+          questionId: q.id,
+          choice,
+          timedOut: Boolean(timedOut)
+        };
+      }
+
+      function nextQuestion() {
+        clearTimer();
+        currentIndex += 1;
+        renderQuestion();
+      }
+
+      function summarize(module) {
+        const mode = activeTestMode;
+        let correct = 0;
+        const details = questionSet.map((q, idx) => {
+          const ans = answers[idx] || { choice: null, timedOut: false };
+          const isCorrect = ans.choice === q.a;
+          if (isCorrect) correct += 1;
+          return {
+            ...q,
+            userChoice: ans.choice,
+            isCorrect,
+            timedOut: ans.timedOut
+          };
+        });
+
+        const total = questionSet.length;
+        const percent = total ? Math.round((correct / total) * 100) : 0;
+        const englishDetails = details.filter((d) => isEnglishPart(d.part));
+        const englishCorrect = englishDetails.filter((d) => d.isCorrect).length;
+        const englishPercent = englishDetails.length ? Math.round((englishCorrect / englishDetails.length) * 100) : null;
+        const englishLevel = englishPercent == null ? null : englishLevelLabel(englishPercent);
+
+        const marketingDetails = details.filter((d) => isMarketingPart(d.part));
+        const marketingCorrect = marketingDetails.filter((d) => d.isCorrect).length;
+        const marketingPercent = marketingDetails.length ? Math.round((marketingCorrect / marketingDetails.length) * 100) : null;
+        const marketingLevel = marketingPercent == null ? null : dentsuLevelLabel(marketingPercent, module);
+
+        const bankDetails = details.filter((d) => isBankPart(d.part));
+        const bankCorrect = bankDetails.filter((d) => d.isCorrect).length;
+        const bankPercent = bankDetails.length ? Math.round((bankCorrect / bankDetails.length) * 100) : null;
+        const bankLevel = bankPercent == null ? null : bankLevelLabel(bankPercent);
+
+        const fazDetails = details.filter((d) => isFazPart(d.part));
+        const fazCorrect = fazDetails.filter((d) => d.isCorrect).length;
+        const fazPercent = fazDetails.length ? Math.round((fazCorrect / fazDetails.length) * 100) : null;
+        const fazLevel = fazPercent == null ? null : fazLevelLabel(fazPercent, module);
+
+        const gradeBase = telekomScoreLabel(percent, mode);
+        let grade = gradeBase;
+        if (isEnglishModule(module)) {
+          grade = `${grade} | Englisch-Level: ${englishLevel}`;
+        }
+        if (isDentsuModule(module)) {
+          grade = `${grade} | Dentsu-Level: ${marketingLevel}`;
+        }
+        if (isBankModule(module)) {
+          grade = `${grade} | Bank-Level: ${bankLevel}`;
+        }
+        if (isFazModule(module)) {
+          grade = `${grade} | FAZ-Level: ${fazLevel}`;
+        }
+
+        return {
+          correct,
+          total,
+          percent,
+          details,
+          mode,
+          warnings: tabSwitchWarnings,
+          grade,
+          englishCorrect,
+          englishTotal: englishDetails.length,
+          englishPercent,
+          englishLevel,
+          marketingCorrect,
+          marketingTotal: marketingDetails.length,
+          marketingPercent,
+          marketingLevel,
+          bankCorrect,
+          bankTotal: bankDetails.length,
+          bankPercent,
+          bankLevel,
+          fazCorrect,
+          fazTotal: fazDetails.length,
+          fazPercent,
+          fazLevel
+        };
+      }
+
+      function updateProgress(module, result) {
+        if (!activeUser) return;
+        const store = getProgressStore();
+        const userData = store[activeUser] || { attempts: [] };
+        userData.attempts.push({
+          at: new Date().toISOString(),
+          module,
+          mode: result.mode,
+          warnings: result.warnings,
+          percent: result.percent,
+          correct: result.correct,
+          total: result.total,
+          grade: result.grade,
+          englishPercent: result.englishPercent,
+          englishLevel: result.englishLevel,
+          marketingPercent: result.marketingPercent,
+          marketingLevel: result.marketingLevel,
+          bankPercent: result.bankPercent,
+          bankLevel: result.bankLevel,
+          fazPercent: result.fazPercent,
+          fazLevel: result.fazLevel
+        });
+        store[activeUser] = userData;
+        saveProgressStore(store);
+      }
+
+      function renderHistory() {
+        if (!activeUser) {
+          historyBox.innerHTML = 'Nicht angemeldet.';
+          return;
+        }
+
+        const store = getProgressStore();
+        const attempts = (store[activeUser]?.attempts || []).slice(-6).reverse();
+
+        if (!attempts.length) {
+          historyBox.innerHTML = 'Noch kein Test gespeichert.';
+          return;
+        }
+
+        const best = attempts.reduce((m, a) => Math.max(m, a.percent), 0);
+        historyBox.innerHTML = `
+          <strong>Letzte Versuche (${activeUser})</strong><br>
+          Bester Wert: ${best}%<br><br>
+          ${attempts.map((a) => `${new Date(a.at).toLocaleString('de-DE')} | ${a.module} | ${a.mode || 'training'} | ${a.correct}/${a.total} | ${a.percent}% | Hinweise: ${Number(a.warnings) || 0} | ${a.grade}${a.englishPercent == null ? '' : ` | EN: ${a.englishPercent}% (${a.englishLevel})`}${a.marketingPercent == null ? '' : ` | MK: ${a.marketingPercent}% (${a.marketingLevel})`}${a.bankPercent == null ? '' : ` | BK: ${a.bankPercent}% (${a.bankLevel})`}${a.fazPercent == null ? '' : ` | FZ: ${a.fazPercent}% (${a.fazLevel})`}`).join('<br>')}
+        `;
+      }
+
+      function renderResult() {
+        clearTimer();
+        clearExamTimer();
+        testInProgress = false;
+        const module = moduleSelect.value;
+        const result = summarize(module);
+        updateProgress(module, result);
+        renderHistory();
+
+        quizShell.innerHTML = `
+          <div class="result-summary">
+            <h3>Zusammenfassung</h3>
+            <p><strong>Modus:</strong> ${result.mode === 'original' ? 'Originaltest' : (result.mode === 'pruefungsblock' ? 'Prüfungsblock 45 Minuten' : 'Training')}</p>
+            <p><strong>Tab-Wechsel Hinweise:</strong> ${result.warnings}</p>
+            <p><strong>Punkte:</strong> ${result.correct} / ${result.total} (${result.percent}%)</p>
+            <p><strong>Bewertung:</strong> ${result.grade}</p>
+            ${result.englishPercent == null ? '' : `<p><strong>Englisch-Teilscore:</strong> ${result.englishCorrect} / ${result.englishTotal} (${result.englishPercent}%) - ${result.englishLevel}</p>`}
+            ${result.marketingPercent == null ? '' : `<p><strong>Dentsu-Teilscore:</strong> ${result.marketingCorrect} / ${result.marketingTotal} (${result.marketingPercent}%) - ${result.marketingLevel}</p>`}
+            ${result.bankPercent == null ? '' : `<p><strong>Bank-Teilscore:</strong> ${result.bankCorrect} / ${result.bankTotal} (${result.bankPercent}%) - ${result.bankLevel}</p>`}
+            ${result.fazPercent == null ? '' : `<p><strong>FAZ-Teilscore:</strong> ${result.fazCorrect} / ${result.fazTotal} (${result.fazPercent}%) - ${result.fazLevel}</p>`}
+          </div>
+          <div class="detail-list">
+            ${result.details.map((d, i) => {
+              const userTxt = d.userChoice == null ? 'Keine Antwort' : d.options[d.userChoice];
+              const correctTxt = d.options[d.a];
+              const state = d.isCorrect ? '<span class="badge ok">Richtig</span>' : '<span class="badge bad">Falsch</span>';
+              const timeout = d.timedOut ? ' (Zeit abgelaufen)' : '';
+              return `
+                <article class="detail-item">
+                  <div><strong>Frage ${i + 1}:</strong> ${d.q}</div>
+                  <div style="margin-top:4px;">${state}</div>
+                  <div style="margin-top:4px;"><strong>Deine Antwort:</strong> ${userTxt}${timeout}</div>
+                  <div><strong>Korrekt:</strong> ${correctTxt}</div>
+                  <div class="muted"><strong>Warum:</strong> ${d.why}</div>
+                </article>
+              `;
+            }).join('')}
+          </div>
+          <div class="quiz-actions">
+            <button id="againButton" type="button">Neuen Test mit Fragenpool starten</button>
+          </div>
+        `;
+
+        document.getElementById('againButton').addEventListener('click', () => startTest(true));
+      }
+
+      function startTest(forceRemix) {
+        if (!ensureUser()) return;
+        clearTimer();
+        clearExamTimer();
+        currentIndex = 0;
+        answers = [];
+        activeTestMode = getSelectedTestMode();
+        tabSwitchWarnings = 0;
+        testInProgress = true;
+        questionSet = buildQuestionSet(moduleSelect.value);
+        if (!forceRemix) {
+          questionSet = shuffle(questionSet);
+        }
+        startExamTimerIfNeeded(activeTestMode);
+        const isTabletLayout = window.matchMedia('(max-width: 1366px)').matches;
+        if (isTabletLayout) {
+          applyFocusMode(true);
+          testSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        renderQuestion();
+      }
+
+      if (focusModeButton) {
+        focusModeButton.addEventListener('click', () => {
+          const active = document.body.classList.contains('test-focus');
+          applyFocusMode(!active);
+          if (!active) {
+            testSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
+
+      if (expandLayoutButton) {
+        expandLayoutButton.addEventListener('click', () => applyFocusMode(false));
+      }
+
+      window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault();
+        deferredInstallPrompt = event;
+        if (installAppButton) {
+          installAppButton.hidden = false;
+        }
+        if (installAppHint) {
+          installAppHint.textContent = 'Tippe auf "App installieren", um die Testseite als App zu speichern.';
+        }
+      });
+
+      if (installAppButton) {
+        installAppButton.addEventListener('click', async () => {
+          if (!deferredInstallPrompt) {
+            if (installAppHint) {
+              installAppHint.textContent = 'Installieren aktuell nicht verfügbar. Auf iPad/iPhone: Teilen > Zum Home-Bildschirm.';
+            }
+            return;
+          }
+          deferredInstallPrompt.prompt();
+          await deferredInstallPrompt.userChoice;
+          deferredInstallPrompt = null;
+          installAppButton.hidden = true;
+        });
+      }
+
+      window.addEventListener('appinstalled', () => {
+        if (installAppButton) {
+          installAppButton.hidden = true;
+        }
+        if (installAppHint) {
+          installAppHint.textContent = 'App installiert. Start jetzt direkt über den Startbildschirm.';
+        }
+      });
+
+      loginButton.addEventListener('click', () => {
+        const name = normalizeUser(userNameInput.value);
+        if (!name) {
+          setLoginStatus('Bitte einen Namen eingeben.', true);
+          return;
+        }
+        activeUser = name;
+        localStorage.setItem(USER_KEY, activeUser);
+        setLoginStatus(`Angemeldet als ${activeUser}.`);
+        renderHistory();
+      });
+
+      logoutButton.addEventListener('click', () => {
+        activeUser = '';
+        localStorage.removeItem(USER_KEY);
+        setLoginStatus('Abgemeldet.');
+        renderHistory();
+      });
+
+      startTestButton.addEventListener('click', () => startTest(false));
+      restartTestButton.addEventListener('click', () => startTest(true));
+
+      clearProgressButton.addEventListener('click', () => {
+        if (!activeUser) {
+          setLoginStatus('Bitte erst anmelden.', true);
+          return;
+        }
+        const store = getProgressStore();
+        delete store[activeUser];
+        saveProgressStore(store);
+        renderHistory();
+        setLoginStatus('Fortschritt geloescht.');
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          return;
+        }
+        if (!testInProgress || activeTestMode !== 'pruefungsblock') {
+          return;
+        }
+        tabSwitchWarnings += 1;
+        setLoginStatus(`Hinweis: Tab gewechselt (${tabSwitchWarnings}).`, true);
+        const warningBadge = document.getElementById('warningPill');
+        if (warningBadge) {
+          warningBadge.textContent = `Tab-Wechsel Hinweise: ${tabSwitchWarnings}`;
+        }
+      });
+
+      if (activeUser) {
+        userNameInput.value = activeUser;
+        setLoginStatus(`Angemeldet als ${activeUser}.`);
+      }
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').catch(() => {
+            // Service Worker ist optional und darf die Seite nicht blockieren.
+          });
+        });
+      }
+      initFocusMode();
+      renderHistory();
+    }());
+  </script>
+</body>
+</html>
+

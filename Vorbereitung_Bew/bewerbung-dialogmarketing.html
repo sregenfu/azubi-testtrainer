@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bewerbung | Ausbildung Kauffrau für Dialogmarketing</title>
+  <meta name="description" content="Interaktive Bewerbungsseite für die Ausbildung zur Kauffrau für Dialogmarketing.">
+  <style>
+    :root {
+      --bg: #f6efe3;
+      --surface: rgba(255, 250, 242, 0.94);
+      --surface-strong: #fff9ef;
+      --ink: #191919;
+      --muted: #4f4a43;
+      --line: rgba(40, 36, 31, 0.18);
+      --brand: #5a4a3d;
+      --brand-strong: #46392f;
+      --accent: #8f7864;
+      --ok: #46392f;
+      --radius: 16px;
+      --radius-xl: 28px;
+      --shadow: 0 24px 60px rgba(34, 43, 56, 0.12);
+      --bg-radial-left: rgba(181, 150, 120, 0.12);
+      --bg-radial-right: rgba(214, 192, 166, 0.14);
+      --bg-gradient-top: #fcf7ef;
+      --bg-gradient-bottom: #efe1cf;
+      --grid-line: rgba(35, 30, 24, 0.05);
+    }
+
+    :root[data-theme='dark'] {
+      --bg: #1a1714;
+      --surface: rgba(30, 26, 22, 0.94);
+      --surface-strong: #25201b;
+      --ink: #efe6dc;
+      --muted: #c2b3a3;
+      --line: rgba(215, 194, 171, 0.22);
+      --brand: #b79d85;
+      --brand-strong: #cfb9a5;
+      --accent: #d8bca3;
+      --ok: #cfb9a5;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+      --bg-radial-left: rgba(180, 143, 111, 0.14);
+      --bg-radial-right: rgba(120, 96, 77, 0.14);
+      --bg-gradient-top: #221d18;
+      --bg-gradient-bottom: #17130f;
+      --grid-line: rgba(239, 230, 220, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, var(--bg-radial-left), transparent 28%),
+        radial-gradient(circle at top right, var(--bg-radial-right), transparent 24%),
+        linear-gradient(180deg, var(--bg-gradient-top) 0%, var(--bg) 48%, var(--bg-gradient-bottom) 100%);
+      font-family: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 88%);
+    }
+
+    h1, h2, h3 {
+      font-family: "Georgia", "Cambria", serif;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .theme-toggle-button {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 30;
+      border: 1px solid rgba(90, 74, 61, 0.34);
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      font: inherit;
+      font-weight: 700;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+
+    :root[data-theme='dark'] .theme-toggle-button {
+      background: rgba(16, 25, 36, 0.9);
+      border-color: rgba(207, 185, 165, 0.45);
+    }
+
+    .theme-toggle-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .page {
+      width: min(1100px, 94vw);
+      margin: 24px auto 56px;
+      display: grid;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hub-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: -2px;
+    }
+
+    .hub-nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      background: var(--surface);
+      color: var(--brand-strong);
+      font-weight: 700;
+      transition: transform 120ms ease, background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+    }
+
+    .hub-nav a:hover {
+      transform: translateY(-1px);
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .hub-nav a.active,
+    .hub-nav a[aria-current='page'] {
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    :root[data-theme='dark'] .hub-nav a.active,
+    :root[data-theme='dark'] .hub-nav a[aria-current='page'] {
+      color: #1a1714;
+    }
+
+    .hero {
+      background: var(--surface);
+      color: var(--ink);
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    :root[data-theme='dark'] .hero {
+      background: var(--surface);
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      max-width: 70ch;
+      color: var(--muted);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    button {
+      border: 1px solid transparent;
+      background: var(--brand);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.58rem 0.95rem;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 120ms ease, background-color 140ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      background: var(--brand-strong);
+    }
+
+    button.secondary {
+      background: var(--surface-strong);
+      color: var(--brand-strong);
+      border-color: rgba(90, 74, 61, 0.34);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    label {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      color: var(--ink);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 116px;
+      resize: vertical;
+    }
+
+    .tiny {
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-top: 8px;
+    }
+
+    .chips {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      border: 1px solid rgba(90, 74, 61, 0.3);
+      background: rgba(90, 74, 61, 0.1);
+      color: var(--brand-strong);
+      border-radius: 999px;
+      padding: 0.3rem 0.62rem;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    li { margin: 4px 0; }
+
+    .status {
+      margin-top: 10px;
+      color: var(--ok);
+      font-weight: 700;
+      min-height: 1.2em;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero p { max-width: 100%; }
+      .theme-toggle-button {
+        top: 10px;
+        right: 10px;
+      }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .toolbar { display: none; }
+      .theme-toggle-button { display: none; }
+      .card, .hero { box-shadow: none; }
+      .page { width: 100%; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggleButton" class="theme-toggle-button" type="button" aria-label="Theme wechseln">Dark</button>
+  <main class="page">
+    <nav class="hub-nav" aria-label="Projekt-Navigation">
+      <a href="index.html">Start (Hub)</a>
+      <a href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
+      <a class="active" aria-current="page" href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a href="sprachfokus-alternativen.html">Sprachfokus-Alternativen</a>
+    </nav>
+
+    <section class="hero">
+      <h1>Bewerbungsvorlage: Ausbildung zur Kauffrau für Dialogmarketing</h1>
+      <p>
+        Diese Seite hilft beim Strukturieren von Anschreiben, Starken, Interview-Antworten
+        und Unterlagen. Alles kann direkt bearbeitet und lokal gespeichert werden.
+      </p>
+      <div class="chips">
+        <span class="chip">Kundenkommunikation</span>
+        <span class="chip">Serviceorientierung</span>
+        <span class="chip">Teamfähigkeit</span>
+        <span class="chip">Konfliktlösung</span>
+      </div>
+    </section>
+
+    <section class="card toolbar">
+      <button id="saveBtn" type="button">Zwischenstand speichern</button>
+      <button id="loadBtn" class="secondary" type="button">Gespeichertes laden</button>
+      <button id="clearBtn" class="secondary" type="button">Eingaben leeren</button>
+      <button id="printBtn" class="secondary" type="button">Als PDF drucken</button>
+      <div id="status" class="status"></div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>1) Basisdaten</h2>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" data-store="name" type="text" placeholder="Vorname Nachname">
+        </div>
+        <div class="field">
+          <label for="firma">Unternehmen</label>
+          <input id="firma" data-store="firma" type="text" placeholder="z. B. Telekom / Servicecenter XY">
+        </div>
+        <div class="field">
+          <label for="start">Gewünschter Ausbildungsstart</label>
+          <input id="start" data-store="start" type="text" placeholder="z. B. 01.08.2026">
+        </div>
+        <div class="field">
+          <label for="kontakt">Kontakt (Telefon / Mail)</label>
+          <input id="kontakt" data-store="kontakt" type="text" placeholder="Telefon und E-Mail">
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>2) Motivation</h2>
+        <div class="field">
+          <label for="motivation">Warum genau diese Ausbildung?</label>
+          <textarea id="motivation" data-store="motivation" placeholder="Warum Dialogmarketing, was macht dir am Kontakt mit Menschen Spaß, welche Ziele hast du?"></textarea>
+        </div>
+        <div class="field">
+          <label for="firmafit">Warum passt du zu diesem Unternehmen?</label>
+          <textarea id="firmafit" data-store="firmafit" placeholder="Bezug auf Unternehmen, Werte, Branche, Standort, Produkte."></textarea>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>3) Stärken und Beispiele</h2>
+        <div class="field">
+          <label for="staerken">Top 3 Stärken</label>
+          <textarea id="staerken" data-store="staerken" placeholder="z. B. freundlich auftreten, ruhig bleiben bei Kritik, klare Sprache"></textarea>
+        </div>
+        <div class="field">
+          <label for="beispiele">Praxisbeispiele (Schule, Praktikum, Nebenjob)</label>
+          <textarea id="beispiele" data-store="beispiele" placeholder="Kurze Situationen mit Ergebnis: Aufgabe -> Verhalten -> Ergebnis"></textarea>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>4) Interview-Antworten</h2>
+        <div class="field">
+          <label for="fragen">Typische Fragen und Antworten</label>
+          <textarea id="fragen" data-store="fragen" placeholder="Erzählen Sie etwas über sich / Wie gehen Sie mit schwierigen Kunden um? / Warum unser Unternehmen?"></textarea>
+        </div>
+        <p class="tiny">Tipp: Antwortstruktur in 3 Schritten: Situation, dein Verhalten, Ergebnis.</p>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>5) Anschreiben-Baustein (editierbar)</h2>
+      <div class="field">
+        <label for="anschreiben">Entwurf</label>
+        <textarea id="anschreiben" data-store="anschreiben">Sehr geehrte Damen und Herren,
+
+mit großem Interesse bewerbe ich mich um einen Ausbildungsplatz zur Kauffrau für Dialogmarketing.
+Ich arbeite gerne mit Menschen, kommuniziere klar und serviceorientiert und bleibe auch in anspruchsvollen Situationen ruhig und lösungsorientiert.
+
+Besonders motiviert mich, dass in diesem Beruf kundennahe Beratung, Organisation und digitale Kommunikation zusammenkommen.
+Gerne möchte ich meine Stärken in Ihr Team einbringen und mich fachlich wie persönlich weiterentwickeln.
+
+Ich freue mich auf die Gelegenheit, mich in einem persönlichen Gespräch vorzustellen.
+
+Mit freundlichen Grüßen
+[Name]</textarea>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>6) Unterlagen-Checkliste</h2>
+        <ul>
+          <li>Lebenslauf aktualisiert</li>
+          <li>Anschreiben personalisiert</li>
+          <li>Zeugnisse / Nachweise vollständig</li>
+          <li>Kontaktdaten geprüft</li>
+          <li>Dateinamen sauber benannt</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>7) Fragen für das Gespräch</h2>
+        <ul>
+          <li>Wie sieht ein typischer Ausbildungstag aus?</li>
+          <li>Welche Abteilungen lernt man während der Ausbildung kennen?</li>
+          <li>Welche Weiterbildung möglichkeiten gibt es nach der Ausbildung?</li>
+          <li>Wie wird man während der Ausbildung unterstützt?</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const THEME_KEY = 'vorbereitung-bew-theme-v1';
+      const STORAGE_KEY = 'bewerbung-dialogmarketing-v1';
+      const fields = Array.from(document.querySelectorAll('[data-store]'));
+      const statusEl = document.getElementById('status');
+      const themeToggleButton = document.getElementById('themeToggleButton');
+
+      function applyTheme(theme) {
+        const normalized = theme === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', normalized);
+        if (themeToggleButton) {
+          themeToggleButton.textContent = normalized === 'dark' ? 'Light' : 'Dark';
+        }
+      }
+
+      function initTheme() {
+        const storedTheme = localStorage.getItem(THEME_KEY);
+        if (storedTheme === 'dark' || storedTheme === 'light') {
+          applyTheme(storedTheme);
+          return;
+        }
+        applyTheme('light');
+      }
+
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+          const next = current === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+          localStorage.setItem(THEME_KEY, next);
+        });
+      }
+
+      initTheme();
+
+      function readData() {
+        const data = {};
+        fields.forEach((field) => {
+          data[field.getAttribute('data-store')] = field.value;
+        });
+        return data;
+      }
+
+      function applyData(data) {
+        fields.forEach((field) => {
+          const key = field.getAttribute('data-store');
+          field.value = typeof data[key] === 'string' ? data[key] : '';
+        });
+      }
+
+      function setStatus(text) {
+        statusEl.textContent = text;
+        window.setTimeout(() => {
+          if (statusEl.textContent === text) {
+            statusEl.textContent = '';
+          }
+        }, 1800);
+      }
+
+      function save() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(readData()));
+        setStatus('Gespeichert.');
+      }
+
+      function load() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          setStatus('Kein gespeicherter Stand gefunden.');
+          return;
+        }
+        try {
+          applyData(JSON.parse(raw));
+          setStatus('Gespeicherter Stand geladen.');
+        } catch (_error) {
+          setStatus('Gespeicherter Stand ist ungültig.');
+        }
+      }
+
+      document.getElementById('saveBtn').addEventListener('click', save);
+      document.getElementById('loadBtn').addEventListener('click', load);
+      document.getElementById('printBtn').addEventListener('click', () => window.print());
+      document.getElementById('clearBtn').addEventListener('click', () => {
+        fields.forEach((field) => { field.value = ''; });
+        localStorage.removeItem(STORAGE_KEY);
+        setStatus('Eingaben geleert.');
+      });
+
+      load();
+    }());
+  </script>
+</body>
+</html>
+

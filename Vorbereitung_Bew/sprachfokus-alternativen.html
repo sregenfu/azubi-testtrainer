@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprachfokus | Ausbildungs-Alternativen</title>
+  <meta name="description" content="Alternative Ausbildungswege bei starker Sprachbegabung und schwaecherer Mathe-Note.">
+  <style>
+    :root {
+      --bg: #f6efe3;
+      --surface: rgba(255, 250, 242, 0.94);
+      --surface-strong: #fff9ef;
+      --ink: #191919;
+      --muted: #4f4a43;
+      --line: rgba(40, 36, 31, 0.18);
+      --brand: #5a4a3d;
+      --brand-strong: #46392f;
+      --accent: #8f7864;
+      --ok: #46392f;
+      --shadow: 0 24px 60px rgba(34, 43, 56, 0.12);
+      --radius-xl: 28px;
+      --radius-md: 14px;
+      --bg-radial-left: rgba(181, 150, 120, 0.12);
+      --bg-radial-right: rgba(214, 192, 166, 0.14);
+      --bg-gradient-top: #fcf7ef;
+      --bg-gradient-bottom: #efe1cf;
+      --grid-line: rgba(35, 30, 24, 0.05);
+    }
+
+    :root[data-theme='dark'] {
+      --bg: #1a1714;
+      --surface: rgba(30, 26, 22, 0.94);
+      --surface-strong: #25201b;
+      --ink: #efe6dc;
+      --muted: #c2b3a3;
+      --line: rgba(215, 194, 171, 0.22);
+      --brand: #b79d85;
+      --brand-strong: #cfb9a5;
+      --accent: #d8bca3;
+      --ok: #cfb9a5;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+      --bg-radial-left: rgba(180, 143, 111, 0.14);
+      --bg-radial-right: rgba(120, 96, 77, 0.14);
+      --bg-gradient-top: #221d18;
+      --bg-gradient-bottom: #17130f;
+      --grid-line: rgba(239, 230, 220, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+      background:
+        radial-gradient(circle at top left, var(--bg-radial-left), transparent 28%),
+        radial-gradient(circle at top right, var(--bg-radial-right), transparent 24%),
+        linear-gradient(180deg, var(--bg-gradient-top) 0%, var(--bg) 48%, var(--bg-gradient-bottom) 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 88%);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      font-family: "Georgia", "Cambria", serif;
+    }
+
+    .theme-toggle-button {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 30;
+      border: 1px solid rgba(90, 74, 61, 0.34);
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      font: inherit;
+      font-weight: 700;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+
+    :root[data-theme='dark'] .theme-toggle-button {
+      background: rgba(30, 26, 22, 0.9);
+      border-color: rgba(207, 185, 165, 0.45);
+    }
+
+    .theme-toggle-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .page {
+      width: min(1100px, 94vw);
+      margin: 24px auto 56px;
+      display: grid;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hub-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hub-nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      background: var(--surface);
+      color: var(--brand-strong);
+      font-weight: 700;
+      transition: transform 120ms ease, background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+    }
+
+    .hub-nav a:hover {
+      transform: translateY(-1px);
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .hub-nav a.active,
+    .hub-nav a[aria-current='page'] {
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    :root[data-theme='dark'] .hub-nav a.active,
+    :root[data-theme='dark'] .hub-nav a[aria-current='page'] {
+      color: #1a1714;
+    }
+
+    .hero {
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      color: var(--ink);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      max-width: 80ch;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .hint {
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(90, 74, 61, 0.32);
+      background: rgba(90, 74, 61, 0.1);
+      color: var(--ok);
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .path {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: var(--surface-strong);
+    }
+
+    .path p { margin: 8px 0 0; color: var(--muted); }
+
+    .badge {
+      display: inline-flex;
+      margin-top: 8px;
+      border-radius: 999px;
+      padding: 0.24rem 0.55rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--brand-strong);
+      background: rgba(90, 74, 61, 0.1);
+      border: 1px solid rgba(90, 74, 61, 0.3);
+    }
+
+    ul { margin: 8px 0 0; padding-left: 18px; }
+    li { margin: 4px 0; }
+
+    .actions { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+    a.button {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.56rem 0.92rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      color: #fff;
+      background: var(--brand);
+    }
+
+    a.button.alt {
+      color: var(--brand-strong);
+      background: var(--surface-strong);
+      border-color: rgba(90, 74, 61, 0.34);
+    }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .theme-toggle-button {
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggleButton" class="theme-toggle-button" type="button" aria-label="Theme wechseln">Dark</button>
+  <main class="page">
+    <nav class="hub-nav" aria-label="Projekt-Navigation">
+      <a href="index.html">Start (Hub)</a>
+      <a href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
+      <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a class="active" aria-current="page" href="sprachfokus-alternativen.html">Sprachfokus-Alternativen</a>
+    </nav>
+
+    <section class="hero">
+      <h1>Sprachfokus statt Mathe-Fokus</h1>
+      <p>
+        Wenn sie sprachbegabt ist und Mathe nicht die Staerke ist, bedeutet das nicht "keine Chance".
+        Viele Ausbildungswege bewerten Kommunikation, Kundenumgang und Ausdruck sehr hoch.
+      </p>
+      <div class="hint">Wichtig: Eine schwaechere Mathenote ist oft kein automatischer Ausschlussgrund, wenn Motivation, Auftreten und Sprachkompetenz stark sind.</div>
+    </section>
+
+    <section class="card">
+      <h2>Passende Ausbildungswege mit weniger Mathe-Druck</h2>
+      <div class="grid">
+        <article class="path">
+          <h3>Kauffrau für Dialogmarketing</h3>
+          <span class="badge">Kommunikation: sehr hoch | Mathe: mittel</span>
+          <p>Stark im Kundenkontakt, Telefonie, Beratung und Lösungsfindung. Mathe braucht man, aber meist auf Basisniveau (Prozent, einfache Rechnungen).</p>
+        </article>
+        <article class="path">
+          <h3>Kauffrau für Büromanagement</h3>
+          <span class="badge">Organisation: sehr hoch | Mathe: mittel</span>
+          <p>Viel Organisation, E-Mails, Termine, Kommunikation intern/extern. Rechnen kommt vor, aber oft strukturiert und mit Tools.</p>
+        </article>
+        <article class="path">
+          <h3>Hotelfach / Tourismus</h3>
+          <span class="badge">Service: sehr hoch | Mathe: niedrig bis mittel</span>
+          <p>Gastkommunikation, Service, Planung und Kommunikation in dynamischen Situationen. Sprachstaerke ist ein klarer Vorteil.</p>
+        </article>
+        <article class="path">
+          <h3>Kauffrau im Gesundheitswesen</h3>
+          <span class="badge">Empathie: hoch | Mathe: mittel</span>
+          <p>Kommunikation mit Patienten/Kostentraegern, Verwaltung und Service. Struktur und Sprache sind hier besonders wichtig.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Strategie trotz schwaecherer Mathenote</h2>
+      <ul>
+        <li>Mathe nicht vermeiden, sondern auf Kernbereiche trainieren: Prozent, Dreisatz, Kopfrechnen-Basics.</li>
+        <li>Im Gespräch aktiv zeigen, dass sie an Mathe arbeitet (Lernplan + Übungsroutine).</li>
+        <li>Sprachstaerke sichtbar machen: klare Selbstvorstellung, gute Ausdrucksfaehigkeit, freundliche Kommunikation.</li>
+        <li>Praxisbeispiele vorbereiten: Konflikt ruhig geloest, freundlich erklärt, strukturiert gehandelt.</li>
+      </ul>
+      <div class="actions">
+        <a class="button" href="dialogmarketing-allgemeine.html">Direkt in die Testsimulation</a>
+        <a class="button alt" href="bewerbung-dialogmarketing.html">Bewerbungsunterlagen bearbeiten</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const THEME_KEY = 'vorbereitung-bew-theme-v1';
+      const themeToggleButton = document.getElementById('themeToggleButton');
+
+      function applyTheme(theme) {
+        const normalized = theme === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', normalized);
+        if (themeToggleButton) {
+          themeToggleButton.textContent = normalized === 'dark' ? 'Light' : 'Dark';
+        }
+      }
+
+      const storedTheme = localStorage.getItem(THEME_KEY);
+      applyTheme(storedTheme === 'dark' ? 'dark' : 'light');
+
+      if (!themeToggleButton) return;
+      themeToggleButton.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem(THEME_KEY, next);
+      });
+    }());
+  </script>
+</body>
+</html>
+

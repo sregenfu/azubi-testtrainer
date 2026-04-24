@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Azubi Training Icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5a4a3d"/>
+      <stop offset="100%" stop-color="#8f7864"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <rect x="76" y="84" width="360" height="350" rx="42" fill="#fff9ef"/>
+  <rect x="114" y="140" width="284" height="32" rx="16" fill="#5a4a3d" opacity="0.92"/>
+  <rect x="114" y="206" width="244" height="26" rx="13" fill="#8f7864" opacity="0.86"/>
+  <rect x="114" y="262" width="204" height="26" rx="13" fill="#8f7864" opacity="0.72"/>
+  <circle cx="352" cy="332" r="54" fill="#5a4a3d"/>
+  <path d="M326 333l22 21 43-46" fill="none" stroke="#fff9ef" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

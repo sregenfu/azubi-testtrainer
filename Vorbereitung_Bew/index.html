@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vorbereitung_Bew | Ausbildungs-Hub</title>
+  <meta name="description" content="Hub für Bewerbungs- und Testvorbereitung verschiedener Ausbildungsarten.">
+  <meta name="theme-color" content="#5a4a3d">
+  <link rel="manifest" href="app.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <style>
+    :root {
+      --bg: #f6efe3;
+      --surface: rgba(255, 250, 242, 0.94);
+      --surface-strong: #fff9ef;
+      --ink: #191919;
+      --muted: #4f4a43;
+      --line: rgba(40, 36, 31, 0.18);
+      --brand: #5a4a3d;
+      --brand-strong: #46392f;
+      --accent: #8f7864;
+      --shadow: 0 24px 60px rgba(34, 43, 56, 0.12);
+      --radius-xl: 28px;
+      --radius-md: 14px;
+      --bg-radial-left: rgba(181, 150, 120, 0.12);
+      --bg-radial-right: rgba(214, 192, 166, 0.14);
+      --bg-gradient-top: #fcf7ef;
+      --bg-gradient-bottom: #efe1cf;
+      --grid-line: rgba(35, 30, 24, 0.05);
+    }
+
+    :root[data-theme='dark'] {
+      --bg: #1a1714;
+      --surface: rgba(30, 26, 22, 0.94);
+      --surface-strong: #25201b;
+      --ink: #efe6dc;
+      --muted: #c2b3a3;
+      --line: rgba(215, 194, 171, 0.22);
+      --brand: #b79d85;
+      --brand-strong: #cfb9a5;
+      --accent: #d8bca3;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+      --bg-radial-left: rgba(180, 143, 111, 0.14);
+      --bg-radial-right: rgba(120, 96, 77, 0.14);
+      --bg-gradient-top: #221d18;
+      --bg-gradient-bottom: #17130f;
+      --grid-line: rgba(239, 230, 220, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+      background:
+        radial-gradient(circle at top left, var(--bg-radial-left), transparent 28%),
+        radial-gradient(circle at top right, var(--bg-radial-right), transparent 24%),
+        linear-gradient(180deg, var(--bg-gradient-top) 0%, var(--bg) 48%, var(--bg-gradient-bottom) 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 88%);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      font-family: "Georgia", "Cambria", serif;
+    }
+
+    .theme-toggle-button {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 30;
+      border: 1px solid rgba(90, 74, 61, 0.34);
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      font: inherit;
+      font-weight: 700;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+
+    :root[data-theme='dark'] .theme-toggle-button {
+      background: rgba(16, 25, 36, 0.9);
+      border-color: rgba(207, 185, 165, 0.45);
+    }
+
+    .theme-toggle-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .page {
+      width: min(1100px, 94vw);
+      margin: 24px auto 56px;
+      display: grid;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hub-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: -2px;
+    }
+
+    .hub-nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      background: var(--surface);
+      color: var(--brand-strong);
+      font-weight: 700;
+      transition: transform 120ms ease, background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+    }
+
+    .hub-nav a:hover {
+      transform: translateY(-1px);
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .hub-nav a.active,
+    .hub-nav a[aria-current='page'] {
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    :root[data-theme='dark'] .hub-nav a.active,
+    :root[data-theme='dark'] .hub-nav a[aria-current='page'] {
+      color: #1a1714;
+    }
+
+    .hero {
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      color: var(--ink);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    :root[data-theme='dark'] .hero {
+      background: var(--surface);
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      max-width: 74ch;
+      color: var(--muted);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .module {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-strong);
+      padding: 14px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .module p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    a.button {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.56rem 0.92rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 120ms ease, background-color 140ms ease;
+    }
+
+    a.button:hover { transform: translateY(-1px); }
+
+    a.primary {
+      color: #fff;
+      background: var(--brand);
+    }
+
+    a.primary:hover {
+      background: var(--brand-strong);
+    }
+
+    a.secondary {
+      color: var(--brand-strong);
+      background: var(--surface-strong);
+      border-color: rgba(90, 74, 61, 0.34);
+    }
+
+    .placeholder {
+      border-style: dashed;
+      border-color: rgba(95, 107, 125, 0.45);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .tiny {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .install-row {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    #installAppButton[hidden] {
+      display: none;
+    }
+
+    .install-hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .theme-toggle-button {
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggleButton" class="theme-toggle-button" type="button" aria-label="Theme wechseln">Dark</button>
+  <main class="page">
+    <nav class="hub-nav" aria-label="Projekt-Navigation">
+      <a class="active" aria-current="page" href="index.html">Start (Hub)</a>
+      <a href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
+      <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a href="sprachfokus-alternativen.html">Sprachfokus-Alternativen</a>
+    </nav>
+
+    <section class="hero">
+      <span class="eyebrow">Ausbildungsvorbereitung</span>
+      <h1>Hub für Bewerbung und Testtraining</h1>
+      <p>
+        Zentraler Hub für mehrere Ausbildungsarten. Aktuell ist Dialogmarketing eingebunden.
+        Weitere Ausbildungswege können später einfach als neue Module ergänzt werden.
+      </p>
+      <div class="install-row">
+        <a id="installAppButton" class="button primary" href="#" role="button" hidden>App installieren</a>
+        <p id="installAppHint" class="install-hint">Wenn der Browser es unterstützt, kannst du die Seite als App auf dem Tablet installieren.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Ausbildungsmodule</h2>
+      <div class="grid" style="margin-top: 10px;">
+        <article class="module">
+          <h3>Kauffrau für Dialogmarketing</h3>
+          <p>Allgemeine Infos, Testsimulationen, Originaltest-/Prüfungsblock-Modus und Bewerbungsunterlagen.</p>
+          <p class="tiny">Tablet-Modus verfügbar: obere Bereiche einklappen, Test im Fokus über die gesamte sichtbare Fläche.</p>
+          <div class="actions">
+            <a class="button primary" href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
+            <a class="button secondary" href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+          </div>
+        </article>
+
+        <article class="module">
+          <h3>Sprachfokus: Alternativen (weniger Mathe)</h3>
+          <p>Übersicht zu passenden Ausbildungswegen für starke Sprach- und Kommunikationsfaehigkeiten mit realistischem Mathe-Anteil.</p>
+          <div class="actions">
+            <a class="button primary" href="sprachfokus-alternativen.html">Alternativen ansehen</a>
+          </div>
+        </article>
+
+        <article class="module placeholder">
+          <h3>Weitere Ausbildungsarten</h3>
+          <p>Hier können später weitere Module eingebaut werden, z. B. IT, Büro, Technik oder Handel.</p>
+          <p class="tiny">Schema pro Ausbildungsart: Allgemeine Seite + Bewerbungsseite + optionaler Testpool.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const THEME_KEY = 'vorbereitung-bew-theme-v1';
+      const themeToggleButton = document.getElementById('themeToggleButton');
+      const installAppButton = document.getElementById('installAppButton');
+      const installAppHint = document.getElementById('installAppHint');
+      let deferredInstallPrompt = null;
+
+      function applyTheme(theme) {
+        const normalized = theme === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', normalized);
+        if (themeToggleButton) {
+          themeToggleButton.textContent = normalized === 'dark' ? 'Light' : 'Dark';
+        }
+      }
+
+      const storedTheme = localStorage.getItem(THEME_KEY);
+      applyTheme(storedTheme === 'dark' ? 'dark' : 'light');
+
+      if (!themeToggleButton) return;
+      themeToggleButton.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem(THEME_KEY, next);
+      });
+
+      window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault();
+        deferredInstallPrompt = event;
+        if (installAppButton) {
+          installAppButton.hidden = false;
+        }
+        if (installAppHint) {
+          installAppHint.textContent = 'Tippe auf "App installieren", um die Tablet-App zum Startbildschirm hinzuzufügen.';
+        }
+      });
+
+      if (installAppButton) {
+        installAppButton.addEventListener('click', async (event) => {
+          event.preventDefault();
+          if (!deferredInstallPrompt) {
+            if (installAppHint) {
+              installAppHint.textContent = 'Installieren aktuell nicht verfügbar. Auf iPad/iPhone: Teilen > Zum Home-Bildschirm.';
+            }
+            return;
+          }
+          deferredInstallPrompt.prompt();
+          await deferredInstallPrompt.userChoice;
+          deferredInstallPrompt = null;
+          installAppButton.hidden = true;
+        });
+      }
+
+      window.addEventListener('appinstalled', () => {
+        if (installAppButton) {
+          installAppButton.hidden = true;
+        }
+        if (installAppHint) {
+          installAppHint.textContent = 'App installiert. Du kannst sie jetzt direkt vom Startbildschirm starten.';
+        }
+      });
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').catch(() => {
+            // PWA-Unterstützung ist optional.
+          });
+        });
+      }
+    }());
+  </script>
+</body>
+</html>
+
