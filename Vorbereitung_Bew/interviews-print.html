@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interviewkarten | Druckansicht A4</title>
+  <meta name="description" content="A4-Druckansicht für Interviewkarten in kompakter Form.">
+  <style>
+    :root {
+      --ink: #1f1f1f;
+      --muted: #555;
+      --line: #c9c9c9;
+      --accent: #3f3f3f;
+      --card-bg: #fff;
+      --bg: #f6f6f6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Aptos", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.28;
+    }
+
+    .page {
+      width: min(1000px, 96vw);
+      margin: 18px auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      font-family: "Georgia", "Cambria", serif;
+    }
+
+    h1 { font-size: 1.45rem; }
+    h2 { font-size: 1.1rem; margin-top: 10px; }
+    h3 { font-size: 0.98rem; }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-end;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 6px;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 6px;
+    }
+
+    .print-action {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 0.45rem 0.8rem;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .top-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .one-page-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.34rem 0.62rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+      background: #fff;
+    }
+
+    .one-page-toggle input {
+      width: 15px;
+      height: 15px;
+      margin: 0;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card-bg);
+      padding: 9px;
+      break-inside: avoid;
+    }
+
+    .meta {
+      display: inline-block;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.15rem 0.45rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--accent);
+    }
+
+    .answer {
+      margin: 4px 0 0;
+      font-size: 0.93rem;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .mini {
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 0.89rem;
+      background: #fff;
+      break-inside: avoid;
+    }
+
+    .footer {
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 8px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 760px) {
+      .columns,
+      .mini-grid { grid-template-columns: 1fr; }
+      .top { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 10mm;
+      }
+
+      body {
+        background: #fff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        padding: 0;
+      }
+
+      .page {
+        font-size: 11px;
+      }
+
+      h1 { font-size: 1.18rem; }
+      h2 { font-size: 0.95rem; margin-top: 8px; }
+      h3 { font-size: 0.86rem; }
+
+      .top {
+        border-bottom-width: 1px;
+        gap: 8px;
+        padding-bottom: 4px;
+      }
+
+      .hint {
+        font-size: 0.76rem;
+        margin-top: 3px;
+      }
+
+      .columns {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 5px;
+        margin-top: 6px;
+      }
+
+      .mini-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 5px;
+        margin-top: 6px;
+      }
+
+      .card,
+      .mini {
+        padding: 5px;
+      }
+
+      .meta {
+        font-size: 0.65rem;
+        margin-bottom: 3px;
+        padding: 0.12rem 0.34rem;
+      }
+
+      .answer,
+      .mini {
+        font-size: 0.78rem;
+        line-height: 1.2;
+      }
+
+      .print-action,
+      .hint.print-only-hide,
+      .footer {
+        display: none;
+      }
+
+      body.one-page .long-answer-section {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="top">
+      <div>
+        <h1>Interviewkarten | A4 Druckansicht</h1>
+        <p class="hint">Kurzversion für schnelles Wiederholen vor dem Gespräch.</p>
+      </div>
+      <div class="top-controls">
+        <label class="one-page-toggle" for="onePageToggle">
+          <input id="onePageToggle" type="checkbox">
+          Nur 1 Seite erzwingen
+        </label>
+        <button id="printButton" class="print-action" type="button">Jetzt drucken</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>20 bis 30 Sekunden</h2>
+      <div class="columns">
+        <article class="card">
+          <span class="meta">20 s | Selbstvorstellung</span>
+          <h3>Schneller Start</h3>
+          <p class="answer">Guten Tag, ich freue mich über die Einladung. Ich bin motiviert, lerne schnell und möchte mich in der Ausbildung praktisch entwickeln.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta">30 s | Motivation</span>
+          <h3>Warum diese Ausbildung?</h3>
+          <p class="answer">Ich möchte praxisnah lernen und früh echte Aufgaben übernehmen. Die Kombination aus Lernen und Anwenden passt am besten zu mir.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta">30 s | Unternehmen</span>
+          <h3>Warum dieses Unternehmen?</h3>
+          <p class="answer">Ihr Unternehmen bietet ein professionelles Umfeld und gute Entwicklungschancen. Genau dort möchte ich mich langfristig einbringen.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta">30 s | Notfall</span>
+          <h3>Notfall-Version (5 Sätze)</h3>
+          <p class="answer">Ich freue mich über die Einladung. Ich bin motiviert, lerne schnell und arbeite zuverlässig. Aus Fehlern lerne ich direkt und möchte Ihr Team langfristig unterstützen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>15 Sekunden Mini-Karten</h2>
+      <div class="mini-grid">
+        <article class="mini">Ich arbeite strukturiert, halte Zusagen ein und bleibe unter Druck ruhig.</article>
+        <article class="mini">Ich war oft zu selbstkritisch, priorisiere heute klarer und hole früher Feedback ein.</article>
+        <article class="mini">Bei Stress priorisiere ich zuerst das Wichtigste und arbeite Schritt für Schritt.</article>
+        <article class="mini">Ich arbeite gern im Team, kommuniziere offen und übernehme verlässlich meinen Teil.</article>
+        <article class="mini">Ich stehe zu Fehlern, analysiere die Ursache und verbessere den Ablauf nachhaltig.</article>
+        <article class="mini">Ich möchte fachlich sicher sein und mehr Verantwortung im Team übernehmen.</article>
+        <article class="mini">Sie sollten mich nehmen, weil ich motiviert, lernbereit und zuverlässig bin.</article>
+        <article class="mini">Vielen Dank für die Einladung. Ich möchte Ihr Team langfristig unterstützen.</article>
+      </div>
+    </section>
+
+    <section class="long-answer-section">
+      <h2>60 Sekunden (ausführlich)</h2>
+      <article class="card" style="margin-top: 8px;">
+        <span class="meta">60 s | Selbstvorstellung</span>
+        <h3>Komplette Version</h3>
+        <p class="answer">Ich bringe Zuverlässigkeit, Lernbereitschaft und Teamfähigkeit mit. Theorie wende ich gern direkt in der Praxis an und übernehme Schritt für Schritt Verantwortung. Deshalb passt die Ausbildung sehr gut zu mir.</p>
+      </article>
+    </section>
+
+    <p class="footer">Interviewtraining Vorbereitung_Bew | Stand: April 2026</p>
+  </main>
+
+  <script>
+    (function () {
+      const ONE_PAGE_KEY = 'interview-print-one-page-v1';
+      const onePageToggle = document.getElementById('onePageToggle');
+      const printButton = document.getElementById('printButton');
+
+      if (!onePageToggle || !printButton) {
+        return;
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const forceOnePage = params.get('onepage') === '1';
+      const stored = localStorage.getItem(ONE_PAGE_KEY) === '1';
+      const initialOnePage = forceOnePage || stored;
+
+      onePageToggle.checked = initialOnePage;
+      document.body.classList.toggle('one-page', initialOnePage);
+
+      if (forceOnePage) {
+        localStorage.setItem(ONE_PAGE_KEY, '1');
+      }
+
+      onePageToggle.addEventListener('change', () => {
+        const enabled = onePageToggle.checked;
+        document.body.classList.toggle('one-page', enabled);
+        localStorage.setItem(ONE_PAGE_KEY, enabled ? '1' : '0');
+      });
+
+      printButton.addEventListener('click', () => {
+        window.print();
+      });
+    }());
+  </script>
+</body>
+</html>

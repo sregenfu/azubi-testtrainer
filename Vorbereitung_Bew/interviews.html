@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interviews | Vorbereitung_Bew</title>
+  <meta name="description" content="Interviewtraining mit filterbaren Antwortkarten nach Dauer, Thema und Format.">
+  <style>
+    :root {
+      --bg: #f6efe3;
+      --surface: rgba(255, 250, 242, 0.94);
+      --surface-strong: #fff9ef;
+      --ink: #191919;
+      --muted: #4f4a43;
+      --line: rgba(40, 36, 31, 0.18);
+      --brand: #5a4a3d;
+      --brand-strong: #46392f;
+      --accent: #8f7864;
+      --shadow: 0 24px 60px rgba(34, 43, 56, 0.12);
+      --radius-xl: 24px;
+      --radius-md: 14px;
+      --bg-radial-left: rgba(181, 150, 120, 0.12);
+      --bg-radial-right: rgba(214, 192, 166, 0.14);
+      --bg-gradient-top: #fcf7ef;
+      --bg-gradient-bottom: #efe1cf;
+      --grid-line: rgba(35, 30, 24, 0.05);
+    }
+
+    :root[data-theme='dark'] {
+      --bg: #1a1714;
+      --surface: rgba(30, 26, 22, 0.94);
+      --surface-strong: #25201b;
+      --ink: #efe6dc;
+      --muted: #c2b3a3;
+      --line: rgba(215, 194, 171, 0.22);
+      --brand: #b79d85;
+      --brand-strong: #cfb9a5;
+      --accent: #d8bca3;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+      --bg-radial-left: rgba(180, 143, 111, 0.14);
+      --bg-radial-right: rgba(120, 96, 77, 0.14);
+      --bg-gradient-top: #221d18;
+      --bg-gradient-bottom: #17130f;
+      --grid-line: rgba(239, 230, 220, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+      background:
+        radial-gradient(circle at top left, var(--bg-radial-left), transparent 28%),
+        radial-gradient(circle at top right, var(--bg-radial-right), transparent 24%),
+        linear-gradient(180deg, var(--bg-gradient-top) 0%, var(--bg) 48%, var(--bg-gradient-bottom) 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 88%);
+    }
+
+    h1, h2, h3 { margin: 0; line-height: 1.2; font-family: "Georgia", "Cambria", serif; }
+
+    .theme-toggle-button {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 30;
+      border: 1px solid rgba(90, 74, 61, 0.34);
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      font: inherit;
+      font-weight: 700;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    :root[data-theme='dark'] .theme-toggle-button {
+      background: rgba(16, 25, 36, 0.9);
+      border-color: rgba(207, 185, 165, 0.45);
+    }
+
+    .page {
+      width: min(1160px, 95vw);
+      margin: 24px auto 56px;
+      display: grid;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hub-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: -2px;
+    }
+
+    .hub-nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      background: var(--surface);
+      color: var(--brand-strong);
+      font-weight: 700;
+    }
+
+    .hub-nav a.active,
+    .hub-nav a[aria-current='page'] {
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    :root[data-theme='dark'] .hub-nav a.active,
+    :root[data-theme='dark'] .hub-nav a[aria-current='page'] {
+      color: #1a1714;
+    }
+
+    .hero,
+    .card {
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .hero p,
+    .tiny {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+
+    .quick-actions {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-actions a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.5rem 0.82rem;
+      background: var(--surface-strong);
+      color: var(--brand-strong);
+      font-weight: 700;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .filter {
+      display: grid;
+      gap: 5px;
+    }
+
+    label {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    select {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface-strong);
+      color: var(--ink);
+      padding: 0.54rem 0.62rem;
+      font: inherit;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .qa-card {
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.62);
+      font-size: 0.77rem;
+      padding: 0.2rem 0.5rem;
+      color: var(--brand-strong);
+      font-weight: 700;
+    }
+
+    .question { font-weight: 700; }
+
+    .answer {
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.45;
+      font-size: 0.95rem;
+    }
+
+    .result-line {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px;
+      background: var(--surface-strong);
+    }
+
+    .mini-card p {
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+
+    @media (max-width: 1020px) {
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 740px) {
+      .cards,
+      .mini-grid,
+      .filters { grid-template-columns: 1fr; }
+      .theme-toggle-button { top: 10px; right: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggleButton" class="theme-toggle-button" type="button" aria-label="Theme wechseln">Dark</button>
+  <main class="page">
+    <nav class="hub-nav" aria-label="Projekt-Navigation">
+      <a href="index.html">Start (Hub)</a>
+      <a href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
+      <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a class="active" aria-current="page" href="interviews.html">Interviews</a>
+      <a href="sprachfokus-alternativen.html">Sprachfokus-Alternativen</a>
+    </nav>
+
+    <section class="hero">
+      <span class="eyebrow">Interviewtraining</span>
+      <h1>Sortiert lernen statt alles auf einer Seite</h1>
+      <p>
+        Wähle Dauer, Thema und Antwortformat. So findest du schnell die passende Version: Mini-Karte,
+        Notfall-Text, Sprechversion oder Standard.
+      </p>
+
+      <div class="quick-actions">
+        <a href="interviews-print.html">A4-Druckansicht öffnen</a>
+        <a href="interviews-print.html?onepage=1">A4 Einblatt direkt öffnen</a>
+      </div>
+
+      <div class="filters" aria-label="Interview-Filter">
+        <div class="filter">
+          <label for="durationFilter">Dauer</label>
+          <select id="durationFilter">
+            <option value="all">Alle</option>
+            <option value="15">15 Sekunden</option>
+            <option value="20">20 Sekunden</option>
+            <option value="30">30 Sekunden</option>
+            <option value="60">60 Sekunden</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <label for="topicFilter">Thema</label>
+          <select id="topicFilter">
+            <option value="all">Alle</option>
+            <option value="selbst">Selbstvorstellung</option>
+            <option value="motivation">Motivation</option>
+            <option value="staerken">Stärken/Schwächen</option>
+            <option value="arbeitsweise">Team, Stress, Fehler</option>
+            <option value="ziele">Ziele und Abschluss</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <label for="formatFilter">Format</label>
+          <select id="formatFilter">
+            <option value="all">Alle</option>
+            <option value="mini">Mini-Karte</option>
+            <option value="sprech">Sprechversion</option>
+            <option value="notfall">Notfall</option>
+            <option value="standard">Standard</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <label for="sortFilter">Sortierung</label>
+          <select id="sortFilter">
+            <option value="duration-asc">Dauer aufsteigend</option>
+            <option value="duration-desc">Dauer absteigend</option>
+            <option value="topic">Thema A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <p id="resultLine" class="result-line">0 Karten</p>
+    </section>
+
+    <section class="card">
+      <h2>Antwortkarten</h2>
+      <div id="cardsContainer" class="cards" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <h2>Mini-Karten (1 Satz pro Frage)</h2>
+      <div class="mini-grid" id="miniCards"></div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const THEME_KEY = 'vorbereitung-bew-theme-v1';
+      const themeToggleButton = document.getElementById('themeToggleButton');
+
+      function applyTheme(theme) {
+        const normalized = theme === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', normalized);
+        if (themeToggleButton) {
+          themeToggleButton.textContent = normalized === 'dark' ? 'Light' : 'Dark';
+        }
+      }
+
+      const storedTheme = localStorage.getItem(THEME_KEY);
+      applyTheme(storedTheme === 'dark' ? 'dark' : 'light');
+
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+          const next = current === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+          localStorage.setItem(THEME_KEY, next);
+        });
+      }
+
+      const cards = [
+        {
+          question: 'Selbstvorstellung (schneller Start)',
+          answer: 'Guten Tag, ich freue mich über die Einladung. Ich bin motiviert, lerne schnell und möchte mich in der Ausbildung praktisch entwickeln.',
+          duration: 20,
+          topic: 'selbst',
+          format: 'sprech'
+        },
+        {
+          question: 'Selbstvorstellung (ausführlicher)',
+          answer: 'Ich bringe Zuverlässigkeit, Lernbereitschaft und Teamfähigkeit mit. Mir ist wichtig, Theorie direkt in der Praxis anzuwenden und Schritt für Schritt Verantwortung zu übernehmen.',
+          duration: 60,
+          topic: 'selbst',
+          format: 'standard'
+        },
+        {
+          question: 'Warum diese Ausbildung?',
+          answer: 'Ich möchte praxisnah lernen und früh echte Aufgaben übernehmen. Die Kombination aus Lernen und Anwenden passt am besten zu mir.',
+          duration: 30,
+          topic: 'motivation',
+          format: 'standard'
+        },
+        {
+          question: 'Warum dieses Unternehmen?',
+          answer: 'Ihr Unternehmen bietet ein professionelles Umfeld und gute Entwicklungschancen. Genau dort möchte ich mich langfristig einbringen.',
+          duration: 30,
+          topic: 'motivation',
+          format: 'standard'
+        },
+        {
+          question: 'Meine Stärken',
+          answer: 'Ich arbeite strukturiert, halte Zusagen ein und bleibe unter Druck ruhig.',
+          duration: 15,
+          topic: 'staerken',
+          format: 'mini'
+        },
+        {
+          question: 'Meine Schwäche',
+          answer: 'Ich war oft zu selbstkritisch. Heute priorisiere ich klarer und hole früher Feedback ein.',
+          duration: 20,
+          topic: 'staerken',
+          format: 'sprech'
+        },
+        {
+          question: 'Umgang mit Stress',
+          answer: 'Bei Stress priorisiere ich zuerst das Wichtigste, arbeite Schritt für Schritt und kommuniziere klar.',
+          duration: 20,
+          topic: 'arbeitsweise',
+          format: 'sprech'
+        },
+        {
+          question: 'Teamarbeit',
+          answer: 'Ich arbeite gern im Team, kommuniziere offen und übernehme verlässlich meinen Teil.',
+          duration: 15,
+          topic: 'arbeitsweise',
+          format: 'mini'
+        },
+        {
+          question: 'Umgang mit Fehlern',
+          answer: 'Ich stehe zu Fehlern, analysiere die Ursache und verbessere den Ablauf nachhaltig.',
+          duration: 15,
+          topic: 'arbeitsweise',
+          format: 'mini'
+        },
+        {
+          question: 'Ziele in 3 bis 5 Jahren',
+          answer: 'Ich möchte fachlich sicher sein und mehr Verantwortung im Team übernehmen.',
+          duration: 20,
+          topic: 'ziele',
+          format: 'sprech'
+        },
+        {
+          question: 'Warum sollten wir Sie nehmen?',
+          answer: 'Ich bin motiviert, lernbereit und verlässlich. Ich bringe Einsatz und die richtige Arbeitseinstellung mit.',
+          duration: 20,
+          topic: 'ziele',
+          format: 'sprech'
+        },
+        {
+          question: 'Notfall-Version (5 Sätze)',
+          answer: 'Ich freue mich über die Einladung. Ich bin motiviert und lerne schnell. Ich arbeite zuverlässig und ruhig. Aus Fehlern lerne ich direkt. Ich möchte Ihr Team langfristig unterstützen.',
+          duration: 30,
+          topic: 'selbst',
+          format: 'notfall'
+        },
+        {
+          question: '30-Sekunden Start',
+          answer: 'Vielen Dank für die Einladung. Ich bin motiviert, lerne schnell und möchte diese Ausbildung praxisnah machen. Ich arbeite zuverlässig und gern im Team.',
+          duration: 30,
+          topic: 'selbst',
+          format: 'sprech'
+        }
+      ];
+
+      const miniCards = [
+        'Ich bin motiviert, freundlich und lerne schnell.',
+        'Ich möchte die Ausbildung machen, weil ich praktisch lernen will.',
+        'Ihr Unternehmen passt zu mir, weil ich mich hier gut entwickeln kann.',
+        'Meine Stärke ist: Ich arbeite zuverlässig und ordentlich.',
+        'Meine Schwäche ist: Ich bin manchmal zu streng mit mir, aber ich arbeite daran.',
+        'Bei Stress bleibe ich ruhig und arbeite Schritt für Schritt.',
+        'Ich arbeite gern im Team und helfe anderen.',
+        'Wenn ich einen Fehler mache, sage ich es offen und lerne daraus.',
+        'In 3 bis 5 Jahren möchte ich sicher im Beruf sein und mehr Verantwortung haben.',
+        'Sie sollten mich nehmen, weil ich motiviert bin und gerne lerne.'
+      ];
+
+      const durationFilter = document.getElementById('durationFilter');
+      const topicFilter = document.getElementById('topicFilter');
+      const formatFilter = document.getElementById('formatFilter');
+      const sortFilter = document.getElementById('sortFilter');
+      const cardsContainer = document.getElementById('cardsContainer');
+      const resultLine = document.getElementById('resultLine');
+      const miniCardsContainer = document.getElementById('miniCards');
+
+      function renderMiniCards() {
+        miniCardsContainer.innerHTML = '';
+        miniCards.forEach((text, index) => {
+          const card = document.createElement('article');
+          card.className = 'mini-card';
+          card.innerHTML = '<h3>Mini-Karte ' + (index + 1) + '</h3><p>' + text + '</p>';
+          miniCardsContainer.appendChild(card);
+        });
+      }
+
+      function sortCards(list, mode) {
+        const copy = [...list];
+        if (mode === 'duration-desc') {
+          copy.sort((a, b) => b.duration - a.duration);
+          return copy;
+        }
+        if (mode === 'topic') {
+          copy.sort((a, b) => a.topic.localeCompare(b.topic, 'de'));
+          return copy;
+        }
+        copy.sort((a, b) => a.duration - b.duration);
+        return copy;
+      }
+
+      function renderCards() {
+        const selectedDuration = durationFilter.value;
+        const selectedTopic = topicFilter.value;
+        const selectedFormat = formatFilter.value;
+        const selectedSort = sortFilter.value;
+
+        let filtered = cards.filter((item) => {
+          const matchDuration = selectedDuration === 'all' || String(item.duration) === selectedDuration;
+          const matchTopic = selectedTopic === 'all' || item.topic === selectedTopic;
+          const matchFormat = selectedFormat === 'all' || item.format === selectedFormat;
+          return matchDuration && matchTopic && matchFormat;
+        });
+
+        filtered = sortCards(filtered, selectedSort);
+
+        cardsContainer.innerHTML = '';
+        filtered.forEach((item) => {
+          const card = document.createElement('article');
+          card.className = 'qa-card';
+          card.innerHTML =
+            '<div class="meta">' +
+              '<span class="tag">' + item.duration + ' s</span>' +
+              '<span class="tag">' + item.topic + '</span>' +
+              '<span class="tag">' + item.format + '</span>' +
+            '</div>' +
+            '<div class="question">' + item.question + '</div>' +
+            '<p class="answer">' + item.answer + '</p>';
+          cardsContainer.appendChild(card);
+        });
+
+        resultLine.textContent = filtered.length + ' Karten sichtbar';
+      }
+
+      [durationFilter, topicFilter, formatFilter, sortFilter].forEach((control) => {
+        control.addEventListener('change', renderCards);
+      });
+
+      renderMiniCards();
+      renderCards();
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').catch(() => {
+            // Optional.
+          });
+        });
+      }
+    }());
+  </script>
+</body>
+</html>
