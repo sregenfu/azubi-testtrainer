@@ -1553,6 +1553,22 @@
         expandLayoutButton.addEventListener('click', () => applyFocusMode(false));
       }
 
+      const userAgent = navigator.userAgent || '';
+      const isIOS = /iPad|iPhone|iPod/.test(userAgent)
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true;
+
+      if (isIOS && !isStandalone) {
+        if (installAppButton) {
+          installAppButton.hidden = false;
+          installAppButton.textContent = 'Zum Home-Bildschirm';
+        }
+        if (installAppHint) {
+          installAppHint.textContent = 'Auf iPad/iPhone erscheint kein automatischer Install-Dialog. Nutze Teilen > Zum Home-Bildschirm.';
+        }
+      }
+
       window.addEventListener('beforeinstallprompt', (event) => {
         event.preventDefault();
         deferredInstallPrompt = event;
@@ -1568,7 +1584,9 @@
         installAppButton.addEventListener('click', async () => {
           if (!deferredInstallPrompt) {
             if (installAppHint) {
-              installAppHint.textContent = 'Installieren aktuell nicht verfügbar. Auf iPad/iPhone: Teilen > Zum Home-Bildschirm.';
+              installAppHint.textContent = isIOS
+                ? 'Auf iPad/iPhone: Teilen > Zum Home-Bildschirm.'
+                : 'Automatisches Installieren ist in diesem Browser gerade nicht verfügbar.';
             }
             return;
           }
