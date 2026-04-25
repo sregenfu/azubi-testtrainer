@@ -51,6 +51,32 @@
       min-height: 100vh;
     }
 
+    .theme-toggle-button {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 30;
+      border: 1px solid rgba(90, 74, 61, 0.34);
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      font: inherit;
+      font-weight: 700;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+
+    :root[data-theme='dark'] .theme-toggle-button {
+      background: rgba(30, 26, 22, 0.9);
+      border-color: rgba(207, 185, 165, 0.45);
+    }
+
+    .theme-toggle-button:hover {
+      transform: translateY(-1px);
+    }
+
     header {
       max-width: 1200px;
       margin: 0 auto 40px;
@@ -349,9 +375,18 @@
       color: var(--muted);
       font-size: 14px;
     }
+
+    @media (max-width: 767px) {
+      .theme-toggle-button {
+        top: 10px;
+        right: 10px;
+      }
+    }
   </style>
 </head>
 <body>
+
+<button id="themeToggleButton" class="theme-toggle-button" type="button" aria-label="Theme wechseln">Dark</button>
 
 <nav class="hub-nav" aria-label="Projekt-Navigation">
   <a href="index.html">Start (Hub)</a>
@@ -1159,6 +1194,29 @@
 </footer>
 
 <script>
+  const THEME_KEY = 'vorbereitung-bew-theme-v1';
+  const themeToggleButton = document.getElementById('themeToggleButton');
+
+  function applyTheme(theme) {
+    const normalized = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', normalized);
+    if (themeToggleButton) {
+      themeToggleButton.textContent = normalized === 'dark' ? 'Light' : 'Dark';
+    }
+  }
+
+  const storedTheme = localStorage.getItem(THEME_KEY);
+  applyTheme(storedTheme === 'dark' ? 'dark' : 'light');
+
+  if (themeToggleButton) {
+    themeToggleButton.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem(THEME_KEY, next);
+    });
+  }
+
   // Tab-Funktionalität
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
