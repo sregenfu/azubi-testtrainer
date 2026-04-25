@@ -413,6 +413,18 @@
       font-size: 14px;
     }
 
+    .version-badge {
+      display: inline-block;
+      margin-top: 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.28rem 0.62rem;
+      background: var(--surface-strong);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
     @media (max-width: 767px) {
       .theme-toggle-button {
         top: 10px;
@@ -1228,11 +1240,14 @@
 <footer>
   <p>💡 Tipp: Klick jede Karte an, um die Lösung & Rechenschritte zu sehen. Mehrmals üben!</p>
   <p>Stand: April 2026</p>
+  <p id="versionInfo" class="version-badge">Version wird geladen...</p>
 </footer>
 
 <script>
   const THEME_KEY = 'vorbereitung-bew-theme-v1';
+  const FORMEL_VERSION = 'v2026.04.25-2';
   const themeToggleButton = document.getElementById('themeToggleButton');
+  const versionInfo = document.getElementById('versionInfo');
 
   function applyTheme(theme) {
     const normalized = theme === 'dark' ? 'dark' : 'light';
@@ -1252,6 +1267,14 @@
       applyTheme(next);
       localStorage.setItem(THEME_KEY, next);
     });
+  }
+
+  if (versionInfo) {
+    const modified = document.lastModified ? new Date(document.lastModified) : null;
+    const modifiedLabel = modified && !Number.isNaN(modified.getTime())
+      ? modified.toLocaleString('de-DE')
+      : 'unbekannt';
+    versionInfo.textContent = `Version ${FORMEL_VERSION} | Datei: ${modifiedLabel}`;
   }
 
   // Tab-Funktionalität
