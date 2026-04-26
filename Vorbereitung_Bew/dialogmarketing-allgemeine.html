@@ -116,7 +116,7 @@
     }
 
     .page {
-      width: min(1240px, 94vw);
+      width: min(1160px, 94vw);
       margin: 24px auto 64px;
       display: grid;
       gap: 16px;
@@ -138,7 +138,8 @@
       padding: 0.45rem 0.8rem;
       background: var(--surface);
       color: var(--brand-strong);
-      font-weight: 700;
+      font-weight: 500;
+      font-size: 14px;
       transition: transform 120ms ease, background-color 140ms ease, color 140ms ease, border-color 140ms ease;
     }
 
@@ -147,6 +148,16 @@
       background: var(--brand);
       color: #fff;
       border-color: transparent;
+    }
+
+    @media (min-width: 1024px) {
+      .hub-nav {
+        gap: 6px;
+      }
+
+      .hub-nav a {
+        padding: 0.4rem 0.68rem;
+      }
     }
 
     .hub-nav a.active,
@@ -501,9 +512,11 @@
       <a href="index.html">Start (Hub)</a>
       <a class="active" aria-current="page" href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
       <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a href="industriekauffrau-allgemeine.html">Industriekauffrau</a>
+      <a href="bewerbung-industriekauffrau.html">Bewerbung Industriekauffrau</a>
       <a href="interviews.html">Interviews</a>
       <a href="formelsammlung.html">Formelsammlung</a>
-      <a href="sprachfokus-alternativen.html">Sprachfokus-Alternativen</a>
+      <a href="sprachfokus-alternativen.html">Alternativen</a>
     </nav>
 
     <section class="hero">
@@ -541,7 +554,7 @@
           </section>
           <section class="topic">
             <h3>Wie könnte ein Einstufungstest aussehen?</h3>
-            <p>Mix aus Sprachgefuehl, Verständnis, Mathe-Basics, Logik und Zeitdruck-Aufgaben. Niveau: mittlere Basis ohne Spezialmathe (keine Stochastik).</p>
+            <p>Mix aus Sprachgefühl, Verständnis, Mathe-Basics, Logik und Zeitdruck-Aufgaben. Niveau: mittlere Basis ohne Spezialmathe (keine Stochastik).</p>
           </section>
           <section class="topic">
             <h3>Was kann sie nach der Ausbildung machen?</h3>
@@ -623,6 +636,17 @@
             <option value="bank_cases">Teil 11 Profil C - Office-Management Cases</option>
             <option value="faz_office">Teil 12 Profil D - Kaufmann für Büromanagement</option>
             <option value="faz_media">Teil 13 Profil D - Medienkaufmann Digital und Print</option>
+            <optgroup label="─── Industriekauffrau ───" disabled></optgroup>
+            <option value="ik_mathe_leicht">IK Mathe – leicht</option>
+            <option value="ik_mathe_mittel">IK Mathe – mittel</option>
+            <option value="ik_mathe_schwer">IK Mathe – schwer</option>
+            <option value="ik_mathe_sehrschwer">IK Mathe – sehr schwer</option>
+            <option value="ik_deutsch_leicht">IK Deutsch – leicht</option>
+            <option value="ik_deutsch_mittel">IK Deutsch – mittel</option>
+            <option value="ik_deutsch_schwer">IK Deutsch – schwer</option>
+            <option value="ik_englisch_leicht">IK Englisch – leicht</option>
+            <option value="ik_englisch_mittel">IK Englisch – mittel</option>
+            <option value="ik_englisch_schwer">IK Englisch – schwer</option>
             <option value="gesamt">Kompletttest (Deutsch + Mathe + Englisch + Marketing + Office + Medien)</option>
           </select>
         </div>
@@ -946,7 +970,107 @@
         { id: 'fm5', part: 'faz_media', q: 'Was gehört in ein gutes Angebotsgespräch?', options: ['Bedarf klären, Nutzen erklären, nächster Schritt definieren', 'Nur Preis nennen', 'Ohne Vorbereitung starten'], a: 0, why: 'Strukturierte Beratung erhöht Abschlusschance.' },
         { id: 'fm6', part: 'faz_media', q: 'Bei sinkender Kampagnenleistung ist der beste erste Schritt?', options: ['KPI prüfen und Maßnahmen ableiten', 'Sofort alles stoppen ohne Analyse', 'Nur auf Bauchgefühl setzen'], a: 0, why: 'Datenbasierte Optimierung ist zentral.' },
         { id: 'fm7', part: 'faz_media', q: 'Welche Aufgabe passt zu Print-Vermarktung?', options: ['Anzeigenformate und Platzierungen planen', 'App-Code refactoren', 'Netzwerkpatches einspielen'], a: 0, why: 'Print erfordert Format- und Platzierungslogik.' },
-        { id: 'fm8', part: 'faz_media', q: 'Was ist in Kundenkommunikation besonders wichtig?', options: ['Verbindlichkeit, klare Sprache, saubere Nachverfolgung', 'Unklare Zusagen', 'Nur spontane Antworten'], a: 0, why: 'Professionelle Kommunikation schafft Vertrauen.' }
+        { id: 'fm8', part: 'faz_media', q: 'Was ist in Kundenkommunikation besonders wichtig?', options: ['Verbindlichkeit, klare Sprache, saubere Nachverfolgung', 'Unklare Zusagen', 'Nur spontane Antworten'], a: 0, why: 'Professionelle Kommunikation schafft Vertrauen.' },
+
+        // --- IK Mathe leicht ---
+        { id: 'ikml1', part: 'ik_mathe_leicht', q: '15 % von 200 sind …', options: ['20', '30', '40'], a: 1, why: '0,15 × 200 = 30.' },
+        { id: 'ikml2', part: 'ik_mathe_leicht', q: '3 Hefte kosten 6 €. 1 Heft kostet …', options: ['1 €', '2 €', '3 €'], a: 1, why: '6 / 3 = 2 €.' },
+        { id: 'ikml3', part: 'ik_mathe_leicht', q: 'Ein Preis sinkt von 50 auf 45 €. Prozentuale Senkung?', options: ['10 %', '5 %', '15 %'], a: 0, why: '5 / 50 = 10 %.' },
+        { id: 'ikml4', part: 'ik_mathe_leicht', q: '400 € mit 5 % Rabatt ergibt …', options: ['380 €', '390 €', '395 €'], a: 0, why: '5 % von 400 = 20 €; 400 – 20 = 380 €.' },
+        { id: 'ikml5', part: 'ik_mathe_leicht', q: '2,5 Stunden sind … Minuten', options: ['120', '150', '180'], a: 1, why: '2,5 × 60 = 150.' },
+        { id: 'ikml6', part: 'ik_mathe_leicht', q: '25 % entsprechen als Dezimalzahl …', options: ['0,025', '0,25', '2,5'], a: 1, why: '25 / 100 = 0,25.' },
+        { id: 'ikml7', part: 'ik_mathe_leicht', q: 'Dreisatz: 5 kg kosten 20 €. 2 kg kosten …', options: ['6 €', '8 €', '10 €'], a: 1, why: '1 kg = 4 €; 2 kg = 8 €.' },
+        { id: 'ikml8', part: 'ik_mathe_leicht', q: '48 / 6 = …', options: ['6', '7', '8'], a: 2, why: '48 / 6 = 8.' },
+
+        // --- IK Mathe mittel ---
+        { id: 'ikmm1', part: 'ik_mathe_mittel', q: 'Netto 250 €, MwSt 19 %. Brutto?', options: ['287,50 €', '297,50 €', '307,50 €'], a: 1, why: '250 × 1,19 = 297,50 €.' },
+        { id: 'ikmm2', part: 'ik_mathe_mittel', q: 'Artikel erst –10 %, dann +10 %. Gesamtergebnis?', options: ['gleich wie vorher', '–1 %', '+1 %'], a: 1, why: '0,9 × 1,1 = 0,99 → –1 %.' },
+        { id: 'ikmm3', part: 'ik_mathe_mittel', q: '4 Mitarbeitende brauchen 12 Tage. 6 brauchen?', options: ['8 Tage', '10 Tage', '18 Tage'], a: 0, why: 'Antiproportional: 4×12 / 6 = 8 Tage.' },
+        { id: 'ikmm4', part: 'ik_mathe_mittel', q: 'Skonto 2 % auf 1.200 €. Zahlbetrag?', options: ['1.176 €', '1.180 €', '1.188 €'], a: 0, why: '2 % von 1.200 = 24 €; 1.200 – 24 = 1.176 €.' },
+        { id: 'ikmm5', part: 'ik_mathe_mittel', q: 'Deckungsbeitrag bei VK 80 € und var. Kosten 52 €?', options: ['22 €', '28 €', '32 €'], a: 1, why: '80 – 52 = 28 €.' },
+        { id: 'ikmm6', part: 'ik_mathe_mittel', q: '7,5 % von 640 sind …', options: ['42', '48', '52'], a: 1, why: '0,075 × 640 = 48.' },
+        { id: 'ikmm7', part: 'ik_mathe_mittel', q: 'Preis steigt von 120 auf 150 €. Steigerung?', options: ['20 %', '25 %', '30 %'], a: 1, why: '30 / 120 = 25 %.' },
+        { id: 'ikmm8', part: 'ik_mathe_mittel', q: '1,2 Mio. sind wie viele Tausend?', options: ['12', '120', '1.200'], a: 2, why: '1.200.000 / 1.000 = 1.200.' },
+
+        // --- IK Mathe schwer ---
+        { id: 'ikms1', part: 'ik_mathe_schwer', q: 'Kapital 5.000 €, 4 % p.a., 2 Jahre Zinseszins. Endwert?', options: ['5.400 €', '5.408 €', '5.420 €'], a: 1, why: '5.000 × 1,04² = 5.408 €.' },
+        { id: 'ikms2', part: 'ik_mathe_schwer', q: 'Bezugspreis 84 €, Handlungskosten 12 %, Gewinn 18 % auf SK. VK?', options: ['110,21 €', '112,23 €', '115,04 €'], a: 0, why: 'SK = 84 × 1,12 = 94,08 €; VK = 94,08 × 1,18 ≈ 110,21 €.' },
+        { id: 'ikms3', part: 'ik_mathe_schwer', q: 'Rabatt 3 %, danach Skonto 2 %. Gesamtnachlass?', options: ['5,0 %', '4,94 %', '4,5 %'], a: 1, why: '1 – (0,97 × 0,98) = 0,0494 ≈ 4,94 %.' },
+        { id: 'ikms4', part: 'ik_mathe_schwer', q: 'Fixkosten 20.000 €, Stückdeckungsbeitrag 25 €. Break-even?', options: ['600', '700', '800'], a: 2, why: '20.000 / 25 = 800 Stück.' },
+        { id: 'ikms5', part: 'ik_mathe_schwer', q: 'y = 4x + 3. y bei x = 7?', options: ['28', '31', '35'], a: 1, why: '4×7 + 3 = 31.' },
+        { id: 'ikms6', part: 'ik_mathe_schwer', q: 'Forderung sinkt von 9.600 auf 8.160 €. Minderungsquote?', options: ['12 %', '15 %', '18 %'], a: 1, why: '1.440 / 9.600 = 15 %.' },
+        { id: 'ikms7', part: 'ik_mathe_schwer', q: 'Materialkosten +8 %, Menge –5 %. Gesamtwertveränderung?', options: ['+2,6 %', '+3,0 %', '–2,6 %'], a: 0, why: '1,08 × 0,95 = 1,026 → +2,6 %.' },
+        { id: 'ikms8', part: 'ik_mathe_schwer', q: 'Gewichteter Mittelwert: 200 Stk à 10 €, 300 Stk à 15 €?', options: ['12,00 €', '12,50 €', '13,00 €'], a: 2, why: '(200×10 + 300×15) / 500 = 6.500 / 500 = 13,00 €.' },
+
+        // --- IK Mathe sehr schwer ---
+        { id: 'ikmss1', part: 'ik_mathe_sehrschwer', q: 'Materialeinzel 180 €, Fertigungseinzel 120 €, Gemeinkostenzuschlag 75 % auf EK. Selbstkosten?', options: ['450 €', '525 €', '540 €'], a: 1, why: 'EK = 300 €; Gemeinkosten = 225 €; Selbstkosten = 525 €.' },
+        { id: 'ikmss2', part: 'ik_mathe_sehrschwer', q: 'Bruttobetrag 1.190 € inkl. 19 % MwSt. Nettobetrag?', options: ['975 €', '1.000 €', '1.001 €'], a: 1, why: '1.190 / 1,19 = 1.000 €.' },
+        { id: 'ikmss3', part: 'ik_mathe_sehrschwer', q: 'Fixkosten 48.000 €/Monat, var. Kosten 22 €/Stk, VK 38 €. Break-even?', options: ['2.400', '3.000', '2.600'], a: 1, why: 'DB = 16 €; BEP = 48.000 / 16 = 3.000.' },
+        { id: 'ikmss4', part: 'ik_mathe_sehrschwer', q: 'Lager: 100 Stk à 10 €, 400 Stk à 15 €. Gew. Durchschnitts-EK?', options: ['13,00 €', '14,00 €', '12,50 €'], a: 1, why: '(100×10 + 400×15) / 500 = 14,00 €.' },
+        { id: 'ikmss5', part: 'ik_mathe_sehrschwer', q: 'Investition 80.000 €, jährl. Rückfluss 20.000 €. Amortisationszeit?', options: ['3 Jahre', '4 Jahre', '5 Jahre'], a: 1, why: '80.000 / 20.000 = 4 Jahre.' },
+        { id: 'ikmss6', part: 'ik_mathe_sehrschwer', q: 'Preis –15 %, dann +10 %, dann –5 %. Gesamtveränderung?', options: ['–11,2 %', '–10,0 %', '–6,0 %'], a: 0, why: '0,85 × 1,10 × 0,95 = 0,888 → ca. –11,2 %.' },
+        { id: 'ikmss7', part: 'ik_mathe_sehrschwer', q: 'EK 400 €, Handlungskosten 20 %, Gewinnzuschlag 15 % auf SK. VK netto?', options: ['536 €', '552 €', '568 €'], a: 1, why: 'SK = 480 €; VK = 480 × 1,15 = 552 €.' },
+        { id: 'ikmss8', part: 'ik_mathe_sehrschwer', q: 'Listenpreis 1.000 €, Rabatt 10 %, Skonto 2 %, MwSt 19 %. Zahlbetrag brutto?', options: ['1.039,58 €', '1.049,58 €', '1.059,58 €'], a: 1, why: '900 × 0,98 = 882 €; 882 × 1,19 = 1.049,58 €.' },
+
+        // --- IK Deutsch leicht ---
+        { id: 'ikdl1', part: 'ik_deutsch_leicht', q: 'Welche Schreibweise ist korrekt?', options: ['im Vorraus', 'im Voraus', 'im Vorhaus'], a: 1, why: 'Korrekt ist im Voraus.' },
+        { id: 'ikdl2', part: 'ik_deutsch_leicht', q: 'Welcher Satz ist serviceorientiert?', options: ['Lesen Sie selbst nach.', 'Ich prüfe das gern für Sie.', 'Das ist falsch.'], a: 1, why: 'Positive, lösungsorientierte Formulierung.' },
+        { id: 'ikdl3', part: 'ik_deutsch_leicht', q: 'Was ist korrekt?', options: ['Wir haben Ihnen geschrieben.', 'Wir haben ihnen geschrieben.', 'Wir habe Ihnen geschrieben.'], a: 0, why: 'Höflichkeitsform Ihnen wird großgeschrieben.' },
+        { id: 'ikdl4', part: 'ik_deutsch_leicht', q: 'Welcher Betreff ist professionell?', options: ['Wichtig!!!', 'Rückfrage zur Bestellung 4711', 'Hallo'], a: 1, why: 'Klar, konkret und nachvollziehbar.' },
+        { id: 'ikdl5', part: 'ik_deutsch_leicht', q: 'Welcher Satz ist knapp und klar?', options: ['Ich werde eventuell schauen.', 'Ich melde mich heute bis 15 Uhr.', 'Vielleicht später.'], a: 1, why: 'Klare Zusage mit Zeitangabe.' },
+        { id: 'ikdl6', part: 'ik_deutsch_leicht', q: 'Was passt in eine professionelle E-Mail?', options: ['Anrede, Anliegen, Abschluss', 'Nur ein kurzer Satz', 'Nur Anhang ohne Text'], a: 0, why: 'Standardstruktur für Geschäftskommunikation.' },
+        { id: 'ikdl7', part: 'ik_deutsch_leicht', q: 'Welches Wort ist richtig geschrieben?', options: ['Rechnungsprüfung', 'Rechnungsprueffung', 'Rechnungsprufung'], a: 0, why: 'Korrekte Rechtschreibung.' },
+        { id: 'ikdl8', part: 'ik_deutsch_leicht', q: 'Welcher Ausdruck ist sachlich?', options: ['Das ist Quatsch.', 'Hier liegt vermutlich ein Erfassungsfehler vor.', 'Keine Ahnung.'], a: 1, why: 'Sachlich und lösungsorientiert.' },
+
+        // --- IK Deutsch mittel ---
+        { id: 'ikdm1', part: 'ik_deutsch_mittel', q: 'Welche Formulierung ist am verbindlichsten?', options: ['Ich melde mich später.', 'Ich sende Ihnen die korrigierte Datei bis 14:30 Uhr.', 'Das dauert.'], a: 1, why: 'Präzise und verbindlich.' },
+        { id: 'ikdm2', part: 'ik_deutsch_mittel', q: 'Welcher Satz verwendet das Komma korrekt?', options: ['Nachdem ich die Daten geprüft habe sende ich den Bericht.', 'Nachdem ich die Daten geprüft habe, sende ich den Bericht.', 'Nachdem, ich die Daten geprüft habe sende ich den Bericht.'], a: 1, why: 'Nebensatz wird mit Komma abgetrennt.' },
+        { id: 'ikdm3', part: 'ik_deutsch_mittel', q: 'Welcher Ausdruck passt zu Beschwerdemanagement?', options: ['Sie irren sich.', 'Ich verstehe Ihren Hinweis und prüfe den Vorgang sofort.', 'Das ist Ihr Problem.'], a: 1, why: 'Empathie plus konkrete Aktion.' },
+        { id: 'ikdm4', part: 'ik_deutsch_mittel', q: 'Was verbessert Verständlichkeit im Bericht?', options: ['Fachwörter ohne Erklärung', 'Klare Überschriften und kurze Sätze', 'Lange Schachtelsätze'], a: 1, why: 'Struktur und Klarheit sind zentral.' },
+        { id: 'ikdm5', part: 'ik_deutsch_mittel', q: 'Welche Schreibweise ist richtig?', options: ['selbstständig', 'selbstaendig', 'selbst standig'], a: 0, why: 'Korrekt: selbstständig.' },
+        { id: 'ikdm6', part: 'ik_deutsch_mittel', q: 'Welche Schlussformel ist im Geschäftsbrief korrekt?', options: ['Ciao', 'Mit freundlichen Grüßen', 'Bis dann'], a: 1, why: 'Standard im Geschäftskontext.' },
+        { id: 'ikdm7', part: 'ik_deutsch_mittel', q: 'Welche Version ist sprachlich korrekt (Satzanfang)?', options: ['bezugnehmend auf unser Gespräch', 'Bezug nehmend auf unser Gespräch', 'Bezugnehmend auf unser Gespräch'], a: 2, why: 'Am Satzanfang groß: Bezugnehmend.' },
+        { id: 'ikdm8', part: 'ik_deutsch_mittel', q: 'Welche Einleitung ist für ein Protokoll passend?', options: ['Hiermit wird festgehalten, dass …', 'Also, wir haben geredet …', 'Naja, war ganz gut.'], a: 0, why: 'Sachlich-formeller Stil.' },
+
+        // --- IK Deutsch schwer ---
+        { id: 'ikds1', part: 'ik_deutsch_schwer', q: 'Welche Variante ist stilistisch am besten?', options: ['Wir bitten um zeitnahe Rückmeldung bis spätestens 12:00 Uhr.', 'Bitte schnell rückmelden.', 'Melden Sie sich irgendwie heute.'], a: 0, why: 'Präzise, verbindlich und professionell.' },
+        { id: 'ikds2', part: 'ik_deutsch_schwer', q: 'Was ist eine starke Argumentationsstruktur?', options: ['Behauptung ohne Beleg', 'These – Beleg – Schlussfolgerung', 'Nur Meinung'], a: 1, why: 'Nachvollziehbare Logik für Fachtexte.' },
+        { id: 'ikds3', part: 'ik_deutsch_schwer', q: 'Grammatikalisch korrekt?', options: ['Weder Einkauf noch Fachabteilungen war informiert.', 'Weder Einkauf noch Fachabteilungen waren informiert.', 'Weder Einkauf oder Fachabteilungen waren informiert.'], a: 1, why: 'Verb richtet sich nach dem nächsten Subjekt (Fachabteilungen = Plural).' },
+        { id: 'ikds4', part: 'ik_deutsch_schwer', q: 'Welche Formulierung reduziert Missverständnisse?', options: ['Das könnte bald erledigt werden.', 'Die Freigabe erfolgt am Dienstag, 10:00 Uhr.', 'Vielleicht morgen.'], a: 1, why: 'Konkrete Zeitangabe statt unklarer Aussage.' },
+        { id: 'ikds5', part: 'ik_deutsch_schwer', q: 'Welche Form ist im Bericht korrekt?', options: ['Die Kennzahlen wurden analysiert und anschließend bewertet.', 'Die Kennzahlen wurden analysiert und anschliesend bewertet.', 'Die Kennzahlen wurden analysirt und bewertet.'], a: 0, why: 'Rechtschreibung und Stil korrekt.' },
+        { id: 'ikds6', part: 'ik_deutsch_schwer', q: 'Was gehört in eine sachliche Problemlösung?', options: ['Schuldzuweisung', 'Ist-Stand, Ursache, Maßnahme, Termin', 'Nur ein Fazit'], a: 1, why: 'Vollständige Lösungsstruktur.' },
+        { id: 'ikds7', part: 'ik_deutsch_schwer', q: 'Welche Umformulierung ist am präzisesten?', options: ['Wir konnten die Frist nicht halten, weil Probleme waren.', 'Aufgrund eines Systemausfalls vom 24.04. konnte die Frist nicht eingehalten werden.', 'Es hat nicht geklappt.'], a: 1, why: 'Klarer Grund, Datum, sachliche Sprache.' },
+        { id: 'ikds8', part: 'ik_deutsch_schwer', q: 'Welche Variante ist im Geschäftsbrief korrekt?', options: ['beigefügt übersenden wir Ihnen …', 'Beigefügt übersenden wir Ihnen …', 'beigefugt ubersenden wir Ihnen …'], a: 1, why: 'Satzanfang groß, korrektes Wortbild.' },
+
+        // --- IK Englisch leicht ---
+        { id: 'ikel1', part: 'ik_englisch_leicht', q: 'Best greeting in a business email?', options: ['Hey there', 'Dear Ms Smith,', 'Yo'], a: 1, why: 'Formal and professional.' },
+        { id: 'ikel2', part: 'ik_englisch_leicht', q: 'Fill in: We ___ your request now.', options: ['check', 'checks', 'checking'], a: 0, why: 'With "we", base form is used.' },
+        { id: 'ikel3', part: 'ik_englisch_leicht', q: 'Polite question?', options: ['What do you want?', 'Could you please confirm the date?', 'Tell me now.'], a: 1, why: 'Polite and customer-focused.' },
+        { id: 'ikel4', part: 'ik_englisch_leicht', q: 'Meaning of "invoice"?', options: ['delivery note', 'bill', 'discount'], a: 1, why: 'Invoice = bill.' },
+        { id: 'ikel5', part: 'ik_englisch_leicht', q: 'Professional closing?', options: ['Kind regards,', 'Bye bye', 'See ya'], a: 0, why: 'Standard professional email closing.' },
+        { id: 'ikel6', part: 'ik_englisch_leicht', q: 'Translate: Lieferung', options: ['delivery', 'salary', 'invoice'], a: 0, why: 'Lieferung = delivery.' },
+        { id: 'ikel7', part: 'ik_englisch_leicht', q: 'Correct sentence?', options: ['I am responsible for orders.', 'I am responsible of orders.', 'I responsible for orders.'], a: 0, why: 'Correct collocation: responsible for.' },
+        { id: 'ikel8', part: 'ik_englisch_leicht', q: 'Correct phrase?', options: ['We will reply within 24 hours.', 'We reply in since 24 hours.', 'We are reply 24 hours.'], a: 0, why: 'Natural and correct structure.' },
+
+        // --- IK Englisch mittel ---
+        { id: 'ikem1', part: 'ik_englisch_mittel', q: 'Best complaint response?', options: ['That is your fault.', 'I understand your concern and will investigate immediately.', 'No comment.'], a: 1, why: 'Empathy plus ownership.' },
+        { id: 'ikem2', part: 'ik_englisch_mittel', q: 'Correct conditional:', options: ['If you send the file, we will process it today.', 'If you would send the file, we process it.', 'If you sent the file, we will process it now.'], a: 0, why: 'First conditional: present tense + will.' },
+        { id: 'ikem3', part: 'ik_englisch_mittel', q: 'Fill in: Your order has been ___ to logistics.', options: ['forwarded', 'forward', 'forwarding'], a: 0, why: 'Passive requires past participle.' },
+        { id: 'ikem4', part: 'ik_englisch_mittel', q: 'Most concise sentence?', options: ['At this point in time we are currently reviewing your case.', 'We are reviewing your case.', 'For now we are in process of checking now.'], a: 1, why: 'Concise business writing is preferred.' },
+        { id: 'ikem5', part: 'ik_englisch_mittel', q: 'Correct collocation?', options: ['make a complaint', 'do a complaint', 'put a complaint'], a: 0, why: 'Standard: make a complaint.' },
+        { id: 'ikem6', part: 'ik_englisch_mittel', q: 'Best expectation-setting?', options: ['Maybe later.', 'I will update you by 3 p.m. today.', 'No idea.'], a: 1, why: 'Clear timing builds trust.' },
+        { id: 'ikem7', part: 'ik_englisch_mittel', q: 'Translate: Zahlungsziel', options: ['payment term', 'payment room', 'pay target'], a: 0, why: 'Correct term is payment term.' },
+        { id: 'ikem8', part: 'ik_englisch_mittel', q: 'Professional rewrite of "We do not find your order."?', options: ['We cannot locate your order in our system at the moment.', 'Order not there.', 'We do not find your order.'], a: 0, why: 'Precise and polite.' },
+
+        // --- IK Englisch schwer ---
+        { id: 'ikes1', part: 'ik_englisch_schwer', q: 'Formal sentence?', options: ['Please find attached the revised quotation for your review.', 'See attached quote.', 'Quote attached okay.'], a: 0, why: 'Formal and complete business style.' },
+        { id: 'ikes2', part: 'ik_englisch_schwer', q: 'Reported speech: She said, "I will send the contract tomorrow."', options: ['She said she will send the contract tomorrow.', 'She said she would send the contract the next day.', 'She said she sends the contract tomorrow.'], a: 1, why: 'Backshift will → would; tomorrow → the next day.' },
+        { id: 'ikes3', part: 'ik_englisch_schwer', q: 'Strongest escalation phrase?', options: ['I will maybe pass this on.', 'I am escalating this to our procurement lead and will update you by 4 p.m.', 'I cannot help.'], a: 1, why: 'Clear escalation with ownership and timeline.' },
+        { id: 'ikes4', part: 'ik_englisch_schwer', q: 'Grammatically correct?', options: ['Neither the supplier nor the buyers was informed.', 'Neither the supplier nor the buyers were informed.', 'Neither supplier or buyers were informed.'], a: 1, why: 'Verb agrees with nearest subject (buyers = plural).' },
+        { id: 'ikes5', part: 'ik_englisch_schwer', q: 'Best negotiation phrase?', options: ['Could we align on a volume-based discount for Q3?', 'Give us better price now.', 'This is too expensive.'], a: 0, why: 'Professional negotiation language.' },
+        { id: 'ikes6', part: 'ik_englisch_schwer', q: 'Best transition for contrast?', options: ['therefore', 'however', 'moreover'], a: 1, why: 'However introduces contrast.' },
+        { id: 'ikes7', part: 'ik_englisch_schwer', q: 'Most precise KPI sentence?', options: ['Conversion improved by 14% after simplifying the checkout flow.', 'It got better.', 'Some numbers changed.'], a: 0, why: 'Specific metric plus cause.' },
+        { id: 'ikes8', part: 'ik_englisch_schwer', q: 'Legal-friendly wording?', options: ['This proposal is non-binding and subject to final approval.', 'This is final maybe.', 'All fixed, no review needed.'], a: 0, why: 'Standard business qualifier.' }
       ];
 
       function shuffle(arr) {
@@ -1228,6 +1352,16 @@
         if (module === 'faz_media') {
           return pick(POOL.filter((q) => q.part === 'faz_media'), 8);
         }
+        if (module === 'ik_mathe_leicht') { return pick(POOL.filter((q) => q.part === 'ik_mathe_leicht'), 8); }
+        if (module === 'ik_mathe_mittel') { return pick(POOL.filter((q) => q.part === 'ik_mathe_mittel'), 8); }
+        if (module === 'ik_mathe_schwer') { return pick(POOL.filter((q) => q.part === 'ik_mathe_schwer'), 8); }
+        if (module === 'ik_mathe_sehrschwer') { return pick(POOL.filter((q) => q.part === 'ik_mathe_sehrschwer'), 8); }
+        if (module === 'ik_deutsch_leicht') { return pick(POOL.filter((q) => q.part === 'ik_deutsch_leicht'), 8); }
+        if (module === 'ik_deutsch_mittel') { return pick(POOL.filter((q) => q.part === 'ik_deutsch_mittel'), 8); }
+        if (module === 'ik_deutsch_schwer') { return pick(POOL.filter((q) => q.part === 'ik_deutsch_schwer'), 8); }
+        if (module === 'ik_englisch_leicht') { return pick(POOL.filter((q) => q.part === 'ik_englisch_leicht'), 8); }
+        if (module === 'ik_englisch_mittel') { return pick(POOL.filter((q) => q.part === 'ik_englisch_mittel'), 8); }
+        if (module === 'ik_englisch_schwer') { return pick(POOL.filter((q) => q.part === 'ik_englisch_schwer'), 8); }
         return [
           ...pick(POOL.filter((q) => q.part === 'deutsch_easy'), 4),
           ...pick(POOL.filter((q) => q.part === 'deutsch_mittel'), 4),
@@ -1321,7 +1455,7 @@
         document.getElementById('nextButton').addEventListener('click', () => {
           const checked = quizShell.querySelector('input[name="choice"]:checked');
           if (!checked) {
-            alert('Bitte eine Antwort auswaehlen.');
+            alert('Bitte eine Antwort auswählen.');
             return;
           }
           saveAnswer(Number.parseInt(checked.value, 10), false);
@@ -1639,7 +1773,7 @@
         delete store[activeUser];
         saveProgressStore(store);
         renderHistory();
-        setLoginStatus('Fortschritt geloescht.');
+        setLoginStatus('Fortschritt gelöscht.');
       });
 
       document.addEventListener('visibilitychange', () => {

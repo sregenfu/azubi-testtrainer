@@ -107,7 +107,7 @@
     }
 
     .page {
-      width: min(1100px, 94vw);
+      width: min(1160px, 94vw);
       margin: 24px auto 56px;
       display: grid;
       gap: 16px;
@@ -129,7 +129,8 @@
       padding: 0.45rem 0.8rem;
       background: var(--surface);
       color: var(--brand-strong);
-      font-weight: 700;
+      font-weight: 500;
+      font-size: 14px;
       transition: transform 120ms ease, background-color 140ms ease, color 140ms ease, border-color 140ms ease;
     }
 
@@ -138,6 +139,16 @@
       background: var(--brand);
       color: #fff;
       border-color: transparent;
+    }
+
+    @media (min-width: 1024px) {
+      .hub-nav {
+        gap: 6px;
+      }
+
+      .hub-nav a {
+        padding: 0.4rem 0.68rem;
+      }
     }
 
     .hub-nav a.active,
@@ -292,9 +303,11 @@
       <a class="active" aria-current="page" href="index.html">Start (Hub)</a>
       <a href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
       <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a href="industriekauffrau-allgemeine.html">Industriekauffrau</a>
+      <a href="bewerbung-industriekauffrau.html">Bewerbung Industriekauffrau</a>
       <a href="interviews.html">Interviews</a>
       <a href="formelsammlung.html">Formelsammlung</a>
-      <a href="sprachfokus-alternativen.html">Sprachfokus-Alternativen</a>
+      <a href="sprachfokus-alternativen.html">Alternativen</a>
     </nav>
 
     <section class="hero">
@@ -345,6 +358,15 @@
           <p class="tiny">Aus Test-Fragen gelernt: Alle Formeln, Beispiele und Rechenschritte auf einen Blick.</p>
           <div class="actions">
             <a class="button primary" href="formelsammlung.html">Formelsammlung öffnen</a>
+          </div>
+        </article>
+
+        <article class="module">
+          <h3>Industriekauffrau</h3>
+          <p>Neues Modul mit Voraussetzungen in Mathe/Deutsch/Englisch, Interviewvorbereitung, Formelsammlung mit Begriffen, 3-stufigen Tests je Fach und Perspektiven nach der Ausbildung.</p>
+          <div class="actions">
+            <a class="button primary" href="industriekauffrau-allgemeine.html">Industriekauffrau öffnen</a>
+            <a class="button secondary" href="bewerbung-industriekauffrau.html">Bewerbungsseite</a>
           </div>
         </article>
 

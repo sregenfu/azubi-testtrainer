@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bewerbung | Ausbildung Kauffrau für Dialogmarketing</title>
-  <meta name="description" content="Interaktive Bewerbungsseite für die Ausbildung zur Kauffrau für Dialogmarketing.">
+  <title>Bewerbung | Ausbildung Industriekauffrau</title>
+  <meta name="description" content="Interaktive Bewerbungsseite für die Ausbildung zur Industriekauffrau.">
   <style>
     :root {
       --bg: #f6efe3;
@@ -47,8 +47,6 @@
     }
 
     * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -172,13 +170,9 @@
       border: 1px solid var(--line);
     }
 
-    :root[data-theme='dark'] .hero {
-      background: var(--surface);
-    }
-
     .hero p {
       margin: 10px 0 0;
-      max-width: 70ch;
+      max-width: 72ch;
       color: var(--muted);
     }
 
@@ -312,26 +306,27 @@
   <main class="page">
     <nav class="hub-nav" aria-label="Projekt-Navigation">
       <a href="index.html">Start (Hub)</a>
-      <a href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
-      <a class="active" aria-current="page" href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a href="dialogmarketing-allgemeine.html">Dialogmarketing + Tests</a>
+      <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
       <a href="industriekauffrau-allgemeine.html">Industriekauffrau</a>
-      <a href="bewerbung-industriekauffrau.html">Bewerbung Industriekauffrau</a>
+      <a class="active" aria-current="page" href="bewerbung-industriekauffrau.html">Bewerbungsseite Industriekauffrau</a>
       <a href="interviews.html">Interviews</a>
       <a href="formelsammlung.html">Formelsammlung</a>
       <a href="sprachfokus-alternativen.html">Alternativen</a>
     </nav>
 
     <section class="hero">
-      <h1>Bewerbungsvorlage: Ausbildung zur Kauffrau für Dialogmarketing</h1>
+      <h1>Bewerbungsvorlage: Ausbildung zur Industriekauffrau</h1>
       <p>
-        Diese Seite hilft beim Strukturieren von Anschreiben, Starken, Interview-Antworten
-        und Unterlagen. Alles kann direkt bearbeitet und lokal gespeichert werden.
+        Diese Seite hilft beim Strukturieren von Anschreiben, Stärken, Interview-Antworten
+        und Unterlagen für die Bewerbung als Industriekauffrau. Alles kann direkt bearbeitet
+        und lokal gespeichert werden.
       </p>
       <div class="chips">
-        <span class="chip">Kundenkommunikation</span>
-        <span class="chip">Serviceorientierung</span>
-        <span class="chip">Teamfähigkeit</span>
-        <span class="chip">Konfliktlösung</span>
+        <span class="chip">kaufmännisches Denken</span>
+        <span class="chip">Kommunikation</span>
+        <span class="chip">Organisation</span>
+        <span class="chip">Zahlenverständnis</span>
       </div>
     </section>
 
@@ -352,7 +347,7 @@
         </div>
         <div class="field">
           <label for="firma">Unternehmen</label>
-          <input id="firma" data-store="firma" type="text" placeholder="z. B. Unternehmen / Servicecenter XY">
+          <input id="firma" data-store="firma" type="text" placeholder="z. B. Industriebetrieb XY">
         </div>
         <div class="field">
           <label for="start">Gewünschter Ausbildungsstart</label>
@@ -367,12 +362,12 @@
       <article class="card">
         <h2>2) Motivation</h2>
         <div class="field">
-          <label for="motivation">Warum genau diese Ausbildung?</label>
-          <textarea id="motivation" data-store="motivation" placeholder="Warum Dialogmarketing, was macht dir am Kontakt mit Menschen Spaß, welche Ziele hast du?"></textarea>
+          <label for="motivation">Warum genau Industriekauffrau?</label>
+          <textarea id="motivation" data-store="motivation" placeholder="Warum Industriekauffrau, was interessiert dich an kaufmännischen Prozessen, welche Ziele hast du?"></textarea>
         </div>
         <div class="field">
           <label for="firmafit">Warum passt du zu diesem Unternehmen?</label>
-          <textarea id="firmafit" data-store="firmafit" placeholder="Bezug auf Unternehmen, Werte, Branche, Standort, Produkte."></textarea>
+          <textarea id="firmafit" data-store="firmafit" placeholder="Bezug auf Produkte, Branche, Ausbildungskonzept, Werte."></textarea>
         </div>
       </article>
     </section>
@@ -382,7 +377,7 @@
         <h2>3) Stärken und Beispiele</h2>
         <div class="field">
           <label for="staerken">Top 3 Stärken</label>
-          <textarea id="staerken" data-store="staerken" placeholder="z. B. freundlich auftreten, ruhig bleiben bei Kritik, klare Sprache"></textarea>
+          <textarea id="staerken" data-store="staerken" placeholder="z. B. strukturiert arbeiten, zuverlässig sein, gutes Zahlenverständnis"></textarea>
         </div>
         <div class="field">
           <label for="beispiele">Praxisbeispiele (Schule, Praktikum, Nebenjob)</label>
@@ -394,7 +389,7 @@
         <h2>4) Interview-Antworten</h2>
         <div class="field">
           <label for="fragen">Typische Fragen und Antworten</label>
-          <textarea id="fragen" data-store="fragen" placeholder="Erzählen Sie etwas über sich / Wie gehen Sie mit schwierigen Kunden um? / Warum unser Unternehmen?"></textarea>
+          <textarea id="fragen" data-store="fragen" placeholder="Warum dieser Beruf? / Wie gehst du mit Termindruck um? / Wie arbeitest du im Team?"></textarea>
         </div>
         <p class="tiny">Tipp: Antwortstruktur in 3 Schritten: Situation, dein Verhalten, Ergebnis.</p>
       </article>
@@ -406,11 +401,12 @@
         <label for="anschreiben">Entwurf</label>
         <textarea id="anschreiben" data-store="anschreiben">Sehr geehrte Damen und Herren,
 
-mit großem Interesse bewerbe ich mich um einen Ausbildungsplatz zur Kauffrau für Dialogmarketing.
-Ich arbeite gerne mit Menschen, kommuniziere klar und serviceorientiert und bleibe auch in anspruchsvollen Situationen ruhig und lösungsorientiert.
+mit großem Interesse bewerbe ich mich um einen Ausbildungsplatz zur Industriekauffrau.
+Ich interessiere mich besonders für kaufmännische Prozesse, Organisation und die Zusammenarbeit zwischen verschiedenen Unternehmensbereichen.
 
-Besonders motiviert mich, dass in diesem Beruf kundennahe Beratung, Organisation und digitale Kommunikation zusammenkommen.
-Gerne möchte ich meine Stärken in Ihr Team einbringen und mich fachlich wie persönlich weiterentwickeln.
+Ich arbeite strukturiert, lerne schnell und übernehme Verantwortung. Besonders motiviert mich, dass ich in der Ausbildung sowohl mit Zahlen als auch mit Kommunikation und Teamarbeit arbeite.
+
+Gerne möchte ich meine Stärken in Ihr Unternehmen einbringen und mich fachlich wie persönlich weiterentwickeln.
 
 Ich freue mich auf die Gelegenheit, mich in einem persönlichen Gespräch vorzustellen.
 
@@ -434,10 +430,10 @@ Mit freundlichen Grüßen
       <article class="card">
         <h2>7) Fragen für das Gespräch</h2>
         <ul>
-          <li>Wie sieht ein typischer Ausbildungstag aus?</li>
-          <li>Welche Abteilungen lernt man während der Ausbildung kennen?</li>
-          <li>Welche Weiterbildung möglichkeiten gibt es nach der Ausbildung?</li>
-          <li>Wie wird man während der Ausbildung unterstützt?</li>
+          <li>Wie ist die Ausbildung in den Abteilungen organisiert?</li>
+          <li>Welche kaufmännischen Schwerpunkte werden im 1. Jahr gesetzt?</li>
+          <li>Welche Entwicklungs- und Übernahmechancen gibt es?</li>
+          <li>Mit welchen Systemen (z. B. ERP) arbeitet das Team?</li>
         </ul>
       </article>
     </section>
@@ -446,7 +442,7 @@ Mit freundlichen Grüßen
   <script>
     (function () {
       const THEME_KEY = 'vorbereitung-bew-theme-v1';
-      const STORAGE_KEY = 'bewerbung-dialogmarketing-v1';
+      const STORAGE_KEY = 'bewerbung-industriekauffrau-v1';
       const fields = Array.from(document.querySelectorAll('[data-store]'));
       const statusEl = document.getElementById('status');
       const themeToggleButton = document.getElementById('themeToggleButton');
@@ -536,4 +532,3 @@ Mit freundlichen Grüßen
   </script>
 </body>
 </html>
-

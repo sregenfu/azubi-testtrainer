@@ -93,7 +93,7 @@
     }
 
     .page {
-      width: min(1160px, 95vw);
+      width: min(1160px, 94vw);
       margin: 24px auto 56px;
       display: grid;
       gap: 14px;
@@ -115,7 +115,18 @@
       padding: 0.45rem 0.8rem;
       background: var(--surface);
       color: var(--brand-strong);
-      font-weight: 700;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    @media (min-width: 1024px) {
+      .hub-nav {
+        gap: 6px;
+      }
+
+      .hub-nav a {
+        padding: 0.4rem 0.68rem;
+      }
     }
 
     .hub-nav a.active,
@@ -294,9 +305,11 @@
       <a href="index.html">Start (Hub)</a>
       <a href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
       <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a href="industriekauffrau-allgemeine.html">Industriekauffrau</a>
+      <a href="bewerbung-industriekauffrau.html">Bewerbung Industriekauffrau</a>
       <a class="active" aria-current="page" href="interviews.html">Interviews</a>
       <a href="formelsammlung.html">Formelsammlung</a>
-      <a href="sprachfokus-alternativen.html">Sprachfokus-Alternativen</a>
+      <a href="sprachfokus-alternativen.html">Alternativen</a>
     </nav>
 
     <section class="hero">
