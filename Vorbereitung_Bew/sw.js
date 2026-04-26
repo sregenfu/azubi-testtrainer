@@ -1,9 +1,11 @@
-const CACHE_NAME = 'vorbereitung-bew-v2';
+const CACHE_NAME = 'vorbereitung-bew-v4';
 const APP_SHELL = [
   './',
   'index.html',
   'dialogmarketing-allgemeine.html',
   'bewerbung-dialogmarketing.html',
+  'industriekauffrau-allgemeine.html',
+  'bewerbung-industriekauffrau.html',
   'sprachfokus-alternativen.html',
   'app.webmanifest',
   'icons/icon-192.svg',
