@@ -78,7 +78,7 @@
     }
 
     header {
-      max-width: 1200px;
+      max-width: 1160px;
       margin: 0 auto 40px;
       text-align: center;
     }
@@ -96,7 +96,7 @@
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1160px;
       margin: 0 auto;
     }
 
@@ -104,7 +104,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      max-width: 1200px;
+      max-width: 1160px;
       margin: 0 auto 24px;
       padding-bottom: 16px;
       border-bottom: 1px solid var(--line);
@@ -126,6 +126,16 @@
       transform: translateY(-1px);
       background: var(--brand);
       color: #fff;
+    }
+
+    @media (min-width: 1024px) {
+      .hub-nav {
+        gap: 6px;
+      }
+
+      .hub-nav a {
+        padding: 0.4rem 0.68rem;
+      }
     }
 
     .hub-nav a.active {
@@ -342,6 +352,47 @@
       margin-bottom: 6px;
     }
 
+    .formula-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    /* Tablet: 2 Spalten */
+    @media (min-width: 768px) {
+      .formula-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Desktop: 3 Spalten */
+    @media (min-width: 1024px) {
+      .formula-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: var(--surface-strong);
+    }
+
+    .mini-card h3 {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--brand-strong);
+    }
+
+    .mini-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
     .decision-panel {
       margin: 0 0 28px;
       padding: 18px;
@@ -441,9 +492,11 @@
   <a href="index.html">Start (Hub)</a>
   <a href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
   <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+  <a href="industriekauffrau-allgemeine.html">Industriekauffrau</a>
+  <a href="bewerbung-industriekauffrau.html">Bewerbung Industriekauffrau</a>
   <a href="interviews.html">Interviews</a>
   <a class="active" aria-current="page" href="formelsammlung.html">Formelsammlung</a>
-  <a href="sprachfokus-alternativen.html">Sprachfokus-Alternativen</a>
+  <a href="sprachfokus-alternativen.html">Alternativen</a>
 </nav>
 
 <header>
@@ -457,6 +510,7 @@
     <button class="tab-btn" data-tab="dreisatz">Dreisatz</button>
     <button class="tab-btn" data-tab="mischung">Gemischte Aufgaben</button>
     <button class="tab-btn" data-tab="marketing">Digital Marketing KPIs</button>
+    <button class="tab-btn" data-tab="ikbegriffe">IK Begriffe</button>
   </div>
 
   <section class="decision-panel" aria-label="Entscheidungshilfe">
@@ -487,7 +541,7 @@
             <div>
               <div class="card-icon">🧭</div>
               <h2 class="card-title">Welche Prozentformel nehme ich?</h2>
-              <p class="card-hint">Erst pruefen: Was ist gesucht?</p>
+              <p class="card-hint">Erst prüfen: Was ist gesucht?</p>
             </div>
             <span class="card-hint">→ Klick zum Umwenden</span>
           </div>
@@ -499,7 +553,7 @@
                   <li><strong>Prozentwert:</strong> Wenn ein Teil vom Ganzen gesucht ist. Beispiel: 20% von 150€.</li>
                   <li><strong>Prozentsatz:</strong> Wenn du wissen willst, wie viel Prozent ein Teil ausmacht. Beispiel: 30€ von 150€.</li>
                   <li><strong>Grundwert:</strong> Wenn der Ausgangswert fehlt. Beispiel: 30€ sind 20% von wie viel?</li>
-                  <li><strong>Warum?</strong> In Prozentaufgaben gibt es fast immer drei Groessen: Ganzes, Teil und Prozentzahl. Zwei sind gegeben, eine ist gesucht.</li>
+                  <li><strong>Warum?</strong> In Prozentaufgaben gibt es fast immer drei Größen: Ganzes, Teil und Prozentzahl. Zwei sind gegeben, eine ist gesucht.</li>
                 </ol>
               </div>
             </div>
@@ -782,9 +836,9 @@
                 </ol>
                 <strong style="margin-top: 12px; display: block;">Warum?</strong>
                 <ol>
-                  <li>Bei proportional waechst oder sinkt beides zusammen.</li>
-                  <li>Bei antiproportional gleicht ein groesserer Wert den anderen aus.</li>
-                  <li>Prueffrage: Wenn links mehr wird, wird rechts auch mehr oder eher weniger?</li>
+                  <li>Bei proportional wächst oder sinkt beides zusammen.</li>
+                  <li>Bei antiproportional gleicht ein größerer Wert den anderen aus.</li>
+                  <li>Prüffrage: Wenn links mehr wird, wird rechts auch mehr oder eher weniger?</li>
                 </ol>
               </div>
             </div>
@@ -873,9 +927,9 @@
               <h2 class="card-title">Wann aufteilen?</h2>
               <div class="steps">
                 <ol>
-                  <li>Wenn erst ein Preis berechnet wird und danach Rabatt, Gebuehr oder Steuer kommt.</li>
+                  <li>Wenn erst ein Preis berechnet wird und danach Rabatt, Gebühr oder Steuer kommt.</li>
                   <li>Wenn Prozent und Dreisatz in einer Aufgabe gemischt sind.</li>
-                  <li><strong>Warum?</strong> Jeder Schritt veraendert den Wert. Die zweite Rechnung benutzt also schon den neuen Zwischenwert.</li>
+                  <li><strong>Warum?</strong> Jeder Schritt verändert den Wert. Die zweite Rechnung benutzt also schon den neuen Zwischenwert.</li>
                   <li>Merksatz: Erst Basis berechnen, dann Aufschlag oder Abschlag.</li>
                 </ol>
               </div>
@@ -1214,7 +1268,7 @@
                 <strong style="margin-top: 12px; display: block;">Interesse / Click:</strong>
                 <ol>
                   <li>CTR, CPC, Clicks</li>
-                  <li>Einsetzen, wenn du pruefen willst, ob Anzeigen Aufmerksamkeit erzeugen.</li>
+                  <li>Einsetzen, wenn du prüfen willst, ob Anzeigen Aufmerksamkeit erzeugen.</li>
                 </ol>
                 <strong style="margin-top: 12px; display: block;">Konversion / Umsatz:</strong>
                 <ol>
@@ -1232,6 +1286,38 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- IK BEGRIFFE -->
+  <div id="ikbegriffe" class="tab-content">
+    <div class="formula-grid">
+      <article class="mini-card">
+        <h3>Prozentrechnung</h3>
+        <p><strong>Formel:</strong> Prozentwert = Grundwert x Prozentsatz / 100</p>
+        <p><strong>Beispiel:</strong> 15% von 320 = 48</p>
+      </article>
+      <article class="mini-card">
+        <h3>Dreisatz</h3>
+        <p><strong>Formel:</strong> x = (b x c) / a</p>
+        <p><strong>Beispiel:</strong> 4 Stück kosten 12 Euro, 7 Stück kosten 21 Euro</p>
+      </article>
+      <article class="mini-card">
+        <h3>Skonto</h3>
+        <p>Preisnachlass bei schneller Zahlung, z. B. 2% bei Zahlung innerhalb 10 Tagen.</p>
+      </article>
+      <article class="mini-card">
+        <h3>Rabatt</h3>
+        <p>Nachlass auf Listenpreis, meist direkt beim Kauf oder bei größeren Mengen.</p>
+      </article>
+      <article class="mini-card">
+        <h3>Deckungsbeitrag</h3>
+        <p>Verkaufserlös minus variable Kosten. Zeigt, was zur Deckung fixer Kosten beiträgt.</p>
+      </article>
+      <article class="mini-card">
+        <h3>Angebot / Auftrag / Rechnung</h3>
+        <p>Zentrale kaufmännische Prozesskette vom Kundenwunsch bis zur Bezahlung.</p>
+      </article>
     </div>
   </div>
 

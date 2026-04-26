@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industriekauffrau | Allgemeine Infos + 3-Stufen-Tests</title>
+  <meta name="description" content="Vorbereitung für Industriekauffrau mit Voraussetzungen, Interviewtraining, Formelsammlung, Begriffen und Tests in drei Schwierigkeitsstufen je Fach.">
+  <style>
+    :root {
+      --bg: #f6efe3;
+      --surface: rgba(255, 250, 242, 0.94);
+      --surface-strong: #fff9ef;
+      --ink: #191919;
+      --muted: #4f4a43;
+      --line: rgba(40, 36, 31, 0.18);
+      --brand: #5a4a3d;
+      --brand-strong: #46392f;
+      --accent: #8f7864;
+      --ok: #0f766e;
+      --bad: #b42318;
+      --shadow: 0 24px 60px rgba(34, 43, 56, 0.12);
+      --radius-xl: 24px;
+      --radius-md: 14px;
+      --bg-radial-left: rgba(181, 150, 120, 0.12);
+      --bg-radial-right: rgba(214, 192, 166, 0.14);
+      --bg-gradient-top: #fcf7ef;
+      --bg-gradient-bottom: #efe1cf;
+      --grid-line: rgba(35, 30, 24, 0.05);
+    }
+
+    :root[data-theme='dark'] {
+      --bg: #1a1714;
+      --surface: rgba(30, 26, 22, 0.94);
+      --surface-strong: #25201b;
+      --ink: #efe6dc;
+      --muted: #c2b3a3;
+      --line: rgba(215, 194, 171, 0.22);
+      --brand: #b79d85;
+      --brand-strong: #cfb9a5;
+      --accent: #d8bca3;
+      --ok: #7ce4d6;
+      --bad: #ff8f85;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+      --bg-radial-left: rgba(180, 143, 111, 0.14);
+      --bg-radial-right: rgba(120, 96, 77, 0.14);
+      --bg-gradient-top: #221d18;
+      --bg-gradient-bottom: #17130f;
+      --grid-line: rgba(239, 230, 220, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+      background:
+        radial-gradient(circle at top left, var(--bg-radial-left), transparent 28%),
+        radial-gradient(circle at top right, var(--bg-radial-right), transparent 24%),
+        linear-gradient(180deg, var(--bg-gradient-top) 0%, var(--bg) 48%, var(--bg-gradient-bottom) 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 88%);
+    }
+
+    h1, h2, h3 { margin: 0; line-height: 1.2; font-family: "Georgia", "Cambria", serif; }
+
+    .theme-toggle-button {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 30;
+      border: 1px solid rgba(90, 74, 61, 0.34);
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      font: inherit;
+      font-weight: 700;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    :root[data-theme='dark'] .theme-toggle-button {
+      background: rgba(16, 25, 36, 0.9);
+      border-color: rgba(207, 185, 165, 0.45);
+    }
+
+    .page {
+      width: min(1160px, 94vw);
+      margin: 24px auto 56px;
+      display: grid;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hub-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: -2px;
+    }
+
+    .hub-nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      background: var(--surface);
+      color: var(--brand-strong);
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    @media (min-width: 1024px) {
+      .hub-nav {
+        gap: 6px;
+      }
+
+      .hub-nav a {
+        padding: 0.4rem 0.68rem;
+      }
+    }
+
+    .hub-nav a.active,
+    .hub-nav a[aria-current='page'] {
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    :root[data-theme='dark'] .hub-nav a.active,
+    :root[data-theme='dark'] .hub-nav a[aria-current='page'] {
+      color: #1a1714;
+    }
+
+    .hero,
+    .card {
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .hero p,
+    .muted {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .topic {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: var(--surface-strong);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      border: 1px solid rgba(90, 74, 61, 0.3);
+      border-radius: 999px;
+      background: rgba(90, 74, 61, 0.1);
+      color: var(--brand-strong);
+      padding: 0.25rem 0.58rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .interview-grid,
+    .formula-grid,
+    .path-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: var(--surface-strong);
+    }
+
+    .mini-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .test-controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+      align-items: end;
+    }
+
+    label {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    select,
+    button {
+      font: inherit;
+    }
+
+    select {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface-strong);
+      color: var(--ink);
+      padding: 0.54rem 0.62rem;
+      width: 100%;
+    }
+
+    button {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.58rem 0.95rem;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: var(--surface-strong);
+      color: var(--brand-strong);
+      border-color: rgba(90, 74, 61, 0.34);
+    }
+
+    .quiz-shell {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .question {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: var(--surface);
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .opt {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px;
+      display: flex;
+      gap: 8px;
+      align-items: start;
+      background: var(--surface-strong);
+    }
+
+    .result-summary {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: var(--surface);
+    }
+
+    .detail-list {
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .detail-item {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px;
+      background: var(--surface);
+    }
+
+    .ok { color: var(--ok); font-weight: 700; }
+    .bad { color: var(--bad); font-weight: 700; }
+
+    @media (max-width: 980px) {
+      .grid-two,
+      .interview-grid,
+      .formula-grid,
+      .path-grid,
+      .test-controls {
+        grid-template-columns: 1fr;
+      }
+
+      .theme-toggle-button {
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggleButton" class="theme-toggle-button" type="button" aria-label="Theme wechseln">Dark</button>
+
+  <main class="page">
+    <nav class="hub-nav" aria-label="Projekt-Navigation">
+      <a href="index.html">Start (Hub)</a>
+      <a href="dialogmarketing-allgemeine.html">Dialogmarketing + Tests</a>
+      <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a class="active" aria-current="page" href="industriekauffrau-allgemeine.html">Industriekauffrau</a>
+      <a href="bewerbung-industriekauffrau.html">Bewerbung Industriekauffrau</a>
+      <a href="interviews.html">Interviews</a>
+      <a href="formelsammlung.html">Formelsammlung</a>
+      <a href="sprachfokus-alternativen.html">Alternativen</a>
+    </nav>
+
+    <section class="hero">
+      <span class="eyebrow">Ausbildungsmodul</span>
+      <h1>Industriekauffrau: Vorbereitung von A bis Test</h1>
+      <p>
+        Hier findest du die wichtigsten Voraussetzungen in Mathe, Deutsch und Englisch,
+        Interviewtraining, Formeln und Begriffe, einen Test mit 3 Schwierigkeitsstufen je Fach
+        sowie Wege nach der Ausbildung.
+      </p>
+      <div class="chip-row">
+        <span class="chip">Mathe: leicht/mittel/schwer</span>
+        <span class="chip">Deutsch: leicht/mittel/schwer</span>
+        <span class="chip">Englisch: leicht/mittel/schwer</span>
+        <span class="chip">Interview + Perspektiven</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Voraussetzungen: Wie hoch sollte das Niveau sein?</h2>
+      <div class="grid-two" style="margin-top: 10px;">
+        <article class="topic">
+          <h3>Mathe</h3>
+          <p class="muted"><strong>Empfehlung:</strong> solide bis gut (Schwerpunkt kaufmännisches Rechnen).</p>
+          <p class="muted">Wichtig: Prozentrechnung, Dreisatz, Zinsrechnung, Rabatt/Skonto, einfache Kostenkalkulation.</p>
+        </article>
+        <article class="topic">
+          <h3>Deutsch</h3>
+          <p class="muted"><strong>Empfehlung:</strong> gut (mündlich + schriftlich).</p>
+          <p class="muted">Wichtig: Verständliche E-Mails, fehlerfreie Rechtschreibung, Sachtexte verstehen, sauber argumentieren.</p>
+        </article>
+        <article class="topic">
+          <h3>Englisch</h3>
+          <p class="muted"><strong>Empfehlung:</strong> solide (mindestens B1, besser Richtung B2).</p>
+          <p class="muted">Wichtig: einfache Business-Mails, Grundwortschatz zu Einkauf, Vertrieb, Aufträgen und Lieferungen.</p>
+        </article>
+        <article class="topic">
+          <h3>Zusatz-Skills</h3>
+          <p class="muted">Organisation, Teamarbeit, Sorgfalt, Zahlenverständnis, digitale Grundkompetenz (Excel/ERP-Nähe).</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Interviewvorbereitung</h2>
+      <div class="interview-grid">
+        <article class="mini-card">
+          <h3>Warum Industriekauffrau?</h3>
+          <p>Ich mag die Verbindung aus Kommunikation und Zahlen. Ich möchte Prozesse verstehen und aktiv im Unternehmen mitarbeiten.</p>
+        </article>
+        <article class="mini-card">
+          <h3>Stärken</h3>
+          <p>Ich arbeite strukturiert, denke kaufmännisch und kann Informationen klar zusammenfassen.</p>
+        </article>
+        <article class="mini-card">
+          <h3>Schwäche + Lernweg</h3>
+          <p>Ich war teilweise zu detailverliebt. Heute priorisiere ich besser und setze mir klare Zeitfenster.</p>
+        </article>
+        <article class="mini-card">
+          <h3>Stress-Situation</h3>
+          <p>Ich priorisiere nach Termin und Auswirkung, stimme mich früh mit dem Team ab und kommuniziere transparent.</p>
+        </article>
+        <article class="mini-card">
+          <h3>Typische Rückfrage</h3>
+          <p>Wie ist die Einarbeitung organisiert und welche Abteilungen durchlaufe ich im ersten Ausbildungsjahr?</p>
+        </article>
+        <article class="mini-card">
+          <h3>60-Sekunden-Struktur</h3>
+          <p>1) Kurzprofil, 2) Motivation, 3) praktisches Beispiel, 4) Mehrwert für das Unternehmen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3-Stufen-Tests je Fach</h2>
+      <p class="muted">Wähle Fach und Schwierigkeitsstufe. Pro Durchlauf werden 6 Fragen zufällig aus dem Pool gezogen.</p>
+
+      <div class="test-controls">
+        <div>
+          <label for="subjectSelect">Fach</label>
+          <select id="subjectSelect">
+            <option value="mathe">Mathe</option>
+            <option value="deutsch">Deutsch</option>
+            <option value="englisch">Englisch</option>
+          </select>
+        </div>
+        <div>
+          <label for="levelSelect">Schwierigkeit</label>
+          <select id="levelSelect">
+            <option value="leicht">Leicht</option>
+            <option value="mittel">Mittel</option>
+            <option value="schwer">Schwer</option>
+            <option value="sehrschwer">Sehr Schwer</option>
+          </select>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button id="startTestButton" type="button">Test starten</button>
+          <button id="restartTestButton" class="secondary" type="button">Neu mischen</button>
+        </div>
+      </div>
+
+      <div id="quizShell" class="quiz-shell">
+        <p class="muted">Noch kein Test gestartet.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Möglichkeiten nach der Ausbildung</h2>
+      <div class="path-grid">
+        <article class="mini-card">
+          <h3>Direkte Übernahme</h3>
+          <p>z. B. Einkauf, Vertrieb, Auftragsabwicklung, Personal, Rechnungswesen, Logistik.</p>
+        </article>
+        <article class="mini-card">
+          <h3>Weiterbildung</h3>
+          <p>Fachwirt/in, Betriebswirt/in, Bilanzbuchhaltung, Spezialisierung in Einkauf/Vertrieb/Controlling.</p>
+        </article>
+        <article class="mini-card">
+          <h3>Studium</h3>
+          <p>z. B. BWL, Wirtschaftsingenieurwesen, Wirtschaftsinformatik berufsbegleitend oder dual.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const THEME_KEY = 'vorbereitung-bew-theme-v1';
+      const themeToggleButton = document.getElementById('themeToggleButton');
+
+      function applyTheme(theme) {
+        const normalized = theme === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', normalized);
+        if (themeToggleButton) {
+          themeToggleButton.textContent = normalized === 'dark' ? 'Light' : 'Dark';
+        }
+      }
+
+      const storedTheme = localStorage.getItem(THEME_KEY);
+      applyTheme(storedTheme === 'dark' ? 'dark' : 'light');
+
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+          const next = current === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+          localStorage.setItem(THEME_KEY, next);
+        });
+      }
+
+      const questionPool = {
+        mathe: {
+          leicht: [
+            { q: '15% von 200 sind ...', options: ['20', '30', '40'], a: 1, why: '0,15 x 200 = 30.' },
+            { q: '3 Hefte kosten 6 Euro. 1 Heft kostet ...', options: ['1 Euro', '2 Euro', '3 Euro'], a: 1, why: '6 / 3 = 2 Euro.' },
+            { q: 'Ein Preis sinkt von 50 auf 45 Euro. Das sind ...', options: ['10%', '5%', '15%'], a: 0, why: '5 / 50 = 10%.' },
+            { q: '8 + 17 = ...', options: ['24', '25', '26'], a: 1, why: '8 + 17 = 25.' },
+            { q: '400 Euro mit 5% Rabatt ergibt ...', options: ['380 Euro', '390 Euro', '395 Euro'], a: 0, why: '5% von 400 sind 20, also 380.' },
+            { q: '2,5 Stunden sind ... Minuten', options: ['120', '150', '180'], a: 1, why: '2,5 x 60 = 150.' },
+            { q: '25% entsprechen als Dezimalzahl ...', options: ['0,025', '0,25', '2,5'], a: 1, why: '25 / 100 = 0,25.' },
+            { q: 'Dreisatz: 5 kg kosten 20 Euro. 2 kg kosten ...', options: ['6 Euro', '8 Euro', '10 Euro'], a: 1, why: '1 kg = 4 Euro, 2 kg = 8 Euro.' }
+          ],
+          mittel: [
+            { q: 'Netto 250 Euro, MwSt 19%. Brutto?', options: ['287,50', '297,50', '307,50'], a: 1, why: '250 x 1,19 = 297,50.' },
+            { q: 'Ein Artikel wird erst um 10% reduziert, dann um 10% erhöht. Ergebnis?', options: ['gleich wie vorher', '-1%', '+1%'], a: 1, why: '0,9 x 1,1 = 0,99, also -1%.' },
+            { q: '4 Mitarbeitende schaffen Aufgabe in 12 Tagen. 6 Mitarbeitende brauchen ...', options: ['8 Tage', '10 Tage', '18 Tage'], a: 0, why: 'Antiproportional: 4 x 12 = 6 x t.' },
+            { q: 'Skonto 2% auf 1.200 Euro ergibt Zahlbetrag ...', options: ['1.176 Euro', '1.180 Euro', '1.188 Euro'], a: 0, why: '2% von 1.200 = 24, daher 1.176.' },
+            { q: 'Deckungsbeitrag bei Verkauf 80 Euro und variablen Kosten 52 Euro?', options: ['22 Euro', '28 Euro', '32 Euro'], a: 1, why: '80 - 52 = 28.' },
+            { q: '7,5% von 640 sind ...', options: ['42', '48', '52'], a: 1, why: '0,075 x 640 = 48.' },
+            { q: 'Ein Preis steigt von 120 auf 150 Euro. Prozentuale Steigerung?', options: ['20%', '25%', '30%'], a: 1, why: '30 / 120 = 25%.' },
+            { q: '1,2 Mio. sind wie viele Tausend?', options: ['12', '120', '1200'], a: 2, why: '1.200.000 / 1.000 = 1200.' }
+          ],
+          schwer: [
+            { q: 'Ein Kapital von 5.000 Euro wird 2 Jahre mit 4% p.a. verzinst (Zinseszins). Endwert?', options: ['5.400', '5.408', '5.420'], a: 1, why: '5000 x 1,04^2 = 5408.' },
+            { q: 'Bezugspreis 84 Euro, Handlungskosten 12%, Gewinn 18% auf Selbstkosten. Verkaufspreis?', options: ['110,21', '112,23', '115,04'], a: 0, why: 'Selbstkosten: 84 x 1,12 = 94,08; VK: 94,08 x 1,18 = 110,21.' },
+            { q: 'Welche Rechnung für gewichteten Mittelwert ist korrekt?', options: ['(a+b+c)/3', '(w1x1 + w2x2)/(w1+w2)', 'x1/x2'], a: 1, why: 'Gewichteter Mittelwert nutzt Gewichte im Zähler und Nenner.' },
+            { q: 'Ein Angebot mit 3% Rabatt und danach 2% Skonto entspricht gesamt etwa ...', options: ['5,0%', '4,94%', '4,5%'], a: 1, why: '1 - (0,97 x 0,98) = 4,94%.' },
+            { q: 'Break-even bei Fixkosten 20.000 Euro und Stückdeckungsbeitrag 25 Euro?', options: ['600', '700', '800'], a: 2, why: '20.000 / 25 = 800 Stück.' },
+            { q: 'Lineare Funktion: y = 4x + 3. y bei x = 7?', options: ['28', '31', '35'], a: 1, why: '4 x 7 + 3 = 31.' },
+            { q: 'Eine Forderung wird von 9.600 auf 8.160 reduziert. Minderungsquote?', options: ['12%', '15%', '18%'], a: 1, why: '1.440 / 9.600 = 15%.' },
+            { q: 'Wenn Materialkosten um 8% steigen und Menge um 5% sinkt, verändert sich der Gesamtwert um ca.', options: ['+2,6%', '+3,0%', '-2,6%'], a: 0, why: '1,08 x 0,95 = 1,026.' }
+          ],
+          sehrschwer: [
+            { q: 'Materialeinzel 180 €, Fertigungseinzel 120 €, Gemeinkostenzuschlag 75 % auf EK. Selbstkosten?', options: ['450 €', '525 €', '540 €'], a: 1, why: 'EK = 300 €; Gemeinkosten = 225 €; Selbstkosten = 525 €.' },
+            { q: 'Bruttobetrag 1.190 € inkl. 19 % MwSt. Nettobetrag?', options: ['975 €', '1.000 €', '1.001 €'], a: 1, why: '1.190 / 1,19 = 1.000 €.' },
+            { q: 'Fixkosten 48.000 €/Monat, variable Kosten 22 €/Stk, VK 38 €. Break-even-Menge?', options: ['2.400', '3.000', '2.600'], a: 1, why: 'Stück-DB = 16 €; BEP = 48.000 / 16 = 3.000.' },
+            { q: 'Lager: 100 Stk. à 10 €, 400 Stk. à 15 €. Gewichteter Durchschnitts-EK?', options: ['13,00 €', '14,00 €', '12,50 €'], a: 1, why: '(100×10 + 400×15) / 500 = 7.000 / 500 = 14,00 €.' },
+            { q: 'Investition 80.000 €, jährlicher Rückfluss 20.000 €. Amortisationszeit?', options: ['3 Jahre', '4 Jahre', '5 Jahre'], a: 1, why: '80.000 / 20.000 = 4 Jahre.' },
+            { q: 'Preis –15 %, dann +10 %, dann –5 %. Gesamtveränderung?', options: ['–11,2 %', '–10,0 %', '–6,0 %'], a: 0, why: '0,85 × 1,10 × 0,95 = 0,888 → ca. –11,2 %.' },
+            { q: 'EK 400 €, Handlungskosten 20 %, Gewinnzuschlag 15 % auf Selbstkosten. VK netto?', options: ['536 €', '552 €', '568 €'], a: 1, why: 'Selbstkosten = 480 €; VK = 480 × 1,15 = 552 €.' },
+            { q: 'Listenpreis 1.000 €, Rabatt 10 %, Skonto 2 %, MwSt 19 %. Zahlbetrag brutto?', options: ['1.039,58 €', '1.049,58 €', '1.059,58 €'], a: 1, why: '900 × 0,98 = 882 €; 882 × 1,19 = 1.049,58 €.' }
+          ]
+        },
+        deutsch: {
+          leicht: [
+            { q: 'Welche Schreibweise ist korrekt?', options: ['im Vorraus', 'im Voraus', 'im Vorhaus'], a: 1, why: 'Korrekt ist im Voraus.' },
+            { q: 'Welcher Satz ist freundlich?', options: ['Lesen Sie selbst nach.', 'Ich prüfe das gern für Sie.', 'Das ist falsch.'], a: 1, why: 'Serviceorientierte, positive Formulierung.' },
+            { q: 'Was ist korrekt?', options: ['Wir haben Ihnen geschrieben.', 'Wir haben ihnen geschrieben.', 'Wir habe Ihnen geschrieben.'], a: 0, why: 'Höflichkeitsform Ihnen wird groß geschrieben.' },
+            { q: 'Welcher Betreff ist professionell?', options: ['Wichtig!!!', 'Rückfrage zur Bestellung 4711', 'Hallo'], a: 1, why: 'Klar, konkret und nachvollziehbar.' },
+            { q: 'Welcher Satz ist knapp und klar?', options: ['Ich werde eventuell schauen.', 'Ich melde mich heute bis 15 Uhr.', 'Vielleicht später.'], a: 1, why: 'Klare Zusage mit Zeitangabe.' },
+            { q: 'Welches Wort ist richtig geschrieben?', options: ['Rechnungsprüfung', 'Rechnungsprueffung', 'Rechnungsprufung'], a: 0, why: 'Korrekte Rechtschreibung.' },
+            { q: 'Was passt in eine professionelle E-Mail?', options: ['Anrede, Anliegen, Abschluss', 'Nur ein kurzer Satz', 'Nur Anhang ohne Text'], a: 0, why: 'Standardstruktur für Geschäftskommunikation.' },
+            { q: 'Welcher Ausdruck ist sachlich?', options: ['Das ist Quatsch.', 'Hier liegt vermutlich ein Erfassungsfehler vor.', 'Keine Ahnung.'], a: 1, why: 'Sachlich und lösungsorientiert.' }
+          ],
+          mittel: [
+            { q: 'Welche Formulierung ist am professionellsten?', options: ['Ich melde mich später.', 'Ich sende Ihnen die korrigierte Datei bis 14:30 Uhr.', 'Das dauert.'], a: 1, why: 'Präzise und verbindlich.' },
+            { q: 'Welche Version ist sprachlich korrekt?', options: ['bezugnehmend auf unser Gespräch', 'Bezug nehmend auf unser Gespräch', 'Bezugnehmend auf unser Gespräch'], a: 2, why: 'Am Satzanfang groß: Bezugnehmend.' },
+            { q: 'Welcher Satz verwendet Kommas korrekt?', options: ['Nachdem ich die Daten geprüft habe sende ich den Bericht.', 'Nachdem ich die Daten geprüft habe, sende ich den Bericht.', 'Nachdem, ich die Daten geprüft habe sende ich den Bericht.'], a: 1, why: 'Nebensatz und Hauptsatz werden mit Komma getrennt.' },
+            { q: 'Welcher Ausdruck passt zu neutralem Beschwerdemanagement?', options: ['Sie irren sich.', 'Ich verstehe Ihren Hinweis und prüfe den Vorgang sofort.', 'Das ist Ihr Problem.'], a: 1, why: 'Empathie plus konkrete Aktion.' },
+            { q: 'Was verbessert Verständlichkeit im Bericht?', options: ['Fachwörter ohne Erklärung', 'klare Überschriften und kurze Sätze', 'lange Schachtelsätze'], a: 1, why: 'Struktur und Klarheit sind zentral.' },
+            { q: 'Welche Schreibweise ist richtig?', options: ['selbstständig', 'selbstaendig', 'selbst standig'], a: 0, why: 'Korrekt: selbstständig.' },
+            { q: 'Welche Einleitung ist für ein Protokoll passend?', options: ['Hiermit wird festgehalten, dass ...', 'Also, wir haben geredet ...', 'Naja, war ganz gut.'], a: 0, why: 'Sachlich-formeller Stil.' },
+            { q: 'Welche Schlussformel ist professionell?', options: ['Ciao', 'Mit freundlichen Grüßen', 'Bis dann'], a: 1, why: 'Standard im Geschäftskontext.' }
+          ],
+          schwer: [
+            { q: 'Welche Umformulierung ist am präzisesten?', options: ['Wir konnten die Frist nicht halten, weil Probleme waren.', 'Aufgrund eines Systemausfalls vom 24.04. konnte die Frist nicht eingehalten werden.', 'Es hat nicht geklappt.'], a: 1, why: 'Klarer Grund, Datum, sachliche Sprache.' },
+            { q: 'Welche Variante ist stilistisch am besten?', options: ['Wir bitten um zeitnahe Rückmeldung bis spätestens 12:00 Uhr.', 'Bitte schnell rückmelden.', 'Melden Sie sich irgendwie heute.'], a: 0, why: 'Präzise und professionell.' },
+            { q: 'Welche Form ist im Bericht korrekt?', options: ['Die Kennzahlen wurden analysiert und anschließend bewertet.', 'Die Kennzahlen wurden analysiert und anschliesend bewertet.', 'Die Kennzahlen wurden analysirt und bewertet.'], a: 0, why: 'Rechtschreibung und Stil korrekt.' },
+            { q: 'Was ist eine starke Argumentationsstruktur?', options: ['Behauptung ohne Beleg', 'These - Beleg - Schlussfolgerung', 'nur Meinung'], a: 1, why: 'Nachvollziehbare Logik für Fachtexte.' },
+            { q: 'Welche Aussage ist grammatikalisch korrekt?', options: ['Weder der Einkauf noch die Fachabteilungen war informiert.', 'Weder der Einkauf noch die Fachabteilungen waren informiert.', 'Weder der Einkauf oder die Fachabteilungen waren informiert.'], a: 1, why: 'Verb richtet sich nach dem nächsten Subjekt.' },
+            { q: 'Welche Formulierung reduziert Missverständnisse?', options: ['Das könnte bald erledigt werden.', 'Die Freigabe erfolgt am Dienstag, 10:00 Uhr.', 'Vielleicht morgen.'], a: 1, why: 'Konkrete Zeitangabe statt unklarer Aussage.' },
+            { q: 'Welche Variante ist im Geschäftsbrief korrekt?', options: ['beigefügt übersenden wir Ihnen ...', 'Beigefügt übersenden wir Ihnen ...', 'beigefugt ubersenden wir Ihnen ...'], a: 1, why: 'Satzanfang groß und korrektes Wortbild.' },
+            { q: 'Was gehört in eine sachliche Problemlösung?', options: ['Schuldzuweisung', 'Ist-Stand, Ursache, Maßnahme, Termin', 'nur ein Fazit'], a: 1, why: 'Komplette Lösungsstruktur für Nachvollziehbarkeit.' }
+          ]
+        },
+        englisch: {
+          leicht: [
+            { q: 'Choose the correct sentence.', options: ['I am responsible for orders.', 'I am responsible of orders.', 'I responsible for orders.'], a: 0, why: 'Correct collocation is responsible for.' },
+            { q: 'Best greeting in a business mail?', options: ['Hey there', 'Dear Ms Smith,', 'Yo'], a: 1, why: 'Formal and professional greeting.' },
+            { q: 'Fill in: We ___ your request now.', options: ['check', 'checks', 'checking'], a: 0, why: 'With we, base form is used.' },
+            { q: 'Best polite question?', options: ['What do you want?', 'Could you please confirm the date?', 'Tell me now.'], a: 1, why: 'Polite and customer-focused.' },
+            { q: 'Meaning of "invoice"?', options: ['delivery note', 'bill', 'discount'], a: 1, why: 'Invoice means bill.' },
+            { q: 'Choose the better closing.', options: ['Kind regards,', 'Bye bye', 'See ya'], a: 0, why: 'Professional email closing.' },
+            { q: 'Correct phrase:', options: ['We will reply within 24 hours.', 'We reply in since 24 hours.', 'We are reply 24 hours.'], a: 0, why: 'Natural and correct structure.' },
+            { q: 'Translate: Lieferung', options: ['delivery', 'salary', 'invoice'], a: 0, why: 'Lieferung = delivery.' }
+          ],
+          mittel: [
+            { q: 'Choose the best complaint response.', options: ['That is your fault.', 'I understand your concern and will investigate immediately.', 'No comment.'], a: 1, why: 'Empathy plus ownership.' },
+            { q: 'Correct conditional sentence:', options: ['If you send the file, we will process it today.', 'If you would send the file, we process it.', 'If you sent the file, we will process it now.'], a: 0, why: 'First conditional pattern is correct.' },
+            { q: 'Fill in: Your order has been ___ to logistics.', options: ['forwarded', 'forward', 'forwarding'], a: 0, why: 'Passive needs past participle.' },
+            { q: 'Most professional rewrite:', options: ['We cannot locate your order in our system at the moment.', 'Order not there.', 'We do not find your order.'], a: 0, why: 'Precise and polite business English.' },
+            { q: 'Correct collocation:', options: ['make a complaint', 'do a complaint', 'put a complaint'], a: 0, why: 'Standard collocation is make a complaint.' },
+            { q: 'Which sentence is concise?', options: ['At this point in time we are currently reviewing your case.', 'We are reviewing your case.', 'For now we are in process of checking now.'], a: 1, why: 'Concise business writing is preferred.' },
+            { q: 'Best expectation setting sentence?', options: ['Maybe later.', 'I will update you by 3 p.m. today.', 'No idea.'], a: 1, why: 'Clear timing builds trust.' },
+            { q: 'Translate: Zahlungsziel', options: ['payment term', 'payment room', 'pay target'], a: 0, why: 'Correct term is payment term.' }
+          ],
+          schwer: [
+            { q: 'Select the best formal sentence.', options: ['Please find attached the revised quotation for your review.', 'See attached quote.', 'Quote attached okay.'], a: 0, why: 'Formal and complete business style.' },
+            { q: 'Reported speech: She said, "I will send the contract tomorrow."', options: ['She said she will send the contract tomorrow.', 'She said she would send the contract the next day.', 'She said she sends the contract tomorrow.'], a: 1, why: 'Correct backshift and time shift.' },
+            { q: 'Choose the strongest escalation phrase.', options: ['I will maybe pass this on.', 'I am escalating this issue to our procurement lead and will update you by 4 p.m.', 'I cannot help.'], a: 1, why: 'Clear escalation with ownership and timeline.' },
+            { q: 'Which sentence is grammatically correct?', options: ['Neither the supplier nor the buyers was informed.', 'Neither the supplier nor the buyers were informed.', 'Neither supplier or buyers were informed.'], a: 1, why: 'Verb agrees with nearest subject buyers.' },
+            { q: 'Best phrase for negotiation context?', options: ['Could we align on a volume-based discount model for Q3?', 'Give us better price now.', 'This is too expensive full stop.'], a: 0, why: 'Professional negotiation language.' },
+            { q: 'Choose the best transition for contrast.', options: ['therefore', 'however', 'moreover'], a: 1, why: 'However introduces contrast.' },
+            { q: 'Most precise KPI sentence?', options: ['Conversion improved by 14% after simplifying the checkout flow.', 'It got better.', 'Some numbers changed.'], a: 0, why: 'Specific metric plus reason.' },
+            { q: 'Correct legal-friendly wording?', options: ['This proposal is non-binding and subject to final approval.', 'This is final maybe.', 'All fixed, no review needed.'], a: 0, why: 'Clear and standard business qualifier.' }
+          ]
+        }
+      };
+
+      const subjectSelect = document.getElementById('subjectSelect');
+      const levelSelect = document.getElementById('levelSelect');
+      const startTestButton = document.getElementById('startTestButton');
+      const restartTestButton = document.getElementById('restartTestButton');
+      const quizShell = document.getElementById('quizShell');
+
+      let questionSet = [];
+      let currentIndex = 0;
+      let answers = [];
+
+      function shuffle(list) {
+        const copy = [...list];
+        for (let i = copy.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      }
+
+      function buildQuestionSet() {
+        const subject = subjectSelect.value;
+        const level = levelSelect.value;
+        const pool = questionPool[subject][level] || [];
+        return shuffle(pool).slice(0, Math.min(6, pool.length));
+      }
+
+      function saveAnswer(choice) {
+        answers[currentIndex] = choice;
+      }
+
+      function renderQuestion() {
+        if (currentIndex >= questionSet.length) {
+          renderResult();
+          return;
+        }
+
+        const q = questionSet[currentIndex];
+        const selected = answers[currentIndex];
+
+        quizShell.innerHTML = `
+          <div class="quiz-top">
+            <strong>Frage ${currentIndex + 1} von ${questionSet.length}</strong>
+            <span class="chip">${subjectSelect.value} - ${levelSelect.value}</span>
+          </div>
+          <div class="question">
+            <h3>${q.q}</h3>
+            <div class="options">
+              ${q.options.map((opt, idx) => `
+                <label class="opt">
+                  <input type="radio" name="choice" value="${idx}" ${selected === idx ? 'checked' : ''}>
+                  <span>${opt}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+          <div style="margin-top: 10px;">
+            <button id="nextButton" type="button">${currentIndex + 1 === questionSet.length ? 'Auswertung anzeigen' : 'Weiter'}</button>
+          </div>
+        `;
+
+        document.getElementById('nextButton').addEventListener('click', () => {
+          const checked = quizShell.querySelector('input[name="choice"]:checked');
+          if (!checked) {
+            alert('Bitte eine Antwort auswählen.');
+            return;
+          }
+          saveAnswer(Number.parseInt(checked.value, 10));
+          currentIndex += 1;
+          renderQuestion();
+        });
+      }
+
+      function levelLabel(subject, level, percent) {
+        if (subject === 'mathe') {
+          if (percent >= 85) return 'Sehr stark in Mathe';
+          if (percent >= 65) return 'Solide in Mathe';
+          return 'Mathe gezielt aufbauen';
+        }
+        if (subject === 'deutsch') {
+          if (percent >= 85) return 'Sehr stark in Deutsch';
+          if (percent >= 65) return 'Solide in Deutsch';
+          return 'Deutsch gezielt aufbauen';
+        }
+        if (percent >= 85) return 'Sehr stark in Englisch';
+        if (percent >= 65) return 'Solide in Englisch';
+        return 'Englisch gezielt aufbauen';
+      }
+
+      function renderResult() {
+        let correct = 0;
+        const details = questionSet.map((q, idx) => {
+          const choice = answers[idx];
+          const isCorrect = choice === q.a;
+          if (isCorrect) correct += 1;
+          return {
+            ...q,
+            choice,
+            isCorrect
+          };
+        });
+
+        const total = questionSet.length;
+        const percent = total ? Math.round((correct / total) * 100) : 0;
+        const label = levelLabel(subjectSelect.value, levelSelect.value, percent);
+
+        quizShell.innerHTML = `
+          <div class="result-summary">
+            <h3>Ergebnis</h3>
+            <p><strong>Fach:</strong> ${subjectSelect.value}</p>
+            <p><strong>Schwierigkeit:</strong> ${levelSelect.value}</p>
+            <p><strong>Punkte:</strong> ${correct} / ${total} (${percent}%)</p>
+            <p><strong>Einschätzung:</strong> ${label}</p>
+          </div>
+          <div class="detail-list">
+            ${details.map((d, i) => {
+              const userTxt = d.choice == null ? 'Keine Antwort' : d.options[d.choice];
+              const state = d.isCorrect ? '<span class="ok">Richtig</span>' : '<span class="bad">Falsch</span>';
+              return `
+                <article class="detail-item">
+                  <div><strong>Frage ${i + 1}:</strong> ${d.q}</div>
+                  <div style="margin-top: 4px;">${state}</div>
+                  <div style="margin-top: 4px;"><strong>Deine Antwort:</strong> ${userTxt}</div>
+                  <div><strong>Korrekt:</strong> ${d.options[d.a]}</div>
+                  <div class="muted"><strong>Warum:</strong> ${d.why}</div>
+                </article>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      function startTest() {
+        questionSet = buildQuestionSet();
+        currentIndex = 0;
+        answers = [];
+
+        if (!questionSet.length) {
+          quizShell.innerHTML = '<p class="muted">Für diese Auswahl gibt es noch keine Fragen.</p>';
+          return;
+        }
+
+        renderQuestion();
+      }
+
+      startTestButton.addEventListener('click', startTest);
+      restartTestButton.addEventListener('click', startTest);
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').catch(() => {
+            // Optional.
+          });
+        });
+      }
+    }());
+  </script>
+</body>
+</html>
