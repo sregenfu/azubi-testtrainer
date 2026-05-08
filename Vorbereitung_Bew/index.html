@@ -287,11 +287,41 @@
       font-size: 0.88rem;
     }
 
+    body.tablet-focus .hub-nav {
+      display: none;
+    }
+
+    body.tablet-focus .page {
+      width: min(1360px, 98vw);
+      margin-top: 12px;
+    }
+
+    .tablet-focus-hub {
+      position: fixed;
+      left: 16px;
+      bottom: 16px;
+      z-index: 31;
+      border: 1px solid rgba(90, 74, 61, 0.34);
+      border-radius: 999px;
+      background: var(--surface-strong);
+      color: var(--brand-strong);
+      font: inherit;
+      font-weight: 700;
+      padding: 0.55rem 0.88rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
     @media (max-width: 860px) {
       .grid { grid-template-columns: 1fr; }
       .theme-toggle-button {
         top: 10px;
         right: 10px;
+      }
+
+      .tablet-focus-hub {
+        left: 10px;
+        bottom: 10px;
       }
     }
   </style>
@@ -307,6 +337,7 @@
       <a href="bewerbung-industriekauffrau.html">Bewerbung Industriekauffrau</a>
       <a href="interviews.html">Interviews</a>
       <a href="formelsammlung.html">Formelsammlung</a>
+      <a href="rechnen-formelumstellen.html">Rechnen lernen</a>
       <a href="sprachfokus-alternativen.html">Alternativen</a>
     </nav>
 
@@ -319,6 +350,7 @@
       </p>
       <div class="install-row">
         <a id="installAppButton" class="button primary" href="#" role="button" hidden>App installieren</a>
+        <button id="tabletFocusButtonHub" class="button secondary" type="button" aria-pressed="false">Tablet-Fokus aktivieren</button>
         <p id="installAppHint" class="install-hint">Wenn der Browser es unterstützt, kannst du die Seite als App auf dem Tablet installieren.</p>
       </div>
     </section>
@@ -362,6 +394,15 @@
         </article>
 
         <article class="module">
+          <h3>Rechnen lernen: Formeln umstellen</h3>
+          <p>Lernseite für Zinsrechnung mit Jahre-, Monate- und Tagesformeln. Enthält Formel-Coach, Umstellungslogik und wichtige kaufmännische Basisformeln.</p>
+          <p class="tiny">Passend für Industriekaufleute: erst Struktur verstehen, dann direkt mit Zahlen rechnen.</p>
+          <div class="actions">
+            <a class="button primary" href="rechnen-formelumstellen.html">Rechenseite öffnen</a>
+          </div>
+        </article>
+
+        <article class="module">
           <h3>Industriekauffrau</h3>
           <p>Neues Modul mit Voraussetzungen in Mathe/Deutsch/Englisch, Interviewvorbereitung, Formelsammlung mit Begriffen, 3-stufigen Tests je Fach und Perspektiven nach der Ausbildung.</p>
           <div class="actions">
@@ -385,6 +426,8 @@
       const themeToggleButton = document.getElementById('themeToggleButton');
       const installAppButton = document.getElementById('installAppButton');
       const installAppHint = document.getElementById('installAppHint');
+      const tabletFocusButtonHub = document.getElementById('tabletFocusButtonHub');
+      const TABLET_FOCUS_KEY = 'vorbereitung-bew-tablet-focus-v1';
       let deferredInstallPrompt = null;
 
       function applyTheme(theme) {
@@ -397,6 +440,35 @@
 
       const storedTheme = localStorage.getItem(THEME_KEY);
       applyTheme(storedTheme === 'dark' ? 'dark' : 'light');
+
+      function applyTabletFocusHub(enabled, persist = true) {
+        const isEnabled = Boolean(enabled);
+        document.body.classList.toggle('tablet-focus', isEnabled);
+        if (tabletFocusButtonHub) {
+          tabletFocusButtonHub.textContent = isEnabled ? 'Tablet-Fokus beenden' : 'Tablet-Fokus aktivieren';
+          tabletFocusButtonHub.setAttribute('aria-pressed', isEnabled ? 'true' : 'false');
+        }
+        if (persist) {
+          localStorage.setItem(TABLET_FOCUS_KEY, isEnabled ? '1' : '0');
+        }
+      }
+
+      const storedFocus = localStorage.getItem(TABLET_FOCUS_KEY);
+      if (storedFocus === '1') {
+        applyTabletFocusHub(true, false);
+      } else if (storedFocus === '0') {
+        applyTabletFocusHub(false, false);
+      } else {
+        const isTabletLayout = window.matchMedia('(min-width: 900px) and (max-width: 1366px)').matches;
+        applyTabletFocusHub(isTabletLayout, false);
+      }
+
+      if (tabletFocusButtonHub) {
+        tabletFocusButtonHub.addEventListener('click', () => {
+          const next = !document.body.classList.contains('tablet-focus');
+          applyTabletFocusHub(next, true);
+        });
+      }
 
       if (!themeToggleButton) return;
       themeToggleButton.addEventListener('click', () => {

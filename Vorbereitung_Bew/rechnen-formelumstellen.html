@@ -1,0 +1,2215 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rechnen lernen | Formeln umstellen</title>
+  <meta name="description" content="Lernseite für kaufmännisches Rechnen: Zinsformeln umstellen, Jahre/Monate/Tage verstehen und wichtige Formeln für Industriekaufleute üben.">
+  <meta name="theme-color" content="#5a4a3d">
+  <link rel="manifest" href="app.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <style>
+    :root {
+      --bg: #f6efe3;
+      --surface: rgba(255, 250, 242, 0.94);
+      --surface-strong: #fff9ef;
+      --surface-soft: rgba(255, 247, 235, 0.78);
+      --ink: #191919;
+      --muted: #4f4a43;
+      --line: rgba(40, 36, 31, 0.18);
+      --brand: #5a4a3d;
+      --brand-strong: #46392f;
+      --accent: #8f7864;
+      --ok: #1f7a58;
+      --bad: #b42318;
+      --shadow: 0 24px 60px rgba(34, 43, 56, 0.12);
+      --shadow-sm: 0 12px 28px rgba(34, 43, 56, 0.08);
+      --radius-xl: 28px;
+      --radius-md: 16px;
+      --bg-radial-left: rgba(181, 150, 120, 0.13);
+      --bg-radial-right: rgba(214, 192, 166, 0.15);
+      --bg-gradient-top: #fcf7ef;
+      --bg-gradient-bottom: #efe1cf;
+      --grid-line: rgba(35, 30, 24, 0.05);
+    }
+
+    :root[data-theme='dark'] {
+      --bg: #1a1714;
+      --surface: rgba(30, 26, 22, 0.94);
+      --surface-strong: #25201b;
+      --surface-soft: rgba(43, 35, 29, 0.9);
+      --ink: #efe6dc;
+      --muted: #c2b3a3;
+      --line: rgba(215, 194, 171, 0.22);
+      --brand: #b79d85;
+      --brand-strong: #cfb9a5;
+      --accent: #d8bca3;
+      --ok: #7ce4d6;
+      --bad: #ff9a8f;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+      --shadow-sm: 0 12px 28px rgba(0, 0, 0, 0.24);
+      --bg-radial-left: rgba(180, 143, 111, 0.14);
+      --bg-radial-right: rgba(120, 96, 77, 0.14);
+      --bg-gradient-top: #221d18;
+      --bg-gradient-bottom: #17130f;
+      --grid-line: rgba(239, 230, 220, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+      background:
+        radial-gradient(circle at top left, var(--bg-radial-left), transparent 28%),
+        radial-gradient(circle at top right, var(--bg-radial-right), transparent 24%),
+        linear-gradient(180deg, var(--bg-gradient-top) 0%, var(--bg) 48%, var(--bg-gradient-bottom) 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 88%);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      font-family: "Georgia", "Cambria", serif;
+    }
+
+    .theme-toggle-button {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 30;
+      border: 1px solid rgba(90, 74, 61, 0.34);
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      font: inherit;
+      font-weight: 700;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+
+    :root[data-theme='dark'] .theme-toggle-button {
+      background: rgba(30, 26, 22, 0.9);
+      border-color: rgba(207, 185, 165, 0.45);
+    }
+
+    .theme-toggle-button:hover { transform: translateY(-1px); }
+
+    .page {
+      width: min(1160px, 94vw);
+      margin: 24px auto 56px;
+      display: grid;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hub-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: -2px;
+    }
+
+    .hub-nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      background: var(--surface);
+      color: var(--brand-strong);
+      font-weight: 500;
+      font-size: 14px;
+      transition: transform 120ms ease, background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+    }
+
+    .hub-nav a:hover {
+      transform: translateY(-1px);
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .hub-nav a.active,
+    .hub-nav a[aria-current='page'] {
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    :root[data-theme='dark'] .hub-nav a.active,
+    :root[data-theme='dark'] .hub-nav a[aria-current='page'] {
+      color: #1a1714;
+    }
+
+    .hero,
+    .panel,
+    .tab-shell,
+    .reference-shell,
+    .coach-shell,
+    .summary-item,
+    .card-face {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero,
+    .panel,
+    .tab-shell,
+    .reference-shell,
+    .coach-shell {
+      border-radius: var(--radius-xl);
+      padding: 20px;
+    }
+
+    .hero {
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -60px;
+      bottom: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(143, 120, 100, 0.18) 0%, transparent 68%);
+      z-index: -1;
+    }
+
+    .hero p,
+    .muted,
+    .decision-box p,
+    .reference-card p,
+    .process-step p,
+    .card-copy,
+    .card-hint,
+    .formula-note {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+
+    .chip-row,
+    .badge-row,
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip,
+    .badge {
+      border-radius: 999px;
+      padding: 0.3rem 0.64rem;
+      background: rgba(90, 74, 61, 0.1);
+      color: var(--brand-strong);
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    .summary-grid,
+    .decision-grid,
+    .cards-grid,
+    .formula-grid,
+    .reference-grid,
+    .process-grid,
+    .coach-grid,
+    .calc-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-grid,
+    .decision-grid,
+    .cards-grid,
+    .formula-grid,
+    .process-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .reference-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 16px;
+    }
+
+    .coach-grid {
+      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+    }
+
+    .calc-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 14px;
+    }
+
+    .summary-item,
+    .decision-box,
+    .reference-card,
+    .process-step {
+      border-radius: var(--radius-md);
+      padding: 16px;
+      background: linear-gradient(180deg, var(--surface-strong) 0%, var(--surface) 100%);
+    }
+
+    .summary-item strong {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--brand);
+    }
+
+    .summary-item span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tab-btn {
+      padding: 0.78rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-strong);
+      color: var(--brand-strong);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 140ms ease, background-color 140ms ease, color 140ms ease;
+    }
+
+    .tab-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(90, 74, 61, 0.1);
+    }
+
+    .tab-btn.active {
+      background: var(--brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .tab-content {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .tab-content.active { display: block; }
+
+    .decision-panel {
+      margin-bottom: 24px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--surface-strong) 0%, var(--surface) 100%);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .decision-panel h2,
+    .reference-shell h2,
+    .coach-shell h2,
+    .panel h2,
+    .panel h3 {
+      color: var(--brand);
+    }
+
+    .card {
+      perspective: 1200px;
+      min-height: 340px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .card.card-tall { min-height: 390px; }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .card.flipped .card-inner { transform: rotateY(180deg); }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .card-front {
+      background: linear-gradient(180deg, var(--surface-strong) 0%, var(--surface) 100%);
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--brand) 100%);
+      color: #fff;
+    }
+
+    :root[data-theme='dark'] .card-back {
+      background: linear-gradient(180deg, var(--surface-strong) 0%, var(--surface-soft) 100%);
+      color: var(--ink);
+    }
+
+    .card-back .card-copy,
+    .card-back .card-hint,
+    .card-back .formula-note {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    :root[data-theme='dark'] .card-back .card-copy,
+    :root[data-theme='dark'] .card-back .card-hint,
+    :root[data-theme='dark'] .card-back .formula-note {
+      color: var(--muted);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(90, 74, 61, 0.12);
+      color: var(--brand);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 14px;
+    }
+
+    .card-back .card-icon {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+    }
+
+    :root[data-theme='dark'] .card-back .card-icon {
+      color: var(--brand-strong);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .card-title,
+    .reference-card h3,
+    .process-step h3,
+    .decision-box strong {
+      color: var(--brand-strong);
+    }
+
+    .card-back .card-title { color: #fff; }
+
+    :root[data-theme='dark'] .card-back .card-title { color: var(--brand-strong); }
+
+    .formula-block,
+    .result-box,
+    .feedback {
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: rgba(0, 0, 0, 0.05);
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+
+    .formula-block,
+    .result-box {
+      font-family: "Courier New", monospace;
+      color: var(--brand-strong);
+    }
+
+    :root[data-theme='dark'] .formula-block,
+    :root[data-theme='dark'] .result-box,
+    :root[data-theme='dark'] .feedback {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .control-group {
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    select,
+    input,
+    button {
+      font: inherit;
+    }
+
+    select,
+    input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-strong);
+      color: var(--ink);
+      padding: 0.7rem 0.8rem;
+    }
+
+    input[disabled],
+    select[disabled] {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .action {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0.72rem 1rem;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform 140ms ease, background-color 140ms ease;
+    }
+
+    .action:hover {
+      transform: translateY(-1px);
+      background: var(--brand-strong);
+    }
+
+    .action.secondary {
+      background: var(--surface-strong);
+      color: var(--brand-strong);
+      border-color: rgba(90, 74, 61, 0.3);
+    }
+
+    .feedback {
+      min-height: 54px;
+      color: var(--muted);
+    }
+
+    .feedback.ok {
+      border: 1px solid rgba(31, 122, 88, 0.22);
+      color: var(--ok);
+    }
+
+    .feedback.bad {
+      border: 1px solid rgba(180, 35, 24, 0.24);
+      color: var(--bad);
+    }
+
+    .exam-certificate {
+      margin-top: 10px;
+      border: 1px solid transparent;
+      font-family: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .exam-certificate.pass {
+      border-color: rgba(31, 122, 88, 0.36);
+      background: rgba(31, 122, 88, 0.12);
+      color: var(--ok);
+    }
+
+    .exam-certificate.fail {
+      border-color: rgba(180, 35, 24, 0.36);
+      background: rgba(180, 35, 24, 0.12);
+      color: var(--bad);
+    }
+
+    .step-list {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: inherit;
+    }
+
+    .step-list li { margin-bottom: 6px; }
+
+    footer {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1023px) {
+      .summary-grid,
+      .decision-grid,
+      .cards-grid,
+      .formula-grid,
+      .process-grid,
+      .reference-grid,
+      .coach-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .coach-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .theme-toggle-button {
+        top: 10px;
+        right: 10px;
+      }
+
+      .page {
+        width: min(94vw, 100%);
+        margin-top: 16px;
+      }
+
+      .summary-grid,
+      .decision-grid,
+      .cards-grid,
+      .formula-grid,
+      .process-grid,
+      .reference-grid,
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .card.card-tall {
+        min-height: 380px;
+      }
+    }
+  
+    .tablet-global-tools {
+      position: fixed;
+      left: 16px;
+      bottom: 16px;
+      z-index: 32;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 8px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm, var(--shadow));
+    }
+
+    .tablet-global-tools .hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+      width: 100%;
+    }
+
+    .tablet-global-tools button {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0.52rem 0.84rem;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 120ms ease, background-color 140ms ease;
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .tablet-global-tools button:hover {
+      transform: translateY(-1px);
+    }
+
+    .tablet-global-tools .secondary {
+      background: var(--surface-strong);
+      color: var(--brand-strong);
+      border-color: rgba(90, 74, 61, 0.34);
+    }
+
+    body.tablet-focus .page {
+      width: min(1400px, 98vw);
+      margin-top: 14px;
+      gap: 10px;
+    }
+
+    body.tablet-focus .hero,
+    body.tablet-focus .hub-nav,
+    body.tablet-focus footer {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .tablet-global-tools {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggleButton" class="theme-toggle-button" type="button" aria-label="Theme wechseln">Dark</button>
+
+  <main class="page">
+    <nav class="hub-nav" aria-label="Projekt-Navigation">
+      <a href="index.html">Start (Hub)</a>
+      <a href="dialogmarketing-allgemeine.html">Allgemeine + Tests</a>
+      <a href="bewerbung-dialogmarketing.html">Bewerbungsseite</a>
+      <a href="industriekauffrau-allgemeine.html">Industriekauffrau</a>
+      <a href="bewerbung-industriekauffrau.html">Bewerbung Industriekauffrau</a>
+      <a href="interviews.html">Interviews</a>
+      <a href="formelsammlung.html">Formelsammlung</a>
+      <a class="active" aria-current="page" href="rechnen-formelumstellen.html">Rechnen lernen</a>
+      <a href="sprachfokus-alternativen.html">Alternativen</a>
+    </nav>
+
+    <section class="hero">
+      <span class="eyebrow">Kaufmännisches Rechnen</span>
+      <h1>Formeln umstellen und sicher rechnen</h1>
+      <p>
+        Diese Seite baut auf der Formelsammlung auf: erst das Muster erkennen, dann die Zinsformel
+        für Jahre, Monate und Tage umstellen und anschließend typische kaufmännische Formeln für
+        Industriekaufleute wiederholen.
+      </p>
+      <div class="chip-row">
+        <span class="chip">Zinsrechnung</span>
+        <span class="chip">Formelumstellung</span>
+        <span class="chip">Industriekaufmann</span>
+        <span class="chip">mit Rechenbeispiel</span>
+      </div>
+    </section>
+
+    <section class="summary-grid" aria-label="Schnellueberblick">
+      <article class="summary-item">
+        <strong>3</strong>
+        <span>Zeitmodelle: Jahre, Monate, Tage</span>
+      </article>
+      <article class="summary-item">
+        <strong>9</strong>
+        <span>Umstellungen für K, p und Zeitgröße</span>
+      </article>
+      <article class="summary-item">
+        <strong>8</strong>
+        <span>wichtige Zusatzformeln für kaufmännisches Rechnen</span>
+      </article>
+    </section>
+
+    <section class="tab-shell">
+      <div class="tabs" role="tablist" aria-label="Lernbereiche">
+        <button class="tab-btn active" data-tab="zins">Zinsformeln</button>
+        <button class="tab-btn" data-tab="coach">Formel-Coach</button>
+        <button class="tab-btn" data-tab="uebungen">Übungen</button>
+        <button class="tab-btn" data-tab="referenz">Wichtige Formeln</button>
+      </div>
+
+      <div id="zins" class="tab-content active">
+        <section class="decision-panel" aria-label="Zeitwahl">
+          <h2>Welche Zinsformel nehme ich?</h2>
+          <div class="decision-grid">
+            <div class="decision-box">
+              <strong>Jahre</strong>
+              <p>Wenn die Laufzeit direkt in Jahren angegeben ist, rechnest du mit Z = (K x p x J) / 100.</p>
+            </div>
+            <div class="decision-box">
+              <strong>Monate</strong>
+              <p>Bei Monaten wird der Jahreszins auf 12 Monate verteilt: Z = (K x p x M) / 1200.</p>
+            </div>
+            <div class="decision-box">
+              <strong>Tage</strong>
+              <p>Im kaufmännischen Rechnen wird meist mit 360 Tagen gearbeitet: Z = (K x p x T) / 36000.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                <div>
+                  <div class="card-icon">J</div>
+                  <h2 class="card-title">Jahreszins</h2>
+                  <p class="card-copy">Startformel für volle Jahre.</p>
+                  <div class="formula-block">Z = (K x p x J) / 100</div>
+                </div>
+                <p class="card-hint">Klick für Umstellungen</p>
+              </div>
+              <div class="card-face card-back">
+                <div>
+                  <div class="card-icon">J</div>
+                  <h2 class="card-title">Umgestellt</h2>
+                  <div class="formula-block">K = (Z x 100) / (p x J)
+p = (Z x 100) / (K x J)
+J = (Z x 100) / (K x p)</div>
+                </div>
+                <p class="formula-note">Merke: Zuerst den Nenner 100 beseitigen, dann durch die übrigen Faktoren teilen.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                <div>
+                  <div class="card-icon">M</div>
+                  <h2 class="card-title">Monatszins</h2>
+                  <p class="card-copy">12 Monate entsprechen einem Jahr.</p>
+                  <div class="formula-block">Z = (K x p x M) / 1200</div>
+                </div>
+                <p class="card-hint">Klick für Umstellungen</p>
+              </div>
+              <div class="card-face card-back">
+                <div>
+                  <div class="card-icon">M</div>
+                  <h2 class="card-title">Umgestellt</h2>
+                  <div class="formula-block">K = (Z x 1200) / (p x M)
+p = (Z x 1200) / (K x M)
+M = (Z x 1200) / (K x p)</div>
+                </div>
+                <p class="formula-note">1200 entsteht aus 100 x 12. Genau diese beiden Schritte kannst du auch beim Umstellen nacheinander denken.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                <div>
+                  <div class="card-icon">T</div>
+                  <h2 class="card-title">Tageszins</h2>
+                  <p class="card-copy">Standard im kaufmännischen Rechnen: 360 Tage.</p>
+                  <div class="formula-block">Z = (K x p x T) / 36000</div>
+                </div>
+                <p class="card-hint">Klick für Umstellungen</p>
+              </div>
+              <div class="card-face card-back">
+                <div>
+                  <div class="card-icon">T</div>
+                  <h2 class="card-title">Umgestellt</h2>
+                  <div class="formula-block">K = (Z x 36000) / (p x T)
+p = (Z x 36000) / (K x T)
+T = (Z x 36000) / (K x p)</div>
+                </div>
+                <p class="formula-note">36000 entsteht aus 100 x 360. In Aufgaben steht das oft nicht extra dabei, wird aber vorausgesetzt.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card-tall">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                <div>
+                  <div class="card-icon">1</div>
+                  <h2 class="card-title">Sicher umstellen in 3 Denkregeln</h2>
+                  <ul class="step-list">
+                    <li>Gesuchte Größe markieren.</li>
+                    <li>Erst den Bruch entfernen.</li>
+                    <li>Dann restliche Faktoren wegteilen.</li>
+                  </ul>
+                </div>
+                <p class="card-hint">Klick für Beispielablauf</p>
+              </div>
+              <div class="card-face card-back">
+                <div>
+                  <div class="card-icon">2</div>
+                  <h2 class="card-title">Beispiel K bei Jahreszins</h2>
+                  <ul class="step-list">
+                    <li>Start: Z = (K x p x J) / 100</li>
+                    <li>Beide Seiten mal 100: Z x 100 = K x p x J</li>
+                    <li>Durch p teilen: (Z x 100) / p = K x J</li>
+                    <li>Durch J teilen: K = (Z x 100) / (p x J)</li>
+                  </ul>
+                </div>
+                <p class="formula-note">Das Muster bleibt gleich. Nur der Zeitfaktor 100, 1200 oder 36000 ändert sich.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card-tall">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                <div>
+                  <div class="card-icon">30</div>
+                  <h2 class="card-title">Zeitfaktoren merken</h2>
+                  <div class="formula-block">1 Jahr = 12 Monate
+1 Monat = 30 Tage
+1 kaufm. Jahr = 360 Tage</div>
+                </div>
+                <p class="card-hint">Klick für Prüfungstipp</p>
+              </div>
+              <div class="card-face card-back">
+                <div>
+                  <div class="card-icon">Tip</div>
+                  <h2 class="card-title">Prüfungstipp</h2>
+                  <ul class="step-list">
+                    <li>Steht in der Aufgabe nur Monate oder Tage, nimm meist Monats- oder Tageszins.</li>
+                    <li>Steht nichts zur Tageszahl, gilt oft das kaufmännische Jahr mit 360 Tagen.</li>
+                    <li>Erst Einheit prüfen, dann Formel wählen.</li>
+                  </ul>
+                </div>
+                <p class="formula-note">So vermeidest du den häufigsten Fehler: richtige Umstellung, aber falsche Zeitbasis.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card-tall">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                <div>
+                  <div class="card-icon">P</div>
+                  <h2 class="card-title">Wann ist p gesucht?</h2>
+                  <p class="card-copy">Wenn Zinsen, Kapital und Laufzeit gegeben sind, suchst du den Zinssatz.</p>
+                  <div class="formula-block">p = (Z x Faktor) / (K x Zeit)</div>
+                </div>
+                <p class="card-hint">Klick für Rechenweg</p>
+              </div>
+              <div class="card-face card-back">
+                <div>
+                  <div class="card-icon">P</div>
+                  <h2 class="card-title">Beispiel Zinssatz</h2>
+                  <ul class="step-list">
+                    <li>Gegeben: Z = 150, K = 5000, M = 6</li>
+                    <li>Formel: p = (150 x 1200) / (5000 x 6)</li>
+                    <li>p = 180000 / 30000</li>
+                    <li>p = 6 Prozent</li>
+                  </ul>
+                </div>
+                <p class="formula-note">Beim Monatszins immer mit 1200 statt nur mit 100 rechnen.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card-tall">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                <div>
+                  <div class="card-icon">HK</div>
+                  <h2 class="card-title">Handelskalkulation</h2>
+                  <p class="card-copy">Vorwärtskalkulation mit Nettoverkaufspreis und Handelsspanne.</p>
+                  <div class="formula-block">NVP = Bezugspreis + Handlungskosten + Gewinn + Skonto + Rabatt</div>
+                </div>
+                <p class="card-hint">Klick für Kernformeln</p>
+              </div>
+              <div class="card-face card-back">
+                <div>
+                  <div class="card-icon">HK</div>
+                  <h2 class="card-title">Kernformeln</h2>
+                  <div class="formula-block">Kalkulationsfaktor = Listenverkaufspreis / Bezugspreis
+Handelsspanne (%) = (Listenverkaufspreis - Bezugspreis) / Listenverkaufspreis x 100</div>
+                </div>
+                <p class="formula-note">Diese Formeln brauchst du häufig bei Einkaufs- und Verkaufspreisen.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card-tall">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                <div>
+                  <div class="card-icon">LG</div>
+                  <h2 class="card-title">Lagerkennziffern</h2>
+                  <p class="card-copy">Durchschnittsbestand, Umschlag und Lagerdauer zusammen denken.</p>
+                  <div class="formula-block">Ø Lagerbestand = (Anfangsbestand + Endbestand) / 2
+Umschlag = Wareneinsatz / Ø Lagerbestand</div>
+                </div>
+                <p class="card-hint">Klick für Dauer/Meldebestand</p>
+              </div>
+              <div class="card-face card-back">
+                <div>
+                  <div class="card-icon">LG</div>
+                  <h2 class="card-title">Lagerdauer + Meldebestand</h2>
+                  <div class="formula-block">Ø Lagerdauer = 360 / Umschlagshäufigkeit
+Meldebestand = (täglicher Verbrauch x Lieferzeit) + Mindestbestand</div>
+                </div>
+                <p class="formula-note">Typische Prüfungskombination: erst Umschlag, dann Lagerdauer.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card-tall">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                <div>
+                  <div class="card-icon">ER</div>
+                  <h2 class="card-title">Erfolg & Rentabilität</h2>
+                  <p class="card-copy">Gewinn, Deckungsbeitrag und Rendite sauber trennen.</p>
+                  <div class="formula-block">Gewinn = Erlös - Kosten
+Deckungsbeitrag = Umsatzerlöse - variable Kosten</div>
+                </div>
+                <p class="card-hint">Klick für Rentabilitätsformeln</p>
+              </div>
+              <div class="card-face card-back">
+                <div>
+                  <div class="card-icon">ER</div>
+                  <h2 class="card-title">Rentabilität</h2>
+                  <div class="formula-block">Eigenkapitalrentabilität = Gewinn / Eigenkapital x 100
+Gesamtkapitalrentabilität = (Gewinn + Fremdkapitalzinsen) / Gesamtkapital x 100</div>
+                </div>
+                <p class="formula-note">Achte immer darauf, ob Gewinn oder Gewinn + Zinsen gefragt ist.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card-tall">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                <div>
+                  <div class="card-icon">FK</div>
+                  <h2 class="card-title">Finanzkennzahlen</h2>
+                  <p class="card-copy">Liquidität und Kapitalstruktur in Prozent darstellen.</p>
+                  <div class="formula-block">Liquidität 1. Grades = Liquide Mittel / kurzfristige Verbindlichkeiten x 100
+Eigenkapitalquote = Eigenkapital / Gesamtkapital x 100</div>
+                </div>
+                <p class="card-hint">Klick für Anlagendeckung</p>
+              </div>
+              <div class="card-face card-back">
+                <div>
+                  <div class="card-icon">FK</div>
+                  <h2 class="card-title">Anlagendeckungsgrad I</h2>
+                  <div class="formula-block">Anlagendeckungsgrad I = Eigenkapital / Anlagevermögen x 100</div>
+                </div>
+                <p class="formula-note">So prüfst du, ob langfristiges Vermögen mit Eigenkapital gedeckt ist.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div id="coach" class="tab-content">
+        <div class="coach-grid">
+          <section class="coach-shell">
+            <span class="eyebrow">Interaktiv</span>
+            <h2>Formel-Coach</h2>
+            <p class="muted">Wähle Zeitbasis und gesuchte Größe. Stelle die Formel wie in deiner Auswahlliste um und rechne danach mit eigenen Werten.</p>
+
+            <div class="control-group" style="margin-top: 14px;">
+              <div>
+                <label for="unitSelect">Zeitbasis</label>
+                <select id="unitSelect">
+                  <option value="year">Jahre</option>
+                  <option value="month">Monate</option>
+                  <option value="day">Tage</option>
+                </select>
+              </div>
+              <div>
+                <label for="targetSelect">Gesuchte Größe</label>
+                <select id="targetSelect">
+                  <option value="K">Kapital K</option>
+                  <option value="p">Zinssatz p</option>
+                  <option value="time">Zeitgröße</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="operationHint" class="badge-row"></div>
+            <div id="coachUnitLegend" class="badge-row" aria-label="Einheiten-Hinweis">
+              <span class="badge">K, Z: Euro (EUR)</span>
+              <span class="badge">p: Prozent (%)</span>
+              <span class="badge">Zeit: Jahre/Monate/Tage</span>
+            </div>
+
+            <div class="control-group" style="margin-top: 14px;">
+              <div>
+                <label for="step1">Schritt 1</label>
+                <select id="step1"></select>
+              </div>
+              <div>
+                <label for="step2">Schritt 2</label>
+                <select id="step2"></select>
+              </div>
+              <div>
+                <label for="step3">Schritt 3</label>
+                <select id="step3"></select>
+              </div>
+              <div>
+                <label for="step4">Schritt 4</label>
+                <select id="step4"></select>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <button id="checkStepsButton" class="action" type="button">Schritte prüfen</button>
+              <button id="showSolutionButton" class="action secondary" type="button">Lösung zeigen</button>
+              <button id="resetStepsButton" class="action secondary" type="button">Zurücksetzen</button>
+            </div>
+
+            <div id="feedbackBox" class="feedback">Wähle eine Formel und prüfe die Reihenfolge der Rechenschritte.</div>
+          </section>
+
+          <section class="panel">
+            <span class="eyebrow">Arbeitsflaeche</span>
+            <h2 id="workspaceTitle">K aus Jahreszins berechnen</h2>
+            <p id="workspaceCopy" class="muted">Arbeite erst symbolisch, dann mit Zahlen.</p>
+
+            <div class="formula-grid" style="margin-top: 14px;">
+              <div class="reference-card">
+                <h3>Startformel</h3>
+                <div id="startFormula" class="formula-block"></div>
+              </div>
+              <div class="reference-card">
+                <h3>Zielformel</h3>
+                <div id="targetFormula" class="formula-block"></div>
+              </div>
+              <div class="reference-card">
+                <h3>Merksatz</h3>
+                <p id="formulaHint"></p>
+              </div>
+            </div>
+
+            <div class="panel" style="margin-top: 16px; padding: 16px; border-radius: var(--radius-md); box-shadow: none;">
+              <h3>Mit Zahlen rechnen</h3>
+              <p class="muted">Dezimalzahlen kannst du mit Punkt oder Komma eingeben. p immer als Prozentwert, also z. B. 6 für 6 Prozent.</p>
+
+              <div class="calc-grid">
+                <div>
+                  <label for="inputZ">Zinsen Z</label>
+                  <input id="inputZ" type="text" inputmode="decimal" placeholder="z. B. 150">
+                </div>
+                <div>
+                  <label for="inputK">Kapital K</label>
+                  <input id="inputK" type="text" inputmode="decimal" placeholder="z. B. 5000">
+                </div>
+                <div>
+                  <label for="inputP">Zinssatz p</label>
+                  <input id="inputP" type="text" inputmode="decimal" placeholder="z. B. 6">
+                </div>
+                <div>
+                  <label id="timeInputLabel" for="inputTime">Jahre J</label>
+                  <input id="inputTime" type="text" inputmode="decimal" placeholder="z. B. 2">
+                </div>
+              </div>
+
+              <div class="button-row">
+                <button id="calculateButton" class="action" type="button">Beispiel berechnen</button>
+              </div>
+
+              <div id="calculationResult" class="result-box" style="margin-top: 12px;">Noch keine Berechnung.</div>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel" style="margin-top: 16px;">
+          <span class="eyebrow">Modul 2</span>
+          <h2>Kaufmännischer Formel-Coach</h2>
+          <p class="muted">Wähle ein Thema, setze Werte ein und berechne die gesuchte Größe für Handelskalkulation, Lager, Rentabilität und Finanzkennzahlen.</p>
+
+          <div class="formula-grid" style="margin-top: 12px;">
+            <div class="reference-card">
+              <label for="bizFormulaSelect">Thema/Formel</label>
+              <select id="bizFormulaSelect"></select>
+            </div>
+            <div class="reference-card">
+              <label for="bizTargetSelect">Gesuchte Größe</label>
+              <select id="bizTargetSelect"></select>
+            </div>
+            <div class="reference-card">
+              <h3>Formel</h3>
+              <div id="bizFormulaDisplay" class="formula-block"></div>
+              <div id="bizUnitLegend" class="badge-row" style="margin-top: 10px;"></div>
+            </div>
+          </div>
+
+          <div class="formula-grid" style="margin-top: 12px;">
+            <div class="reference-card">
+              <label id="bizInputALabel" for="bizInputA">Wert A</label>
+              <input id="bizInputA" type="text" inputmode="decimal" placeholder="z. B. 12000">
+            </div>
+            <div class="reference-card">
+              <label id="bizInputBLabel" for="bizInputB">Wert B</label>
+              <input id="bizInputB" type="text" inputmode="decimal" placeholder="z. B. 9000">
+            </div>
+            <div class="reference-card">
+              <label id="bizInputCLabel" for="bizInputC">Wert C</label>
+              <input id="bizInputC" type="text" inputmode="decimal" placeholder="optional">
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button id="bizCalculateButton" class="action" type="button">Berechnen</button>
+            <button id="bizResetButton" class="action secondary" type="button">Zurücksetzen</button>
+          </div>
+
+          <div id="bizResult" class="result-box" style="margin-top: 12px;">Noch keine Berechnung.</div>
+        </section>
+      </div>
+
+      <div id="uebungen" class="tab-content">
+        <section class="reference-shell">
+          <span class="eyebrow">Training</span>
+          <h2>Zufallsaufgaben: Formel umstellen + rechnen</h2>
+          <p class="muted">Neue Aufgabe erzeugen, Ergebnis eingeben und sofort prüfen. So trainierst du den Ablauf wie im Test.</p>
+
+          <div class="formula-grid" style="margin-top: 14px;">
+            <div class="reference-card">
+              <h3>Modus</h3>
+              <label for="exerciseMode">Trainingsart</label>
+              <select id="exerciseMode">
+                <option value="training">Training (frei)</option>
+                <option value="exam10">Prüfung (10 Fragen)</option>
+              </select>
+
+              <label for="exerciseDifficulty" style="margin-top: 10px;">Schwierigkeit</label>
+              <select id="exerciseDifficulty">
+                <option value="easy">Leicht</option>
+                <option value="medium" selected>Mittel</option>
+                <option value="hard">Schwer</option>
+              </select>
+
+              <label for="exerciseScope" style="margin-top: 10px;">Themenbereich</label>
+              <select id="exerciseScope">
+                <option value="zins" selected>Zinsrechnung</option>
+                <option value="business">Kaufmännische Formeln</option>
+                <option value="mixed">Gemischt</option>
+              </select>
+
+              <div class="button-row">
+                <button id="startExamButton" class="action" type="button">Prüfung starten</button>
+              </div>
+            </div>
+
+            <div class="reference-card">
+              <h3>Aufgabe</h3>
+              <div id="exercisePrompt" class="result-box">Noch keine Aufgabe geladen.</div>
+              <div id="exerciseMeta" class="badge-row"></div>
+              <div class="button-row">
+                <button id="newExerciseButton" class="action" type="button">Neue Aufgabe</button>
+              </div>
+            </div>
+
+            <div class="reference-card">
+              <h3>Deine Antwort</h3>
+              <label for="exerciseAnswer">Ergebnis</label>
+              <input id="exerciseAnswer" type="text" inputmode="decimal" placeholder="z. B. 2500 oder 6,5">
+              <div class="button-row">
+                <button id="checkExerciseButton" class="action" type="button">Antwort prüfen</button>
+                <button id="showExerciseSolutionButton" class="action secondary" type="button">Lösung zeigen</button>
+              </div>
+            </div>
+
+            <div class="reference-card">
+              <h3>Stand</h3>
+              <div id="exerciseScore" class="result-box">Richtig: 0 | Versuche: 0 | Serie: 0</div>
+              <div id="examCertificate" class="result-box exam-certificate" hidden></div>
+              <div id="exerciseFeedback" class="feedback" style="margin-top: 10px;">Starte mit Neue Aufgabe.</div>
+              <div class="button-row">
+                <button id="resetExerciseStatsButton" class="action secondary" type="button">Punkte zurücksetzen</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="referenz" class="tab-content">
+        <section class="reference-shell">
+          <span class="eyebrow">Prüfungsrelevante Basis</span>
+          <h2>Weitere wichtige Formeln für Industriekaufleute</h2>
+          <p class="muted">Diese Formeln tauchen in Eignungstests, Berufsschule und kaufmännischen Aufgaben regelmäßig auf.</p>
+
+          <div class="reference-grid">
+            <article class="reference-card">
+              <h3>Prozentwert</h3>
+              <div class="formula-block">W = (G x p) / 100</div>
+              <p>Wenn ein Teil vom Ganzen gesucht ist, etwa Rabattbetrag oder Provision.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Grundwert</h3>
+              <div class="formula-block">G = (W x 100) / p</div>
+              <p>Wenn du aus Teil und Prozentsatz den ursprünglichen Wert ermitteln sollst.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Prozentsatz</h3>
+              <div class="formula-block">p = (W x 100) / G</div>
+              <p>Nutzt du, wenn der Anteil bekannt ist, aber die Prozentangabe fehlt.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Rabattpreis</h3>
+              <div class="formula-block">Zielpreis = Listenpreis - Rabatt</div>
+              <p>Oder direkt: Listenpreis x (1 - p/100).</p>
+            </article>
+            <article class="reference-card">
+              <h3>Skonto</h3>
+              <div class="formula-block">Barpreis = Zielpreis - Skonto</div>
+              <p>Wichtig für Einkaufs- und Verkaufskalkulationen.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Bezugspreis</h3>
+              <div class="formula-block">Bezugspreis = Bareinkaufspreis + Bezugskosten</div>
+              <p>Hängt häufig an Aufgaben mit Rabatt, Skonto und Transportkosten.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Umsatzsteuer</h3>
+              <div class="formula-block">Brutto = Netto x 1,19
+Netto = Brutto / 1,19</div>
+              <p>Im Test oft als Schnellaufgabe kombiniert mit Rabatt oder Skonto.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Lagerumschlag</h3>
+              <div class="formula-block">Lagerumschlag = Jahresverbrauch / durchschnittlicher Lagerbestand</div>
+              <p>Zeigt, wie oft das Lager im Jahr erneuert wird.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Kalkulationsfaktor</h3>
+              <div class="formula-block">Kalkulationsfaktor = Listenverkaufspreis / Bezugspreis</div>
+              <p>Hilft, aus dem Bezugspreis auf den Listenverkaufspreis zu schließen.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Handelsspanne (%)</h3>
+              <div class="formula-block">(Listenverkaufspreis - Bezugspreis) / Listenverkaufspreis x 100</div>
+              <p>Zeigt die Spanne vom Verkaufspreis in Prozent.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Ø Lagerbestand</h3>
+              <div class="formula-block">(Anfangsbestand + Endbestand) / 2</div>
+              <p>Basis für Umschlag, Lagerdauer und Lagerzinssatz.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Ø Lagerdauer</h3>
+              <div class="formula-block">360 Tage / Umschlagshäufigkeit</div>
+              <p>Wie lange Ware durchschnittlich im Lager bleibt.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Meldebestand</h3>
+              <div class="formula-block">(täglicher Verbrauch x Lieferzeit) + Mindestbestand</div>
+              <p>Bestellgrenze zur Vermeidung von Fehlbeständen.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Lagerzinssatz</h3>
+              <div class="formula-block">Jahreszinssatz x durchschnittliche Lagerdauer / 360</div>
+              <p>Verknüpft Kapitalbindung mit der Lagerdauer.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Gewinn</h3>
+              <div class="formula-block">Gewinn = Erlös - Kosten</div>
+              <p>Grundlage für viele Erfolgs- und Rentabilitätskennzahlen.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Deckungsbeitrag</h3>
+              <div class="formula-block">Deckungsbeitrag = Umsatzerlöse - variable Kosten</div>
+              <p>Wichtig für Break-even und kurzfristige Entscheidungen.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Eigenkapitalrentabilität</h3>
+              <div class="formula-block">Gewinn / Eigenkapital x 100</div>
+              <p>Rendite auf das eingesetzte Eigenkapital.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Gesamtkapitalrentabilität</h3>
+              <div class="formula-block">(Gewinn + Fremdkapitalzinsen) / Gesamtkapital x 100</div>
+              <p>Rendite des gesamten eingesetzten Kapitals.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Liquidität 1. Grades</h3>
+              <div class="formula-block">Liquide Mittel / kurzfristige Verbindlichkeiten x 100</div>
+              <p>Zeigt die sofortige Zahlungsfähigkeit.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Eigenkapitalquote</h3>
+              <div class="formula-block">Eigenkapital / Gesamtkapital x 100</div>
+              <p>Maß für finanzielle Stabilität und Unabhängigkeit.</p>
+            </article>
+            <article class="reference-card">
+              <h3>Anlagendeckungsgrad I</h3>
+              <div class="formula-block">Eigenkapital / Anlagevermögen x 100</div>
+              <p>Prüft, ob Anlagevermögen durch Eigenkapital gedeckt ist.</p>
+            </article>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-step">
+              <h3>1. Gegeben und gesucht markieren</h3>
+              <p>Unterstreiche Werte und Einheiten. Viele Fehler entstehen nicht beim Rechnen, sondern beim falschen Lesen der Aufgabe.</p>
+            </article>
+            <article class="process-step">
+              <h3>2. Erst Struktur, dann Zahlen</h3>
+              <p>Stelle die Formel zuerst symbolisch um. Setze Werte erst ein, wenn die richtige Zielformel steht.</p>
+            </article>
+            <article class="process-step">
+              <h3>3. Ergebnis prüfen</h3>
+              <p>Frage dich: Kann das grob stimmen? Ein Zinssatz von 600 Prozent oder 0,02 Tagen fällt so sofort auf.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <footer>
+      Rechnen lernen für Ausbildung und Testtraining. Schwerpunkt: Zinsrechnung, Formelumstellung und kaufmännische Basisformeln.
+    </footer>
+  
+  <div class="tablet-global-tools" aria-label="Tablet und App-Werkzeuge">
+    <p id="tabletGlobalHint" class="hint">Tablet-Fokus blendet Kopfbereiche aus und nutzt mehr Platz für Inhalte.</p>
+    <button id="tabletFocusButtonGlobal" class="secondary" type="button" aria-pressed="false">Tablet-Fokus aktivieren</button>
+    <button id="installAppButtonGlobal" type="button" hidden>App installieren</button>
+  </div>
+  </main>
+
+  <script>
+    const THEME_KEY = 'vorbereitung-bew-theme-v1';
+    const themeToggleButton = document.getElementById('themeToggleButton');
+
+    function applyTheme(theme) {
+      const normalized = theme === 'dark' ? 'dark' : 'light';
+      document.documentElement.dataset.theme = normalized;
+      if (themeToggleButton) {
+        themeToggleButton.textContent = normalized === 'dark' ? 'Light' : 'Dark';
+      }
+    }
+
+    applyTheme(localStorage.getItem(THEME_KEY) || 'light');
+
+    if (themeToggleButton) {
+      themeToggleButton.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem(THEME_KEY, next);
+        applyTheme(next);
+      });
+    }
+
+    document.querySelectorAll('.tab-btn').forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach((item) => item.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach((panel) => panel.classList.remove('active'));
+        button.classList.add('active');
+        document.getElementById(target)?.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.card').forEach((card) => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+    });
+
+    const formulaConfig = {
+      year: {
+        unitLabel: 'Jahre',
+        timeSymbol: 'J',
+        factor: 100,
+        startFormula: 'Z = (K x p x J) / 100',
+        hint: 'Bei Jahreszins entfernst du zuerst /100, danach teilst du durch die restlichen Faktoren.',
+        targets: {
+          K: {
+            label: 'Kapital K',
+            title: 'K aus Jahreszins berechnen',
+            formula: 'K = (Z x 100) / (p x J)',
+            steps: ['*100', '/p', '/J']
+          },
+          p: {
+            label: 'Zinssatz p',
+            title: 'p aus Jahreszins berechnen',
+            formula: 'p = (Z x 100) / (K x J)',
+            steps: ['*100', '/K', '/J']
+          },
+          time: {
+            label: 'Jahre J',
+            title: 'J aus Jahreszins berechnen',
+            formula: 'J = (Z x 100) / (K x p)',
+            steps: ['*100', '/K', '/p']
+          }
+        },
+        operations: ['*100', '/K', '/p', '/J']
+      },
+      month: {
+        unitLabel: 'Monate',
+        timeSymbol: 'M',
+        factor: 1200,
+        startFormula: 'Z = (K x p x M) / 1200',
+        hint: 'Monatszins ist Jahreszins geteilt durch 12. Deshalb steckt im Faktor die 1200.',
+        targets: {
+          K: {
+            label: 'Kapital K',
+            title: 'K aus Monatszins berechnen',
+            formula: 'K = (Z x 1200) / (p x M)',
+            steps: ['*100', '*12', '/p', '/M']
+          },
+          p: {
+            label: 'Zinssatz p',
+            title: 'p aus Monatszins berechnen',
+            formula: 'p = (Z x 1200) / (K x M)',
+            steps: ['*100', '*12', '/K', '/M']
+          },
+          time: {
+            label: 'Monate M',
+            title: 'M aus Monatszins berechnen',
+            formula: 'M = (Z x 1200) / (K x p)',
+            steps: ['*100', '*12', '/K', '/p']
+          }
+        },
+        operations: ['*100', '*12', '/K', '/p', '/M']
+      },
+      day: {
+        unitLabel: 'Tage',
+        timeSymbol: 'T',
+        factor: 36000,
+        startFormula: 'Z = (K x p x T) / 36000',
+        hint: 'Im kaufmännischen Rechnen wird für Tageszins meist mit 360 Tagen gerechnet.',
+        targets: {
+          K: {
+            label: 'Kapital K',
+            title: 'K aus Tageszins berechnen',
+            formula: 'K = (Z x 36000) / (p x T)',
+            steps: ['*100', '*360', '/p', '/T']
+          },
+          p: {
+            label: 'Zinssatz p',
+            title: 'p aus Tageszins berechnen',
+            formula: 'p = (Z x 36000) / (K x T)',
+            steps: ['*100', '*360', '/K', '/T']
+          },
+          time: {
+            label: 'Tage T',
+            title: 'T aus Tageszins berechnen',
+            formula: 'T = (Z x 36000) / (K x p)',
+            steps: ['*100', '*360', '/K', '/p']
+          }
+        },
+        operations: ['*100', '*360', '/K', '/p', '/T']
+      }
+    };
+
+    const unitSelect = document.getElementById('unitSelect');
+    const targetSelect = document.getElementById('targetSelect');
+    const stepSelects = ['step1', 'step2', 'step3', 'step4'].map((id) => document.getElementById(id));
+    const feedbackBox = document.getElementById('feedbackBox');
+    const operationHint = document.getElementById('operationHint');
+    const workspaceTitle = document.getElementById('workspaceTitle');
+    const workspaceCopy = document.getElementById('workspaceCopy');
+    const startFormula = document.getElementById('startFormula');
+    const targetFormula = document.getElementById('targetFormula');
+    const formulaHint = document.getElementById('formulaHint');
+    const timeInputLabel = document.getElementById('timeInputLabel');
+    const inputZ = document.getElementById('inputZ');
+    const inputK = document.getElementById('inputK');
+    const inputP = document.getElementById('inputP');
+    const inputTime = document.getElementById('inputTime');
+    const calculationResult = document.getElementById('calculationResult');
+    const bizFormulaSelect = document.getElementById('bizFormulaSelect');
+    const bizTargetSelect = document.getElementById('bizTargetSelect');
+    const bizFormulaDisplay = document.getElementById('bizFormulaDisplay');
+    const bizUnitLegend = document.getElementById('bizUnitLegend');
+    const bizInputALabel = document.getElementById('bizInputALabel');
+    const bizInputBLabel = document.getElementById('bizInputBLabel');
+    const bizInputCLabel = document.getElementById('bizInputCLabel');
+    const bizInputA = document.getElementById('bizInputA');
+    const bizInputB = document.getElementById('bizInputB');
+    const bizInputC = document.getElementById('bizInputC');
+    const bizResult = document.getElementById('bizResult');
+    const exercisePrompt = document.getElementById('exercisePrompt');
+    const exerciseMeta = document.getElementById('exerciseMeta');
+    const exerciseMode = document.getElementById('exerciseMode');
+    const exerciseDifficulty = document.getElementById('exerciseDifficulty');
+    const exerciseScope = document.getElementById('exerciseScope');
+    const exerciseAnswer = document.getElementById('exerciseAnswer');
+    const exerciseFeedback = document.getElementById('exerciseFeedback');
+    const exerciseScore = document.getElementById('exerciseScore');
+    const examCertificate = document.getElementById('examCertificate');
+
+    const exerciseState = {
+      currentTask: null,
+      correct: 0,
+      attempts: 0,
+      streak: 0,
+      difficulty: 'medium',
+      examActive: false,
+      examTotal: 10,
+      examIndex: 0,
+      examCorrect: 0,
+      scope: 'zins'
+    };
+
+    const businessCoachConfig = {
+      handelsspanne: {
+        label: 'Handelsspanne (%)',
+        formula: 'Handelsspanne = (LVP - BP) / LVP x 100',
+        targets: {
+          spanne: {
+            label: 'Handelsspanne (%)',
+            inputs: ['Listenverkaufspreis (LVP)', 'Bezugspreis (BP)', 'Nicht benötigt'],
+            units: ['EUR', 'EUR', '-'],
+            solve: (lvp, bp) => ((lvp - bp) / lvp) * 100
+          }
+        }
+      },
+      lagerdauer: {
+        label: 'Durchschnittliche Lagerdauer',
+        formula: 'Lagerdauer = 360 / Umschlagshäufigkeit',
+        targets: {
+          dauer: {
+            label: 'Lagerdauer (Tage)',
+            inputs: ['Umschlagshäufigkeit', 'Nicht benötigt', 'Nicht benötigt'],
+            units: ['Anzahl/Jahr', '-', '-'],
+            solve: (umschlag) => 360 / umschlag
+          }
+        }
+      },
+      meldebestand: {
+        label: 'Meldebestand',
+        formula: 'Meldebestand = täglicher Verbrauch x Lieferzeit + Mindestbestand',
+        targets: {
+          melde: {
+            label: 'Meldebestand',
+            inputs: ['Täglicher Verbrauch', 'Lieferzeit (Tage)', 'Mindestbestand'],
+            units: ['Stück/Tag', 'Tage', 'Stück'],
+            solve: (verbrauch, lieferzeit, mindest) => (verbrauch * lieferzeit) + mindest
+          }
+        }
+      },
+      eigenkapitalrent: {
+        label: 'Eigenkapitalrentabilität (%)',
+        formula: 'EK-Rentabilität = Gewinn / Eigenkapital x 100',
+        targets: {
+          rent: {
+            label: 'Eigenkapitalrentabilität (%)',
+            inputs: ['Gewinn', 'Eigenkapital', 'Nicht benötigt'],
+            units: ['EUR', 'EUR', '-'],
+            solve: (gewinn, ek) => (gewinn / ek) * 100
+          }
+        }
+      },
+      liquiditaet1: {
+        label: 'Liquidität 1. Grades (%)',
+        formula: 'Liquidität 1 = Liquide Mittel / kurzfristige Verbindlichkeiten x 100',
+        targets: {
+          liq: {
+            label: 'Liquidität 1. Grades (%)',
+            inputs: ['Liquide Mittel', 'Kurzfristige Verbindlichkeiten', 'Nicht benötigt'],
+            units: ['EUR', 'EUR', '-'],
+            solve: (mittel, verbindl) => (mittel / verbindl) * 100
+          }
+        }
+      }
+    };
+
+    function buildSelectOptions(select, operations) {
+      const options = ['<option value="">- bitte wählen -</option>']
+        .concat(operations.map((value) => `<option value="${value}">${value}</option>`));
+      select.innerHTML = options.join('');
+    }
+
+    function updateCoach() {
+      const unit = formulaConfig[unitSelect.value];
+      const target = unit.targets[targetSelect.value];
+
+      workspaceTitle.textContent = target.title;
+      workspaceCopy.textContent = `Zeitbasis: ${unit.unitLabel}. Gesucht ist ${target.label}.`;
+      startFormula.textContent = unit.startFormula;
+      targetFormula.textContent = target.formula;
+      formulaHint.textContent = unit.hint;
+      timeInputLabel.textContent = `${unit.unitLabel} ${unit.timeSymbol}`;
+      operationHint.innerHTML = unit.operations.map((item) => `<span class="badge">${item}</span>`).join('');
+
+      stepSelects.forEach((select) => buildSelectOptions(select, unit.operations));
+      stepSelects.forEach((select, index) => {
+        select.disabled = index >= target.steps.length;
+        if (index >= target.steps.length) {
+          select.value = '';
+        }
+      });
+
+      inputK.disabled = targetSelect.value === 'K';
+      inputP.disabled = targetSelect.value === 'p';
+      inputTime.disabled = targetSelect.value === 'time';
+
+      if (inputK.disabled) inputK.value = '';
+      if (inputP.disabled) inputP.value = '';
+      if (inputTime.disabled) inputTime.value = '';
+
+      feedbackBox.className = 'feedback';
+      feedbackBox.textContent = 'Arbeite die Formel Schritt für Schritt um und prüfe anschließend mit einem Zahlenbeispiel.';
+      calculationResult.textContent = 'Noch keine Berechnung.';
+    }
+
+    function selectedSteps() {
+      return stepSelects.map((select) => select.value).filter(Boolean);
+    }
+
+    function showFeedback(message, kind) {
+      feedbackBox.className = `feedback${kind ? ` ${kind}` : ''}`;
+      feedbackBox.textContent = message;
+    }
+
+    function parseNumber(value) {
+      const normalized = value.replace(',', '.').trim();
+      if (!normalized) {
+        return Number.NaN;
+      }
+      return Number(normalized);
+    }
+
+    function formatNumber(value) {
+      if (!Number.isFinite(value)) {
+        return '-';
+      }
+      const rounded = Math.round(value * 100) / 100;
+      return Number.isInteger(rounded)
+        ? String(rounded)
+        : rounded.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function randomInt(min, max, step = 1) {
+      const count = Math.floor((max - min) / step) + 1;
+      return min + Math.floor(Math.random() * count) * step;
+    }
+
+    function updateBusinessCoachTargets() {
+      const formulaKey = bizFormulaSelect.value;
+      const formula = businessCoachConfig[formulaKey];
+      const entries = Object.entries(formula.targets);
+      bizTargetSelect.innerHTML = entries.map(([key, value]) => `<option value="${key}">${value.label}</option>`).join('');
+      updateBusinessCoachDisplay();
+    }
+
+    function updateBusinessCoachDisplay() {
+      const formula = businessCoachConfig[bizFormulaSelect.value];
+      const target = formula.targets[bizTargetSelect.value];
+      bizFormulaDisplay.textContent = formula.formula;
+      bizInputALabel.textContent = target.inputs[0];
+      bizInputBLabel.textContent = target.inputs[1];
+      bizInputCLabel.textContent = target.inputs[2];
+      bizUnitLegend.innerHTML = target.units
+        .map((unit, index) => `<span class="badge">Eingabe ${String.fromCharCode(65 + index)}: ${unit}</span>`)
+        .join('');
+      bizInputB.disabled = target.inputs[1] === 'Nicht benötigt';
+      bizInputC.disabled = target.inputs[2] === 'Nicht benötigt';
+      if (bizInputB.disabled) bizInputB.value = '';
+      if (bizInputC.disabled) bizInputC.value = '';
+      bizResult.textContent = 'Noch keine Berechnung.';
+    }
+
+    function initializeBusinessCoach() {
+      bizFormulaSelect.innerHTML = Object.entries(businessCoachConfig)
+        .map(([key, value]) => `<option value="${key}">${value.label}</option>`)
+        .join('');
+      updateBusinessCoachTargets();
+    }
+
+    function updateExerciseScore() {
+      if (exerciseState.examActive) {
+        exerciseScore.textContent = `Prüfung: Frage ${exerciseState.examIndex}/${exerciseState.examTotal} | Richtig: ${exerciseState.examCorrect}`;
+        return;
+      }
+      exerciseScore.textContent = `Richtig: ${exerciseState.correct} | Versuche: ${exerciseState.attempts} | Serie: ${exerciseState.streak}`;
+    }
+
+    function difficultyLabel(key) {
+      if (key === 'easy') return 'Leicht';
+      if (key === 'hard') return 'Schwer';
+      return 'Mittel';
+    }
+
+    function getDifficultyConfig(level) {
+      if (level === 'easy') {
+        return {
+          capital: [1000, 10000, 500],
+          rate: [2, 8, 1],
+          yearTime: [1, 3, 1],
+          monthTime: [3, 9, 1],
+          dayTime: [30, 180, 30],
+          tolerancePercent: 0.015
+        };
+      }
+
+      if (level === 'hard') {
+        return {
+          capital: [5000, 80000, 250],
+          rate: [1.5, 18, 0.5],
+          yearTime: [0.5, 7, 0.5],
+          monthTime: [1, 12, 1],
+          dayTime: [15, 360, 15],
+          tolerancePercent: 0.008
+        };
+      }
+
+      return {
+        capital: [2000, 25000, 500],
+        rate: [3, 12, 1],
+        yearTime: [1, 5, 1],
+        monthTime: [2, 11, 1],
+        dayTime: [30, 300, 30],
+        tolerancePercent: 0.01
+      };
+    }
+
+    function createZinsExerciseTask() {
+      const unitKey = ['year', 'month', 'day'][Math.floor(Math.random() * 3)];
+      const unit = formulaConfig[unitKey];
+      const targetKey = ['K', 'p', 'time'][Math.floor(Math.random() * 3)];
+      const config = getDifficultyConfig(exerciseState.difficulty);
+
+      const capital = randomInt(config.capital[0], config.capital[1], config.capital[2]);
+      const rate = randomInt(config.rate[0], config.rate[1], config.rate[2]);
+      const time = unitKey === 'year'
+        ? randomInt(config.yearTime[0], config.yearTime[1], config.yearTime[2])
+        : unitKey === 'month'
+          ? randomInt(config.monthTime[0], config.monthTime[1], config.monthTime[2])
+          : randomInt(config.dayTime[0], config.dayTime[1], config.dayTime[2]);
+      const interest = (capital * rate * time) / unit.factor;
+
+      let expected = 0;
+      let prompt = '';
+      let solution = '';
+
+      if (targetKey === 'K') {
+        expected = capital;
+        prompt = `Zeitbasis: ${unit.unitLabel}. Gesucht: Kapital K\nGegeben: Z = ${formatNumber(interest)}, p = ${formatNumber(rate)}, ${unit.timeSymbol} = ${formatNumber(time)}\nNutze: K = (Z x ${unit.factor}) / (p x ${unit.timeSymbol})`;
+        solution = `K = (${formatNumber(interest)} x ${unit.factor}) / (${formatNumber(rate)} x ${formatNumber(time)}) = ${formatNumber(expected)}`;
+      } else if (targetKey === 'p') {
+        expected = rate;
+        prompt = `Zeitbasis: ${unit.unitLabel}. Gesucht: Zinssatz p\nGegeben: Z = ${formatNumber(interest)}, K = ${formatNumber(capital)}, ${unit.timeSymbol} = ${formatNumber(time)}\nNutze: p = (Z x ${unit.factor}) / (K x ${unit.timeSymbol})`;
+        solution = `p = (${formatNumber(interest)} x ${unit.factor}) / (${formatNumber(capital)} x ${formatNumber(time)}) = ${formatNumber(expected)} Prozent`;
+      } else {
+        expected = time;
+        prompt = `Zeitbasis: ${unit.unitLabel}. Gesucht: ${unit.timeSymbol}\nGegeben: Z = ${formatNumber(interest)}, K = ${formatNumber(capital)}, p = ${formatNumber(rate)}\nNutze: ${unit.timeSymbol} = (Z x ${unit.factor}) / (K x p)`;
+        solution = `${unit.timeSymbol} = (${formatNumber(interest)} x ${unit.factor}) / (${formatNumber(capital)} x ${formatNumber(rate)}) = ${formatNumber(expected)}`;
+      }
+
+      return {
+        unitKey,
+        targetKey,
+        expected,
+        prompt,
+        solution,
+        tolerancePercent: config.tolerancePercent
+      };
+    }
+
+    function createBusinessExerciseTask() {
+      const config = getDifficultyConfig(exerciseState.difficulty);
+      const types = ['spanne', 'lagerdauer', 'melde', 'ekrent', 'liq1'];
+      const type = types[Math.floor(Math.random() * types.length)];
+
+      if (type === 'spanne') {
+        const lvp = randomInt(config.capital[0], config.capital[1], 500);
+        const bp = randomInt(config.capital[0] * 0.6, lvp * 0.9, 250);
+        const expected = ((lvp - bp) / lvp) * 100;
+        return {
+          expected,
+          prompt: `Thema: Handelsspanne (%)\nGegeben: Listenverkaufspreis = ${formatNumber(lvp)}, Bezugspreis = ${formatNumber(bp)}\nGesucht: Handelsspanne in Prozent`,
+          solution: `Handelsspanne = (${formatNumber(lvp)} - ${formatNumber(bp)}) / ${formatNumber(lvp)} x 100 = ${formatNumber(expected)} %`,
+          tolerancePercent: config.tolerancePercent
+        };
+      }
+
+      if (type === 'lagerdauer') {
+        const umschlag = randomInt(2, 12, 1);
+        const expected = 360 / umschlag;
+        return {
+          expected,
+          prompt: `Thema: Lagerdauer\nGegeben: Umschlagshäufigkeit = ${formatNumber(umschlag)}\nGesucht: durchschnittliche Lagerdauer in Tagen`,
+          solution: `Lagerdauer = 360 / ${formatNumber(umschlag)} = ${formatNumber(expected)} Tage`,
+          tolerancePercent: config.tolerancePercent
+        };
+      }
+
+      if (type === 'melde') {
+        const verbrauch = randomInt(20, 240, 10);
+        const lieferzeit = randomInt(2, 14, 1);
+        const mindest = randomInt(100, 1200, 50);
+        const expected = (verbrauch * lieferzeit) + mindest;
+        return {
+          expected,
+          prompt: `Thema: Meldebestand\nGegeben: täglicher Verbrauch = ${formatNumber(verbrauch)}, Lieferzeit = ${formatNumber(lieferzeit)} Tage, Mindestbestand = ${formatNumber(mindest)}\nGesucht: Meldebestand`,
+          solution: `Meldebestand = (${formatNumber(verbrauch)} x ${formatNumber(lieferzeit)}) + ${formatNumber(mindest)} = ${formatNumber(expected)}`,
+          tolerancePercent: config.tolerancePercent
+        };
+      }
+
+      if (type === 'ekrent') {
+        const gewinn = randomInt(1000, 15000, 250);
+        const eigenkapital = randomInt(10000, 120000, 500);
+        const expected = (gewinn / eigenkapital) * 100;
+        return {
+          expected,
+          prompt: `Thema: Eigenkapitalrentabilität\nGegeben: Gewinn = ${formatNumber(gewinn)}, Eigenkapital = ${formatNumber(eigenkapital)}\nGesucht: Eigenkapitalrentabilität (%)`,
+          solution: `EK-Rentabilität = ${formatNumber(gewinn)} / ${formatNumber(eigenkapital)} x 100 = ${formatNumber(expected)} %`,
+          tolerancePercent: config.tolerancePercent
+        };
+      }
+
+      const liquideMittel = randomInt(500, 25000, 250);
+      const kurzfrVerbind = randomInt(1000, 30000, 250);
+      const expected = (liquideMittel / kurzfrVerbind) * 100;
+      return {
+        expected,
+        prompt: `Thema: Liquidität 1. Grades\nGegeben: Liquide Mittel = ${formatNumber(liquideMittel)}, kurzfristige Verbindlichkeiten = ${formatNumber(kurzfrVerbind)}\nGesucht: Liquidität 1 in Prozent`,
+        solution: `Liquidität 1 = ${formatNumber(liquideMittel)} / ${formatNumber(kurzfrVerbind)} x 100 = ${formatNumber(expected)} %`,
+        tolerancePercent: config.tolerancePercent
+      };
+    }
+
+    function createExerciseTask() {
+      if (exerciseState.scope === 'zins') {
+        return createZinsExerciseTask();
+      }
+      if (exerciseState.scope === 'business') {
+        return createBusinessExerciseTask();
+      }
+      return Math.random() < 0.5 ? createZinsExerciseTask() : createBusinessExerciseTask();
+    }
+
+    function setExerciseFeedback(message, kind) {
+      exerciseFeedback.className = `feedback${kind ? ` ${kind}` : ''}`;
+      exerciseFeedback.textContent = message;
+    }
+
+    function hideExamCertificate() {
+      examCertificate.hidden = true;
+      examCertificate.className = 'result-box exam-certificate';
+      examCertificate.textContent = '';
+    }
+
+    function showExamCertificate(correct, total) {
+      const quote = Math.round((correct / total) * 100);
+      const passed = quote >= 70;
+      examCertificate.hidden = false;
+      examCertificate.className = `result-box exam-certificate ${passed ? 'pass' : 'fail'}`;
+      examCertificate.textContent = `Zertifikat: ${passed ? 'Bestanden' : 'Nicht bestanden'} (${correct}/${total} | ${quote} %) - Ziel: mindestens 70 %.`;
+    }
+
+    function loadNewExercise(message = 'Neue Aufgabe aktiv. Trage dein Ergebnis ein und prüfe.') {
+      exerciseState.currentTask = createExerciseTask();
+      exercisePrompt.textContent = exerciseState.currentTask.prompt;
+      const scopeLabel = exerciseState.scope === 'zins' ? 'Zins' : exerciseState.scope === 'business' ? 'Kaufmännisch' : 'Gemischt';
+      exerciseMeta.innerHTML = `<span class="badge">Schwierigkeit: ${difficultyLabel(exerciseState.difficulty)}</span><span class="badge">Modus: ${exerciseState.examActive ? 'Prüfung' : 'Training'}</span><span class="badge">Thema: ${scopeLabel}</span>`;
+      exerciseAnswer.value = '';
+      setExerciseFeedback(message, '');
+    }
+
+    document.getElementById('bizCalculateButton').addEventListener('click', () => {
+      const formula = businessCoachConfig[bizFormulaSelect.value];
+      const target = formula.targets[bizTargetSelect.value];
+      const a = parseNumber(bizInputA.value);
+      const b = parseNumber(bizInputB.value || '0');
+      const c = parseNumber(bizInputC.value || '0');
+
+      if (!Number.isFinite(a) || (!bizInputB.disabled && !Number.isFinite(b)) || (!bizInputC.disabled && !Number.isFinite(c))) {
+        bizResult.textContent = 'Bitte alle benötigten Werte als Zahl eingeben.';
+        return;
+      }
+
+      const result = target.solve(a, b, c);
+      bizResult.textContent = `${target.label} = ${formatNumber(result)}${target.label.includes('%') ? ' %' : ''}`;
+    });
+
+    document.getElementById('bizResetButton').addEventListener('click', () => {
+      bizInputA.value = '';
+      bizInputB.value = '';
+      bizInputC.value = '';
+      bizResult.textContent = 'Noch keine Berechnung.';
+    });
+
+    document.getElementById('checkStepsButton').addEventListener('click', () => {
+      const unit = formulaConfig[unitSelect.value];
+      const target = unit.targets[targetSelect.value];
+      const actual = selectedSteps();
+      const expected = target.steps;
+
+      if (actual.length !== expected.length) {
+        showFeedback(`Es fehlen noch Schritte. Für diese Umstellung brauchst du ${expected.length} Operationen.`, 'bad');
+        return;
+      }
+
+      if (actual.every((value, index) => value === expected[index])) {
+        showFeedback(`Richtig. Die Reihenfolge lautet ${expected.join(' -> ')}.`, 'ok');
+        return;
+      }
+
+      showFeedback('Noch nicht passend. Denk zuerst an den Faktor im Nenner und teile danach durch die übrigen Größen.', 'bad');
+    });
+
+    document.getElementById('showSolutionButton').addEventListener('click', () => {
+      const unit = formulaConfig[unitSelect.value];
+      const target = unit.targets[targetSelect.value];
+      stepSelects.forEach((select, index) => {
+        select.value = target.steps[index] || '';
+      });
+      showFeedback(`Lösung eingeblendet: ${target.steps.join(' -> ')}.`, 'ok');
+    });
+
+    document.getElementById('resetStepsButton').addEventListener('click', () => {
+      stepSelects.forEach((select) => {
+        if (!select.disabled) {
+          select.value = '';
+        }
+      });
+      showFeedback('Auswahl zurückgesetzt. Stelle die Formel erneut um.', '');
+    });
+
+    document.getElementById('calculateButton').addEventListener('click', () => {
+      const unit = formulaConfig[unitSelect.value];
+      const factor = unit.factor;
+      const target = targetSelect.value;
+      const z = parseNumber(inputZ.value);
+      const capital = parseNumber(inputK.value);
+      const rate = parseNumber(inputP.value);
+      const time = parseNumber(inputTime.value);
+      let result;
+
+      if (target === 'K') {
+        if (![z, rate, time].every(Number.isFinite)) {
+          calculationResult.textContent = 'Bitte Z, p und die Zeitgröße ausfüllen.';
+          return;
+        }
+        result = (z * factor) / (rate * time);
+        calculationResult.textContent = `K = (${formatNumber(z)} x ${factor}) / (${formatNumber(rate)} x ${formatNumber(time)}) = ${formatNumber(result)}`;
+        return;
+      }
+
+      if (target === 'p') {
+        if (![z, capital, time].every(Number.isFinite)) {
+          calculationResult.textContent = 'Bitte Z, K und die Zeitgröße ausfüllen.';
+          return;
+        }
+        result = (z * factor) / (capital * time);
+        calculationResult.textContent = `p = (${formatNumber(z)} x ${factor}) / (${formatNumber(capital)} x ${formatNumber(time)}) = ${formatNumber(result)} Prozent`;
+        return;
+      }
+
+      if (![z, capital, rate].every(Number.isFinite)) {
+        calculationResult.textContent = 'Bitte Z, K und p ausfüllen.';
+        return;
+      }
+
+      result = (z * factor) / (capital * rate);
+      calculationResult.textContent = `${unit.timeSymbol} = (${formatNumber(z)} x ${factor}) / (${formatNumber(capital)} x ${formatNumber(rate)}) = ${formatNumber(result)}`;
+    });
+
+    document.getElementById('newExerciseButton').addEventListener('click', () => {
+      if (exerciseState.examActive) {
+        setExerciseFeedback('Im Prüfungsmodus geht es nach jeder Antwort automatisch weiter.', '');
+        return;
+      }
+      loadNewExercise();
+    });
+
+    document.getElementById('startExamButton').addEventListener('click', () => {
+      exerciseState.examActive = true;
+      exerciseState.examIndex = 1;
+      exerciseState.examCorrect = 0;
+      exerciseState.streak = 0;
+      exerciseState.difficulty = exerciseDifficulty.value;
+      exerciseState.scope = exerciseScope.value;
+      exerciseMode.value = 'exam10';
+      hideExamCertificate();
+      updateExerciseScore();
+      loadNewExercise('Prüfung gestartet. Frage 1 von 10.');
+    });
+
+    document.getElementById('checkExerciseButton').addEventListener('click', () => {
+      if (!exerciseState.currentTask) {
+        setExerciseFeedback('Bitte erst eine Aufgabe laden.', 'bad');
+        return;
+      }
+
+      const answer = parseNumber(exerciseAnswer.value);
+      if (!Number.isFinite(answer)) {
+        setExerciseFeedback('Bitte eine gültige Zahl eingeben.', 'bad');
+        return;
+      }
+
+      const expected = exerciseState.currentTask.expected;
+      const tolerance = Math.max(0.05, Math.abs(expected) * exerciseState.currentTask.tolerancePercent);
+      const isCorrect = Math.abs(answer - expected) <= tolerance;
+
+      exerciseState.attempts += 1;
+      if (isCorrect) {
+        exerciseState.correct += 1;
+        exerciseState.streak += 1;
+        setExerciseFeedback(`Richtig. Ergebnis: ${formatNumber(expected)}.`, 'ok');
+      } else {
+        exerciseState.streak = 0;
+        setExerciseFeedback(`Noch nicht korrekt. Dein Wert: ${formatNumber(answer)}.`, 'bad');
+      }
+
+      if (exerciseState.examActive) {
+        if (isCorrect) {
+          exerciseState.examCorrect += 1;
+        }
+
+        if (exerciseState.examIndex >= exerciseState.examTotal) {
+          const quote = Math.round((exerciseState.examCorrect / exerciseState.examTotal) * 100);
+          exerciseState.examActive = false;
+          exercisePrompt.textContent = `Prüfung abgeschlossen. Ergebnis: ${exerciseState.examCorrect}/${exerciseState.examTotal} (${quote} %).`;
+          exerciseMeta.innerHTML = `<span class="badge">Schwierigkeit: ${difficultyLabel(exerciseState.difficulty)}</span><span class="badge">Modus: Training</span>`;
+          showExamCertificate(exerciseState.examCorrect, exerciseState.examTotal);
+          setExerciseFeedback('Die Prüfung ist fertig. Du kannst jetzt neue Trainingsaufgaben starten oder erneut prüfen.', quote >= 70 ? 'ok' : 'bad');
+          updateExerciseScore();
+          return;
+        }
+
+        exerciseState.examIndex += 1;
+        updateExerciseScore();
+        loadNewExercise(`${isCorrect ? 'Richtig' : 'Nicht korrekt'}. Weiter mit Frage ${exerciseState.examIndex} von ${exerciseState.examTotal}.`);
+        return;
+      }
+
+      updateExerciseScore();
+    });
+
+    document.getElementById('showExerciseSolutionButton').addEventListener('click', () => {
+      if (!exerciseState.currentTask) {
+        setExerciseFeedback('Bitte erst eine Aufgabe laden.', 'bad');
+        return;
+      }
+      if (exerciseState.examActive) {
+        setExerciseFeedback('Im Prüfungsmodus ist Lösung zeigen deaktiviert.', 'bad');
+        return;
+      }
+      setExerciseFeedback(`Lösung: ${exerciseState.currentTask.solution}`, 'ok');
+    });
+
+    document.getElementById('resetExerciseStatsButton').addEventListener('click', () => {
+      exerciseState.correct = 0;
+      exerciseState.attempts = 0;
+      exerciseState.streak = 0;
+      exerciseState.examActive = false;
+      exerciseState.examIndex = 0;
+      exerciseState.examCorrect = 0;
+      updateExerciseScore();
+      setExerciseFeedback('Punktestand zurückgesetzt.', '');
+      hideExamCertificate();
+      exerciseMeta.innerHTML = `<span class="badge">Schwierigkeit: ${difficultyLabel(exerciseState.difficulty)}</span><span class="badge">Modus: Training</span>`;
+    });
+
+    exerciseDifficulty.addEventListener('change', () => {
+      exerciseState.difficulty = exerciseDifficulty.value;
+      if (!exerciseState.examActive) {
+        loadNewExercise('Schwierigkeit geändert. Neue Aufgabe geladen.');
+      }
+      updateExerciseScore();
+    });
+
+    exerciseScope.addEventListener('change', () => {
+      exerciseState.scope = exerciseScope.value;
+      if (!exerciseState.examActive) {
+        loadNewExercise('Themenbereich geändert. Neue Aufgabe geladen.');
+      }
+    });
+
+    exerciseMode.addEventListener('change', () => {
+      if (exerciseMode.value === 'exam10') {
+        setExerciseFeedback('Mit Prüfung starten beginnst du den 10-Fragen-Modus.', '');
+      } else {
+        exerciseState.examActive = false;
+        exerciseState.examIndex = 0;
+        exerciseState.examCorrect = 0;
+        hideExamCertificate();
+        loadNewExercise('Trainingsmodus aktiv.');
+      }
+      updateExerciseScore();
+    });
+
+    unitSelect.addEventListener('change', updateCoach);
+    targetSelect.addEventListener('change', updateCoach);
+    bizFormulaSelect.addEventListener('change', updateBusinessCoachTargets);
+    bizTargetSelect.addEventListener('change', updateBusinessCoachDisplay);
+    exerciseState.difficulty = exerciseDifficulty.value;
+    exerciseState.scope = exerciseScope.value;
+    initializeBusinessCoach();
+    hideExamCertificate();
+    updateCoach();
+    updateExerciseScore();
+    loadNewExercise();
+  
+    const TABLET_FOCUS_KEY = 'vorbereitung-bew-tablet-focus-v1';
+    const tabletFocusButtonGlobal = document.getElementById('tabletFocusButtonGlobal');
+    const installAppButtonGlobal = document.getElementById('installAppButtonGlobal');
+    let deferredInstallPromptGlobal = null;
+
+    function applyTabletFocusGlobal(enabled, persist = true) {
+      const isEnabled = Boolean(enabled);
+      document.body.classList.toggle('tablet-focus', isEnabled);
+      if (tabletFocusButtonGlobal) {
+        tabletFocusButtonGlobal.textContent = isEnabled ? 'Tablet-Fokus beenden' : 'Tablet-Fokus aktivieren';
+        tabletFocusButtonGlobal.setAttribute('aria-pressed', isEnabled ? 'true' : 'false');
+      }
+      if (persist) {
+        localStorage.setItem(TABLET_FOCUS_KEY, isEnabled ? '1' : '0');
+      }
+    }
+
+    function initTabletFocusGlobal() {
+      const stored = localStorage.getItem(TABLET_FOCUS_KEY);
+      if (stored === '1') {
+        applyTabletFocusGlobal(true, false);
+        return;
+      }
+      if (stored === '0') {
+        applyTabletFocusGlobal(false, false);
+        return;
+      }
+      const isTabletLayout = window.matchMedia('(min-width: 900px) and (max-width: 1366px)').matches;
+      applyTabletFocusGlobal(isTabletLayout, false);
+    }
+
+    if (tabletFocusButtonGlobal) {
+      tabletFocusButtonGlobal.addEventListener('click', () => {
+        const next = !document.body.classList.contains('tablet-focus');
+        applyTabletFocusGlobal(next, true);
+      });
+    }
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredInstallPromptGlobal = event;
+      if (installAppButtonGlobal) {
+        installAppButtonGlobal.hidden = false;
+      }
+    });
+
+    if (installAppButtonGlobal) {
+      installAppButtonGlobal.addEventListener('click', async () => {
+        if (!deferredInstallPromptGlobal) {
+          installAppButtonGlobal.hidden = true;
+          return;
+        }
+        deferredInstallPromptGlobal.prompt();
+        await deferredInstallPromptGlobal.userChoice;
+        deferredInstallPromptGlobal = null;
+        installAppButtonGlobal.hidden = true;
+      });
+    }
+
+    window.addEventListener('appinstalled', () => {
+      deferredInstallPromptGlobal = null;
+      if (installAppButtonGlobal) {
+        installAppButtonGlobal.hidden = true;
+      }
+    });
+
+    initTabletFocusGlobal();
+  </script>
+</body>
+</html>
